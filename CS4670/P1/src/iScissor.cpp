@@ -38,25 +38,25 @@ void InitNodeBuf(Node* nodes, const unsigned char* img, int imgWidth, int imgHei
     double maxD = 0;
     for (int i = 0; i < imgWidth; i++) {
         for (int j = 0; j < imgHeight; j++) {
-            Node* node = NODE(nodes, i, j, imgWidth);
-            node->column = i;
-            node->row = j;
+            Node node = NODE(nodes, i, j, imgWidth);
+            node.column = i;
+            node.row = j;
             for (int k = 0; k < 8; k++) {
                 double result[3];
                 pixel_filter(result, i, j, img, imgWidth, imgHeight, kernels[k], 3, 3, 1, 0);
                 double d = std::sqrt((result[0]*result[0] + result[1]*result[1] + result[2]*result[2]) / 3);
                 d = d < 0 ? -d : d;
                 if (d > maxD) maxD = d;
-                node->linkCost[k] = d;
+                node.linkCost[k] = d;
             }
         }
     }
     for (int i = 0; i < imgWidth; i++) {
         for (int j = 0; j < imgHeight; j++) {
-            Node* node = NODE(nodes, i, j, imgWidth);
+            Node node = NODE(nodes, i, j, imgWidth);
             for (int k = 0; k < 8; k++) {
                 double length = k / 2 * 2 == k ? 1 : SQRT2;
-                node->linkCost[k] = (maxD - node->linkCost[k]) * length;
+                node.linkCost[k] = (maxD - node.linkCost[k]) * length;
             }
         }
     }
@@ -94,10 +94,10 @@ void LiveWireDP(int seedX, int seedY, Node* nodes, int width, int height, const 
         if (selection[i] == 0) node.state = EXPANDED;
         else node.state = INITIAL;
     }
-    Node* node = NODE(nodes, seedX, seedY, width);
-    node->totalCost = 0;
-    node->prevNode = NULL;
-    pq.Insert(node);
+    Node node = NODE(nodes, seedX, seedY, width);
+    node.totalCost = 0;
+    node.prevNode = NULL;
+    pq.Insert(&node);
     int counter = 0;
     while (!pq.IsEmpty() && counter < numExpanded) {
         Node* q = pq.ExtractMin();
@@ -105,19 +105,19 @@ void LiveWireDP(int seedX, int seedY, Node* nodes, int width, int height, const 
         for (int i = 0; i < 8; i++) {
             int offsetX, offsetY;
             q->nbrNodeOffset(offsetX, offsetY, i);
-            Node* r = NODE(nodes, q->column + offsetX, q->row + offsetY, width);
-            if (r->state != EXPANDED) {
-                if (r->state == INITIAL) {
-                    r->totalCost = q->totalCost + q->linkCost[i];
-                    r->prevNode = q;
-                    r->state = ACTIVE;
-                    pq.Insert(r);
+            Node r = NODE(nodes, q->column + offsetX, q->row + offsetY, width);
+            if (r.state != EXPANDED) {
+                if (r.state == INITIAL) {
+                    r.totalCost = q->totalCost + q->linkCost[i];
+                    r.prevNode = q;
+                    r.state = ACTIVE;
+                    pq.Insert(&r);
                 }
-                else if (r->state == ACTIVE) {
-                    if (q->totalCost + q->linkCost[i] < r->totalCost) {
-                        r->totalCost = q->totalCost + q->linkCost[i];
-                        r->prevNode = q;
-                        pq.Update(r);
+                else if (r.state == ACTIVE) {
+                    if (q->totalCost + q->linkCost[i] < r.totalCost) {
+                        r.totalCost = q->totalCost + q->linkCost[i];
+                        r.prevNode = q;
+                        pq.Update(&r);
                     }
                 }
             }
@@ -144,11 +144,12 @@ void LiveWireDP(int seedX, int seedY, Node* nodes, int width, int height, const 
 
 void MinimumPath(CTypedPtrDblList <Node>* path, int freePtX, int freePtY, Node* nodes, int width, int height)
 {
-    Node* currNode = NODE(nodes, freePtX, freePtY, width);
-    path->AddTail(currNode);
+    Node inputNode = NODE(nodes, freePtX, freePtY, width);
+    CTypedPtrDblElement<Node>* tail = path->AddTail(&inputNode);
+    Node* currNode = &inputNode;
     while (currNode->prevNode != NULL) {
         currNode = currNode->prevNode;
-        path->AddPrev(currNode);
+        tail = path->AddPrev(tail, currNode);
     }
 }
 /************************ END OF TODO 5 ***************************/
