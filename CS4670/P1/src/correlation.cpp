@@ -85,12 +85,12 @@ void pixel_filter(double rsltPixel[3], int x, int y, const unsigned char* origIm
                   const double* kernel, int knlWidth, int knlHeight,
                   double scale, double offset)
 {
-    for (int i = -knlWidth/2; i <= (knlWidth-1)/2; i++){
-        for (int j = -knlHeight/2; j <= (knlHeight-1)/2; j++){
+    for (int i = -knlWidth/2; i <= (knlWidth-1)/2; i++) {
+        for (int j = -knlHeight/2; j <= (knlHeight-1)/2; j++) {
             int ki = i + knlWidth/2;
             int kj = j + knlHeight/2;
             //pad boundary pixels with 0's
-            if (x + i < knlWidth && x + i >= 0 && y + j < knlHeight && y + j >= 0){
+            if (x + i < knlWidth && x + i >= 0 && y + j < knlHeight && y + j >= 0) {
                 rsltPixel[0] += kernel[ki][kj] * PIXEL(origImg, x + i, y + j, 0, imgWidth);
                 rsltPixel[1] += kernel[ki][kj] * PIXEL(origImg, x + i, y + j, 1, imgWidth);
                 rsltPixel[2] += kernel[ki][kj] * PIXEL(origImg, x + i, y + j, 2, imgWidth);
