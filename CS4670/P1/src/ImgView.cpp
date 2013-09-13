@@ -1781,13 +1781,13 @@ int ImgView::handle(int c)
                         MarkAllContour();
 
                         printf("33 current seed position: ( %4d , %4d ).\n", col, row);
-                        printf("A\n");
+
                         int seedIndex = row * imgWidth + col;
 
                         if (brushSelPtr == brushSelection && !brushSelection[seedIndex]) {
                             printf("current seed ( %d , %d ) is out of brush selected range!\n", col, row);
                         }
-                        printf("B\n");
+
                         LiveWireDP(col, row, nodeBuf, imgWidth, imgHeight, brushSelPtr, imgWidth * imgHeight);
 
                         int sum = 0;
@@ -1819,6 +1819,8 @@ int ImgView::handle(int c)
                             printf("current seed ( %d , %d ) is out of brush selected range!\n", col, row);
                         }
 
+                        //printf("State = %d\n", nodeBuf[0].state);
+
                         LiveWireDP(col, row, nodeBuf, imgWidth, imgHeight, brushSelPtr, imgWidth * imgHeight);
 
                         int sum = 0;
@@ -1827,7 +1829,7 @@ int ImgView::handle(int c)
                         freePtX = col;
                         freePtY = row;
 
-                        printf("5 minimum path tree is finished. Sum = %d\n", sum);
+                        printf("5 minimum path tree is finished. sum = %d\n", sum);
 
                         redraw();
                     }
