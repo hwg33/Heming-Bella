@@ -51,8 +51,8 @@ void InitNodeBuf(Node* nodes, const unsigned char* img, int imgWidth, int imgHei
             }
         }
     }
-    for (int i = 1; i < imgWidth - 1; i++) {
-        for (int j = 1; j < imgHeight - 1; j++) {
+    for (int i = 0; i < imgWidth; i++) {
+        for (int j = 0; j < imgHeight; j++) {
             Node* node = NODE(nodes, i, j, imgWidth);
             for (int k = 0; k < 8; k++) {
                 double length = k / 2 * 2 == k ? 1 : SQRT2;
@@ -144,8 +144,12 @@ void LiveWireDP(int seedX, int seedY, Node* nodes, int width, int height, const 
 
 void MinimumPath(CTypedPtrDblList <Node>* path, int freePtX, int freePtY, Node* nodes, int width, int height)
 {
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
-
+    Node* currNode = NODE(nodes, freePtX, freePtY, width);
+    path->AddTail(currNode);
+    while (currNode->prevNode != NULL) {
+        currNode = currNode->prevNode;
+        path->AddPrev(currNode);
+    }
 }
 /************************ END OF TODO 5 ***************************/
 
