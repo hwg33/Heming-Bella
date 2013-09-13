@@ -1781,7 +1781,6 @@ int ImgView::handle(int c)
                         MarkAllContour();
 
                         printf("33 current seed position: ( %4d , %4d ).\n", col, row);
-                        printf("A\n");
                         int seedIndex = row * imgWidth + col;
 
                         if (brushSelPtr == brushSelection && !brushSelection[seedIndex]) {

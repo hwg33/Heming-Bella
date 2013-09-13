@@ -38,25 +38,26 @@ void InitNodeBuf(Node* nodes, const unsigned char* img, int imgWidth, int imgHei
     double maxD = 0;
     for (int i = 0; i < imgWidth; i++) {
         for (int j = 0; j < imgHeight; j++) {
-            Node node = NODE(nodes, i, j, imgWidth);
-            node.column = i;
-            node.row = j;
+            Node* node = &NODE(nodes, i, j, imgWidth);
+            node->column = i;
+            node->row = j;
             for (int k = 0; k < 8; k++) {
                 double result[3];
                 pixel_filter(result, i, j, img, imgWidth, imgHeight, kernels[k], 3, 3, 1, 0);
                 double d = std::sqrt((result[0]*result[0] + result[1]*result[1] + result[2]*result[2]) / 3);
                 d = d < 0 ? -d : d;
                 if (d > maxD) maxD = d;
-                node.linkCost[k] = d;
+                node->linkCost[k] = d;
             }
         }
     }
+    //printf("max D is %f", maxD);
     for (int i = 0; i < imgWidth; i++) {
         for (int j = 0; j < imgHeight; j++) {
-            Node node = NODE(nodes, i, j, imgWidth);
+            Node* node = &NODE(nodes, i, j, imgWidth);
             for (int k = 0; k < 8; k++) {
                 double length = k / 2 * 2 == k ? 1 : SQRT2;
-                node.linkCost[k] = (maxD - node.linkCost[k]) * length;
+                node->linkCost[k] = (maxD - node->linkCost[k]) * length;
             }
         }
     }
@@ -89,13 +90,11 @@ static int offsetToLinkIndex(int dx, int dy)
 void LiveWireDP(int seedX, int seedY, Node* nodes, int width, int height, const unsigned char* selection, int numExpanded)
 {
     CTypedPtrHeap<Node> pq;
-    printf("1\n");
     for (int i = 0; i < width * height; i++) {
         Node node = nodes[i];
         if (selection != NULL && selection[i] == 0) node.state = EXPANDED;
         else node.state = INITIAL;
     }
-    printf("2\n");
     Node node = NODE(nodes, seedX, seedY, width);
     node.totalCost = 0;
     node.prevNode = NULL;
