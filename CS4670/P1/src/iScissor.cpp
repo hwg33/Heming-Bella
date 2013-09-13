@@ -7,6 +7,8 @@
 #include "correlation.h"
 #include "iScissor.h"
 #include <cmath>
+#include "PriorityQueue.h"
+#include <limits>
 
 const double linkLengths[8] = { 1.0, SQRT2, 1.0, SQRT2, 1.0, SQRT2, 1.0, SQRT2 };
 
@@ -86,7 +88,42 @@ static int offsetToLinkIndex(int dx, int dy)
 
 void LiveWireDP(int seedX, int seedY, Node* nodes, int width, int height, const unsigned char* selection, int numExpanded)
 {
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
+    CTypedPtrHeap<Node> pq;
+    for (int i = 0; i < width * height; i++) {
+        Node node = nodes[i];
+        if (selection[i] == 0) node.state = EXPANDED;
+        else node.state = INITIAL;
+    }
+    Node* node = NODE(nodes, seedX, seedY, width);
+    node->totalCost = 0;
+    node->prevNode = NULL;
+    pq.Insert(node);
+    int counter = 0;
+    while (!pq.IsEmpty() && counter < numExpanded) {
+        Node* q = pq.ExtractMin();
+        q->state = EXPANDED;
+        for (int i = 0; i < 8; i++) {
+            int offsetX, offsetY;
+            q->nbrNodeOffset(offsetX, offsetY, i);
+            Node* r = NODE(nodes, q->column + offsetX, q->row + offsetY, width);
+            if (r->state != EXPANDED) {
+                if (r->state == INITIAL) {
+                    r->totalCost = q->totalCost + q->linkCost[i];
+                    r->prevNode = q;
+                    r->state = ACTIVE;
+                    pq.Insert(r);
+                }
+                else if (r->state == ACTIVE) {
+                    if (q->totalCost + q->linkCost[i] < r->totalCost) {
+                        r->totalCost = q->totalCost + q->linkCost[i];
+                        r->prevNode = q;
+                        pq.Update(r);
+                    }
+                }
+            }
+        }
+        counter++;
+    }
 
 }
 /************************ END OF TODO 4 ***************************/
