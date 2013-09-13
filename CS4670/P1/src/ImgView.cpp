@@ -705,7 +705,7 @@ void ImgView::BrushSelection(int b)
             }
             LiveWireDP(col, row, nodeBuf, imgWidth, imgHeight, brushSelPtr, expanded);
 
-            printf("minimum path tree is finished\n");
+            printf("1 minimum path tree is finished\n");
 
             UpdateViewBuffer();
             redraw();
@@ -862,7 +862,7 @@ void ImgView::PartialExpanding(void)
             freePtY = (row - zoomPort[2]) / zoomFactor + targetPort[2];
             freePtY /= 3;
 
-            printf("minimum path tree is finished\n");
+            printf("2 minimum path tree is finished\n");
         }
 
         UpdateViewBuffer();
@@ -884,7 +884,7 @@ void ImgView::UpdatePathTree(void)
 
         LiveWireDP(col, row, nodeBuf, imgWidth, imgHeight, brushSelPtr, imgWidth * imgHeight);
 
-        printf("minimum path tree is finished\n");
+        printf("3 minimum path tree is finished\n");
     }
 }
 
@@ -1780,17 +1780,20 @@ int ImgView::handle(int c)
 
                         MarkAllContour();
 
-                        printf("current seed position: ( %4d , %4d ).\n", col, row);
-
+                        printf("33 current seed position: ( %4d , %4d ).\n", col, row);
+                        printf("A\n");
                         int seedIndex = row * imgWidth + col;
 
                         if (brushSelPtr == brushSelection && !brushSelection[seedIndex]) {
                             printf("current seed ( %d , %d ) is out of brush selected range!\n", col, row);
                         }
-
+                        printf("B\n");
                         LiveWireDP(col, row, nodeBuf, imgWidth, imgHeight, brushSelPtr, imgWidth * imgHeight);
 
-                        printf("minimum path tree is finished\n");
+                        int sum = 0;
+                        for (int k = 0; k < imgWidth * imgHeight; k++) sum += nodeBuf[k].state;
+
+                        printf("4 minimum path tree is finished. Sum = %d\n", sum);
 
                         freePtX = col;
                         freePtY = row;
@@ -1818,10 +1821,13 @@ int ImgView::handle(int c)
 
                         LiveWireDP(col, row, nodeBuf, imgWidth, imgHeight, brushSelPtr, imgWidth * imgHeight);
 
+                        int sum = 0;
+                        for (int k = 0; k < imgWidth * imgHeight; k++) sum += nodeBuf[k].state;
+
                         freePtX = col;
                         freePtY = row;
 
-                        printf("minimum path tree is finished\n");
+                        printf("5 minimum path tree is finished. Sum = %d\n", sum);
 
                         redraw();
                     }
@@ -1976,7 +1982,7 @@ int ImgView::handle(int c)
                         freePtX = (x - zoomPort[0]) / zoomFactor + targetPort[0];
                         freePtY = (y - zoomPort[2]) / zoomFactor + targetPort[2];
 
-                        printf("minimum path tree is finished\n");
+                        printf("6 minimum path tree is finished\n");
 
                         MarkAllContour(freePtX, freePtY);
                     } else {
@@ -2070,7 +2076,7 @@ int ImgView::handle(int c)
                         freePtX = (x - zoomPort[0]) / zoomFactor + targetPort[0];
                         freePtY = (y - zoomPort[2]) / zoomFactor + targetPort[2];
 
-                        printf("minimum path tree is finished\n");
+                        printf("7 minimum path tree is finished\n");
 
                         MarkAllContour(freePtX, freePtY);
                     } else {

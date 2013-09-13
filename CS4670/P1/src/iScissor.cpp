@@ -89,11 +89,13 @@ static int offsetToLinkIndex(int dx, int dy)
 void LiveWireDP(int seedX, int seedY, Node* nodes, int width, int height, const unsigned char* selection, int numExpanded)
 {
     CTypedPtrHeap<Node> pq;
+    printf("1\n");
     for (int i = 0; i < width * height; i++) {
         Node node = nodes[i];
-        if (selection[i] == 0) node.state = EXPANDED;
+        if (selection != NULL && selection[i] == 0) node.state = EXPANDED;
         else node.state = INITIAL;
     }
+    printf("2\n");
     Node node = NODE(nodes, seedX, seedY, width);
     node.totalCost = 0;
     node.prevNode = NULL;
@@ -120,6 +122,7 @@ void LiveWireDP(int seedX, int seedY, Node* nodes, int width, int height, const 
                         pq.Update(&r);
                     }
                 }
+                //printf("r.state = %d\n", r.state);
             }
         }
         counter++;
