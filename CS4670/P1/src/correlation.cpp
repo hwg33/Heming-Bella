@@ -43,9 +43,9 @@ void image_filter(double* rsltImg, const unsigned char* origImg, const unsigned 
         for (int j = 0; j < imgHeight; j++){
             double rsltPixel[3];
             pixel_filter(rsltPixel, i, j, origImg, imgWidth, imgHeight, kernel, knlWidth, knlHeight, scale, offset);
-            rsltImg[i * imgWidth + j] = rsltPixel[0];
-            rsltImg[i * imgWidth + j + 1] = rsltPixel[1];
-            rsltImg[i * imgWidth + j + 2] = rsltPixel[2];
+            rsltImg[j * imgWidth + i] = rsltPixel[0];
+            rsltImg[j * imgWidth + i + 1] = rsltPixel[1];
+            rsltImg[j * imgWidth + i + 2] = rsltPixel[2];
         }
     }
 
@@ -91,9 +91,9 @@ void pixel_filter(double rsltPixel[3], int x, int y, const unsigned char* origIm
             int kj = j + knlHeight/2;
             //pad boundary pixels with 0's
             if (x + i < knlWidth && x + i >= 0 && y + j < knlHeight && y + j >= 0) {
-                rsltPixel[0] += kernel[ki][kj] * PIXEL(origImg, x + i, y + j, 0, imgWidth);
-                rsltPixel[1] += kernel[ki][kj] * PIXEL(origImg, x + i, y + j, 1, imgWidth);
-                rsltPixel[2] += kernel[ki][kj] * PIXEL(origImg, x + i, y + j, 2, imgWidth);
+                rsltPixel[0] += kernel[ki+kj*knlWidth] * PIXEL(origImg, x + i, y + j, 0, imgWidth);
+                rsltPixel[1] += kernel[ki+kj*knlWidth] * PIXEL(origImg, x + i, y + j, 1, imgWidth);
+                rsltPixel[2] += kernel[ki+kj*knlWidth] * PIXEL(origImg, x + i, y + j, 2, imgWidth);
             }
         }
     }
