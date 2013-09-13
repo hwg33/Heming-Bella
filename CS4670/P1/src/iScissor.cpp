@@ -51,7 +51,7 @@ void InitNodeBuf(Node* nodes, const unsigned char* img, int imgWidth, int imgHei
             }
         }
     }
-    //printf("max D is %f", maxD);
+    printf("max:%f\n", maxD);
     for (int i = 0; i < imgWidth; i++) {
         for (int j = 0; j < imgHeight; j++) {
             Node* node = &NODE(nodes, i, j, imgWidth);
@@ -62,6 +62,9 @@ void InitNodeBuf(Node* nodes, const unsigned char* img, int imgWidth, int imgHei
         }
     }
 }
+
+
+
 /************************ END OF TODO 1 ***************************/
 
 static int offsetToLinkIndex(int dx, int dy)
