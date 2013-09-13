@@ -110,7 +110,10 @@ void LiveWireDP(int seedX, int seedY, Node* nodes, int width, int height, const 
         for (int i = 0; i < 8; i++) {
             int offsetX, offsetY;
             q->nbrNodeOffset(offsetX, offsetY, i);
-            if (q->column + offsetX >= width || q->row + offsetY >= height) {
+            //printf("%d, %d\n", (q->row + offsetY) * width + q->column + offsetX, width * height);
+            //printf("Row: %d, NewRow: %d, Column: %d, NewColumn: %d, Height: %d, Width: %d\n", q->row, q->row + offsetY, q->column, q->column + offsetX, height, width);
+            int newRow = q->row + offsetY, newCol = q->column + offsetX;
+            if (newCol < width && newRow < height && newCol >= 0 && newRow >= 0) {
                 Node* r = &NODE(nodes, q->column + offsetX, q->row + offsetY, width);
                 //Node* r = &nodes[(q->row + offsetY) * width + q->column + offsetX];
                 if (r->state != EXPANDED) {
@@ -134,8 +137,8 @@ void LiveWireDP(int seedX, int seedY, Node* nodes, int width, int height, const 
                     //}
                 }
             }
-            //printf("%d, %d\n", (q->row + offsetY) * width + q->column + offsetX, width * height);
         }
+        //printf("%d\n", pq.IsEmpty());
         counter++;
     }
 }

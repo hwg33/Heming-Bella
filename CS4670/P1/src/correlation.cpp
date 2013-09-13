@@ -98,9 +98,9 @@ void pixel_filter(double rsltPixel[3], int x, int y, const unsigned char* origIm
             }
         }
     }
-    rsltPixel[0]*scale + offset;
-    rsltPixel[1]*scale + offset;
-    rsltPixel[2]*scale + offset;
+    rsltPixel[0] = rsltPixel[0]/scale + offset;
+    rsltPixel[1] = rsltPixel[1]/scale + offset;
+    rsltPixel[2] = rsltPixel[2]/scale + offset;
 }
 
 /************************ END OF TODO 3 **************************/

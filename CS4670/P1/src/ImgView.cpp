@@ -1790,8 +1790,8 @@ int ImgView::handle(int c)
 
                         LiveWireDP(col, row, nodeBuf, imgWidth, imgHeight, brushSelPtr, imgWidth * imgHeight);
 
-                        int sum = 0;
-                        for (int k = 0; k < imgWidth * imgHeight; k++) sum += nodeBuf[k].state;
+                        //int sum = 0;
+                        //for (int k = 0; k < imgWidth * imgHeight; k++) sum += nodeBuf[k].state;
 
                         printf("4 minimum path tree is finished. Sum = %d\n", sum);
 
@@ -1823,8 +1823,8 @@ int ImgView::handle(int c)
 
                         LiveWireDP(col, row, nodeBuf, imgWidth, imgHeight, brushSelPtr, imgWidth * imgHeight);
 
-                        int sum = 0;
-                        for (int k = 0; k < imgWidth * imgHeight; k++) sum += nodeBuf[k].state;
+                        //int sum = 0;
+                        //for (int k = 0; k < imgWidth * imgHeight; k++) sum += nodeBuf[k].state;
 
                         freePtX = col;
                         freePtY = row;
