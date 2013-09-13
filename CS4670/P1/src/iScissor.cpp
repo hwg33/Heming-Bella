@@ -91,11 +91,12 @@ void LiveWireDP(int seedX, int seedY, Node* nodes, int width, int height, const 
 {
     CTypedPtrHeap<Node> pq;
     for (int i = 0; i < width * height; i++) {
-        Node node = nodes[i];
-        if (selection != NULL && selection[i] == 0) node.state = EXPANDED;
-        else node.state = INITIAL;
+        Node* node = &nodes[i];
+        if (selection != NULL && selection[i] == 0) node->state = EXPANDED;
+        else node->state = INITIAL;
     }
-    Node* node = &nodes[seedY * width + seedX];
+    Node* node = &NODE(nodes, seedX, seedY, width);
+    //Node* node = &nodes[seedY * width + seedX];
     node->totalCost = 0;
     node->prevNode = NULL;
     pq.Insert(node);
@@ -106,27 +107,31 @@ void LiveWireDP(int seedX, int seedY, Node* nodes, int width, int height, const 
         for (int i = 0; i < 8; i++) {
             int offsetX, offsetY;
             q->nbrNodeOffset(offsetX, offsetY, i);
-            Node* r = &nodes[(q->row + offsetY) * width + q->column + offsetX];
-            if (r->state != EXPANDED) {
-                if (r->state == INITIAL) {
-                    r->totalCost = q->totalCost + q->linkCost[i];
-                    r->prevNode = q;
-                    r->state = ACTIVE;
-                    pq.Insert(r);
-                }
-                else if (r->state == ACTIVE) {
-                    if (q->totalCost + q->linkCost[i] < r->totalCost) {
+            if (q->column + offsetX >= width || q->row + offsetY >= height) {
+                Node* r = &NODE(nodes, q->column + offsetX, q->row + offsetY, width);
+                //Node* r = &nodes[(q->row + offsetY) * width + q->column + offsetX];
+                if (r->state != EXPANDED) {
+                    if (r->state == INITIAL) {
                         r->totalCost = q->totalCost + q->linkCost[i];
                         r->prevNode = q;
-                        pq.Update(r);
+                        r->state = ACTIVE;
+                        pq.Insert(r);
                     }
+                    else if (r->state == ACTIVE) {
+                        if (q->totalCost + q->linkCost[i] < r->totalCost) {
+                            r->totalCost = q->totalCost + q->linkCost[i];
+                            r->prevNode = q;
+                            pq.Update(r);
+                        }
+                    }
+                    //if (counter == 0) {
+                        //int sum = 0;
+                        //for (int k = 0; k < width * height; k++) sum += nodes[k].state;
+                        //printf("sum = %d, %d\n", nodes[(q->row + offsetY) * width + q->column + offsetX].state, r->state);
+                    //}
                 }
-                //if (counter == 0) {
-                    //int sum = 0;
-                    //for (int k = 0; k < width * height; k++) sum += nodes[k].state;
-                    //printf("sum = %d, %d\n", nodes[(q->row + offsetY) * width + q->column + offsetX].state, r->state);
-                //}
             }
+            //printf("%d, %d\n", (q->row + offsetY) * width + q->column + offsetX, width * height);
         }
         counter++;
     }
