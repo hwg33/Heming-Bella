@@ -1793,7 +1793,7 @@ int ImgView::handle(int c)
                         //int sum = 0;
                         //for (int k = 0; k < imgWidth * imgHeight; k++) sum += nodeBuf[k].state;
 
-                        printf("4 minimum path tree is finished. Sum = %d\n", sum);
+                        printf("4 minimum path tree is finished\n");
 
                         freePtX = col;
                         freePtY = row;
@@ -1829,7 +1829,7 @@ int ImgView::handle(int c)
                         freePtX = col;
                         freePtY = row;
 
-                        printf("5 minimum path tree is finished. sum = %d\n", sum);
+                        printf("5 minimum path tree is finished\n");
 
                         redraw();
                     }
