@@ -42,7 +42,7 @@ void InitNodeBuf(Node* nodes, const unsigned char* img, int imgWidth, int imgHei
             node->column = i;
             node->row = j;
             for (int k = 0; k < 8; k++) {
-                double result[3];
+                double result[3] = {0, 0, 0};
                 pixel_filter(result, i, j, img, imgWidth, imgHeight, kernels[k], 3, 3, 2, 0);
                 double d = std::sqrt((result[0]*result[0] + result[1]*result[1] + result[2]*result[2]) / 3);
                 d = d < 0 ? -d : d;

@@ -41,8 +41,8 @@ void image_filter(double* rsltImg, const unsigned char* origImg, const unsigned 
 {
     for (int i = 0; i < imgWidth; i++){
         for (int j = 0; j < imgHeight; j++){
-            if (selection[i + j * imgHeight] == 1){
-                double rsltPixel[3];
+            if (selection == NULL || selection[(i + j * imgWidth)*3] == 1) {
+                double rsltPixel[3] = {0, 0, 0};
                 pixel_filter(rsltPixel, i, j, origImg, imgWidth, imgHeight, kernel, knlWidth, knlHeight, scale, offset);
                 rsltImg[(j * imgWidth + i)*3] = rsltPixel[0];
                 rsltImg[(j * imgWidth + i)*3 + 1] = rsltPixel[1];
@@ -50,8 +50,6 @@ void image_filter(double* rsltImg, const unsigned char* origImg, const unsigned 
             }
         }
     }
-
-
 }
 
 /************************ END OF TODO 2 **************************/
@@ -87,7 +85,6 @@ void pixel_filter(double rsltPixel[3], int x, int y, const unsigned char* origIm
                   const double* kernel, int knlWidth, int knlHeight,
                   double scale, double offset)
 {
-
     for (int i = -knlWidth/2; i <= (knlWidth-1)/2; i++) {
         for (int j = -knlHeight/2; j <= (knlHeight-1)/2; j++) {
             int ki = i + knlWidth/2;
