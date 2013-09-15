@@ -103,6 +103,7 @@ queue_free(queue_t queue) {
  */
 int
 queue_length(queue_t queue) {
+	printf("I'm here\n");
 	if (queue == NULL) return -1;
     return queue->len;
 }

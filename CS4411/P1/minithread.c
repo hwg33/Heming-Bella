@@ -75,6 +75,11 @@ minithread_yield() {
 void
 minithread_system_initialize(proc_t mainproc, arg_t mainarg) {
   queue_t queue = queue_new();
+  int x = 4;
+  int y = queue_length(queue);
+  printf("size = %d\n", y);
+  //queue_prepend(queue, &x);
+  //printf(queue_length(queue));
 }
 
 
