@@ -43,7 +43,7 @@ void InitNodeBuf(Node* nodes, const unsigned char* img, int imgWidth, int imgHei
             node->row = j;
             for (int k = 0; k < 8; k++) {
                 double result[3];
-                pixel_filter(result, i, j, img, imgWidth, imgHeight, kernels[k], 3, 3, 1.5, 0);
+                pixel_filter(result, i, j, img, imgWidth, imgHeight, kernels[k], 3, 3, 2, 0);
                 double d = std::sqrt((result[0]*result[0] + result[1]*result[1] + result[2]*result[2]) / 3);
                 d = d < 0 ? -d : d;
                 if (d > maxD) maxD = d;
@@ -51,7 +51,6 @@ void InitNodeBuf(Node* nodes, const unsigned char* img, int imgWidth, int imgHei
             }
         }
     }
-    printf("max:%f\n", maxD);
     for (int i = 0; i < imgWidth; i++) {
         for (int j = 0; j < imgHeight; j++) {
             Node* node = &NODE(nodes, i, j, imgWidth);
@@ -62,8 +61,6 @@ void InitNodeBuf(Node* nodes, const unsigned char* img, int imgWidth, int imgHei
         }
     }
 }
-
-
 
 /************************ END OF TODO 1 ***************************/
 
@@ -99,8 +96,8 @@ void LiveWireDP(int seedX, int seedY, Node* nodes, int width, int height, const 
         else node->state = INITIAL;
     }
     Node* node = &NODE(nodes, seedX, seedY, width);
-    //Node* node = &nodes[seedY * width + seedX];
     node->totalCost = 0;
+    node->pathLength = 0;
     node->prevNode = NULL;
     pq.Insert(node);
     int counter = 0;
@@ -110,35 +107,34 @@ void LiveWireDP(int seedX, int seedY, Node* nodes, int width, int height, const 
         for (int i = 0; i < 8; i++) {
             int offsetX, offsetY;
             q->nbrNodeOffset(offsetX, offsetY, i);
-            //printf("%d, %d\n", (q->row + offsetY) * width + q->column + offsetX, width * height);
-            //printf("Row: %d, NewRow: %d, Column: %d, NewColumn: %d, Height: %d, Width: %d\n", q->row, q->row + offsetY, q->column, q->column + offsetX, height, width);
             int newRow = q->row + offsetY, newCol = q->column + offsetX;
             if (newCol < width && newRow < height && newCol >= 0 && newRow >= 0) {
                 Node* r = &NODE(nodes, q->column + offsetX, q->row + offsetY, width);
-                //Node* r = &nodes[(q->row + offsetY) * width + q->column + offsetX];
                 if (r->state != EXPANDED) {
                     if (r->state == INITIAL) {
                         r->totalCost = q->totalCost + q->linkCost[i];
                         r->prevNode = q;
                         r->state = ACTIVE;
+                        r->pathLength = q->pathLength + 1;
                         pq.Insert(r);
                     }
                     else if (r->state == ACTIVE) {
                         if (q->totalCost + q->linkCost[i] < r->totalCost) {
                             r->totalCost = q->totalCost + q->linkCost[i];
+                            r->pathLength = q->pathLength + 1;
                             r->prevNode = q;
                             pq.Update(r);
                         }
+                        else if (q->totalCost + q->linkCost[i] == r->totalCost) {
+                            if (r->pathLength > q->pathLength + 1) {
+                                r->pathLength = q->pathLength + 1;
+                                r->prevNode = q;
+                            }
+                        }
                     }
-                    //if (counter == 0) {
-                        //int sum = 0;
-                        //for (int k = 0; k < width * height; k++) sum += nodes[k].state;
-                        //printf("sum = %d, %d\n", nodes[(q->row + offsetY) * width + q->column + offsetX].state, r->state);
-                    //}
                 }
             }
         }
-        //printf("%d\n", pq.IsEmpty());
         counter++;
     }
 }

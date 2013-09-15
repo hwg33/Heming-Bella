@@ -39,14 +39,15 @@ void image_filter(double* rsltImg, const unsigned char* origImg, const unsigned 
                   const double* kernel, int knlWidth, int knlHeight,
                   double scale, double offset)
 {
-    //TODO - handle selection
     for (int i = 0; i < imgWidth; i++){
         for (int j = 0; j < imgHeight; j++){
-            double rsltPixel[3];
-            pixel_filter(rsltPixel, i, j, origImg, imgWidth, imgHeight, kernel, knlWidth, knlHeight, scale, offset);
-            rsltImg[(j * imgWidth + i)*3] = rsltPixel[0];
-            rsltImg[(j * imgWidth + i)*3 + 1] = rsltPixel[1];
-            rsltImg[(j * imgWidth + i)*3 + 2] = rsltPixel[2];
+            if (selection[i + j * imgHeight] == 1){
+                double rsltPixel[3];
+                pixel_filter(rsltPixel, i, j, origImg, imgWidth, imgHeight, kernel, knlWidth, knlHeight, scale, offset);
+                rsltImg[(j * imgWidth + i)*3] = rsltPixel[0];
+                rsltImg[(j * imgWidth + i)*3 + 1] = rsltPixel[1];
+                rsltImg[(j * imgWidth + i)*3 + 2] = rsltPixel[2];
+            }
         }
     }
 

@@ -79,6 +79,7 @@ struct Node {
     int state;
     double totalCost;
     Node* prevNode;
+    int pathLength;
 
     Node () {
         prevNode = NULL;
