@@ -22,8 +22,7 @@ struct queue {
 /*
  * Return an empty queue.
  */
-queue_t 
-queue_new() {
+queue_t queue_new() {
 	queue_t q = (queue_t)malloc(sizeof(struct queue));
 	q->len = 0;
 	q->head = NULL;
@@ -35,8 +34,7 @@ queue_new() {
  * Prepend a void* to a queue (both specifed as parameters).  Return
  * 0 (success) or -1 (failure).
  */
-int 
-queue_prepend(queue_t queue, void* item) {
+int queue_prepend(queue_t queue, void* item) {
 	node_t n;
 	if (queue == NULL) return -1;
 	n = (node_t)malloc(sizeof(struct node));
@@ -52,8 +50,7 @@ queue_prepend(queue_t queue, void* item) {
  * Append a void* to a queue (both specifed as parameters). Return
  * 0 (success) or -1 (failure). 
  */
-int 
-queue_append(queue_t queue, void* item) {
+int queue_append(queue_t queue, void* item) {
 	node_t n;
 	if (queue == NULL) return -1;
 	n = (node_t)malloc(sizeof(struct node));
@@ -70,8 +67,7 @@ queue_append(queue_t queue, void* item) {
  * Dequeue and return the first void* from the queue or NULL if queue
  * is empty.  Return 0 (success) or -1 (failure).
  */
-int 
-queue_dequeue(queue_t queue, void** item) {
+int queue_dequeue(queue_t queue, void** item) {
 	if (queue == NULL) return -1;
 	*item = queue->head->data;
 	queue->head = queue->head->next;
@@ -85,16 +81,14 @@ queue_dequeue(queue_t queue, void** item) {
  * argument and the queue element is the second.  Return 0 (success)
  * or -1 (failure).
  */
-int
-queue_iterate(queue_t queue, PFany f, void* item) {
+int queue_iterate(queue_t queue, PFany f, void* item) {
     return 0;
 }
 
 /*
  * Free the queue and return 0 (success) or -1 (failure).
  */
-int 
-queue_free(queue_t queue) {
+int queue_free(queue_t queue) {
 	if (queue == NULL) return -1;
 	free(queue);
     return 0;
@@ -103,8 +97,7 @@ queue_free(queue_t queue) {
 /*
  * Return the number of items in the queue.
  */
-int
-queue_length(queue_t queue) {
+int queue_length(queue_t queue) {
 	if (queue == NULL) return -1;
     return queue->len;
 }
@@ -114,7 +107,6 @@ queue_length(queue_t queue) {
  * Delete the specified item from the given queue. 
  * Return -1 on error.
  */
-int
-queue_delete(queue_t queue, void** item) {
+int queue_delete(queue_t queue, void** item) {
     return 0;
 }

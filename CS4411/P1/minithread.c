@@ -26,7 +26,7 @@
 
 /* minithread functions */
 #define RUNNABLE 1
- 
+
 struct minithread {
   stack_pointer_t stack_top;
   stack_pointer_t stack_base;
@@ -35,39 +35,32 @@ struct minithread {
   int state; 
 };
 
-minithread_t
-minithread_fork(proc_t proc, arg_t arg) {
+minithread_t minithread_fork(proc_t proc, arg_t arg) {
     minithread_t new_thread = (minithread_t)malloc(sizeof(struct minithread));
     minithread_allocate_stack(new_thread->stack_base, new_thread->stack_top);
     new_thread->state = RUNNABLE;
     return (minithread_t)0;
 }
 
-minithread_t
-minithread_create(proc_t proc, arg_t arg) {
+minithread_t minithread_create(proc_t proc, arg_t arg) {
     return (minithread_t)0;
 }
 
-minithread_t
-minithread_self() {
+minithread_t minithread_self() {
     return (minithread_t)0;
 }
 
-int
-minithread_id() {
+int minithread_id() {
     return 0;
 }
 
-void
-minithread_stop() {
+void minithread_stop() {
 }
 
-void
-minithread_start(minithread_t t) {
+void minithread_start(minithread_t t) {
 }
 
-void
-minithread_yield() {
+void minithread_yield() {
 }
 
 /*
@@ -84,8 +77,7 @@ minithread_yield() {
  * 	 Start scheduling.
  *
  */
-void
-minithread_system_initialize(proc_t mainproc, arg_t mainarg) {
+void minithread_system_initialize(proc_t mainproc, arg_t mainarg) {
   queue_t queue = queue_new();
   int x = 4;
   int y = queue_length(queue);

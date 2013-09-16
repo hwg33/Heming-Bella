@@ -41,8 +41,7 @@ struct initial_stack_state
 /*
  * Allocate a new stack.
  */
-void
-minithread_allocate_stack(stack_pointer_t *stackbase, stack_pointer_t *stacktop)
+void minithread_allocate_stack(stack_pointer_t *stackbase, stack_pointer_t *stacktop)
 {
     *stackbase = (stack_pointer_t) malloc(STACKSIZE);
     if (!*stackbase)  {
@@ -64,8 +63,7 @@ minithread_allocate_stack(stack_pointer_t *stackbase, stack_pointer_t *stacktop)
  *
  * The stack cannot be used after this call.
  */
-void
-minithread_free_stack(stack_pointer_t stackbase)
+void minithread_free_stack(stack_pointer_t stackbase)
 {
     free(stackbase);
 }
@@ -82,8 +80,7 @@ extern int minithread_root();
  *		body_proc(body_arg);
  *		finally_proc(finally_arg);
  */
-void
-minithread_initialize_stack(
+void minithread_initialize_stack(
 	stack_pointer_t *stacktop,
     proc_t body_proc,
     arg_t body_arg,
