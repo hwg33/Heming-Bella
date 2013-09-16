@@ -77,9 +77,14 @@ minithread_system_initialize(proc_t mainproc, arg_t mainarg) {
   queue_t queue = queue_new();
   int x = 4;
   int y = queue_length(queue);
+  void *datum = NULL;
   printf("size = %d\n", y);
-  //queue_prepend(queue, &x);
-  //printf(queue_length(queue));
+  queue_append(queue, &x);
+  y = queue_length(queue);
+  printf("new size = %d\n", y);
+  queue_dequeue(queue, &datum);
+  y = *((int *)datum);
+  printf("value = %d\n", y);
 }
 
 

@@ -134,6 +134,7 @@ void LiveWireDP(int seedX, int seedY, Node* nodes, int width, int height, const 
                         }
                         else if (q->totalCost + q->linkCost[i] == r->totalCost) {
                             if (r->pathLength > q->pathLength + 1) {
+                                printf("%f, %f, %d, %d\n", q->totalCost + q->linkCost[i], r->totalCost, r->pathLength, q->pathLength);
                                 r->pathLength = q->pathLength + 1;
                                 r->prevNode = q;
                             }

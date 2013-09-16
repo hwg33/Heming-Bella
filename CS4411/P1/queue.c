@@ -43,6 +43,7 @@ queue_prepend(queue_t queue, void* item) {
 	n->data = item;
 	n->next = queue->head;
 	queue->head = n;
+	if (queue->len == 0) queue->tail = n;
 	queue->len++;
     return 0;
 }
@@ -58,7 +59,8 @@ queue_append(queue_t queue, void* item) {
 	n = (node_t)malloc(sizeof(struct node));
 	n->data = item;
 	n->next = NULL;
-	queue->tail->next = n;
+	if (queue->len == 0) queue->head = n;
+	else queue->tail->next = n;
 	queue->tail = n;
 	queue->len++;
     return 0;
@@ -103,7 +105,6 @@ queue_free(queue_t queue) {
  */
 int
 queue_length(queue_t queue) {
-	printf("I'm here\n");
 	if (queue == NULL) return -1;
     return queue->len;
 }
