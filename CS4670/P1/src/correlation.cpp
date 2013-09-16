@@ -41,7 +41,7 @@ void image_filter(double* rsltImg, const unsigned char* origImg, const unsigned 
 {
     for (int i = 0; i < imgWidth; i++){
         for (int j = 0; j < imgHeight; j++){
-            if (selection == NULL || selection[(i + j * imgWidth)*3] == 1) {
+            if (selection == NULL || selection[i + j * imgWidth] == 1) {
                 double rsltPixel[3] = {0, 0, 0};
                 pixel_filter(rsltPixel, i, j, origImg, imgWidth, imgHeight, kernel, knlWidth, knlHeight, scale, offset);
                 rsltImg[(j * imgWidth + i)*3] = rsltPixel[0];

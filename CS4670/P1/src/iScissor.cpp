@@ -36,6 +36,17 @@ inline unsigned char PIXEL(const unsigned char* p, int i, int j, int c, int widt
 void InitNodeBuf(Node* nodes, const unsigned char* img, int imgWidth, int imgHeight)
 {
     double maxD = 0;
+    double blurredImg[imgWidth * imgHeight * 3];
+    double bk[49] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+
+    image_filter(blurredImg, img, NULL, imgWidth, imgHeight, bk, 7, 7, 49, 0);
+
+    unsigned char blurredImgC[imgWidth * imgHeight * 3];
+    for (int i = 0; i < imgWidth * imgHeight; i++){
+        blurredImgC[i] = (unsigned char)blurredImg[i];
+    }
+     printf("3");
     for (int i = 0; i < imgWidth; i++) {
         for (int j = 0; j < imgHeight; j++) {
             Node* node = &NODE(nodes, i, j, imgWidth);
@@ -43,7 +54,7 @@ void InitNodeBuf(Node* nodes, const unsigned char* img, int imgWidth, int imgHei
             node->row = j;
             for (int k = 0; k < 8; k++) {
                 double result[3] = {0, 0, 0};
-                pixel_filter(result, i, j, img, imgWidth, imgHeight, kernels[k], 3, 3, 2, 0);
+                pixel_filter(result, i, j, img, imgWidth, imgHeight, kernels[k], 3, 3, 1.5, 0);
                 double d = std::sqrt((result[0]*result[0] + result[1]*result[1] + result[2]*result[2]) / 3);
                 d = d < 0 ? -d : d;
                 if (d > maxD) maxD = d;
