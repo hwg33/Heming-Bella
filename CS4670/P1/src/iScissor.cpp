@@ -36,7 +36,7 @@ inline unsigned char PIXEL(const unsigned char* p, int i, int j, int c, int widt
 void InitNodeBuf(Node* nodes, const unsigned char* img, int imgWidth, int imgHeight)
 {
     double maxD = 0;
-    int blurAmt = 1; //Set to 1 for no blur
+    int blurAmt = 5; //Set to 1 for no blur
     double* blurredImg = new double[imgWidth * imgHeight * 3];
     double bk[blurAmt * blurAmt];
     for (int i = 0; i < blurAmt * blurAmt; i++) bk[i] = 1;
@@ -134,7 +134,6 @@ void LiveWireDP(int seedX, int seedY, Node* nodes, int width, int height, const 
                         }
                         else if (q->totalCost + q->linkCost[i] == r->totalCost) {
                             if (r->pathLength > q->pathLength + 1) {
-                                printf("%f, %f, %d, %d\n", q->totalCost + q->linkCost[i], r->totalCost, r->pathLength, q->pathLength);
                                 r->pathLength = q->pathLength + 1;
                                 r->prevNode = q;
                             }

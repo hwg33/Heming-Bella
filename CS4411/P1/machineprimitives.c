@@ -46,7 +46,7 @@ minithread_allocate_stack(stack_pointer_t *stackbase, stack_pointer_t *stacktop)
 {
     *stackbase = (stack_pointer_t) malloc(STACKSIZE);
     if (!*stackbase)  {
-	return;
+	    return;
     }
 
     if (STACK_GROWS_DOWN)

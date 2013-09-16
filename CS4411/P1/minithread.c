@@ -25,9 +25,21 @@
 
 
 /* minithread functions */
+#define RUNNABLE 1
+ 
+struct minithread {
+  stack_pointer_t stack_top;
+  stack_pointer_t stack_base;
+  int thread_id;
+  //anything we find useful
+  int state; 
+};
 
 minithread_t
 minithread_fork(proc_t proc, arg_t arg) {
+    minithread_t new_thread = (minithread_t)malloc(sizeof(struct minithread));
+    minithread_allocate_stack(new_thread->stack_base, new_thread->stack_top);
+    new_thread->state = RUNNABLE;
     return (minithread_t)0;
 }
 
