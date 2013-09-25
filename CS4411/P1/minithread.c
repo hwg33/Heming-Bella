@@ -25,13 +25,26 @@
 
 
 /* minithread functions */
+
+/*THREADS STATES*/
+#define WAITING 0
 #define RUNNABLE 1
+#define RUNNING 2
+
+
+//the currently running thread
+minithread_t running_thread = NULL;
+int new_id = 0;
+
+//the queue of runnable threads
+queue_t runnables;
+//the queue of waiting threads, including the new ones.
+queue_t waitings;
 
 struct minithread {
   stack_pointer_t stack_top;
   stack_pointer_t stack_base;
   int thread_id;
-  //anything we find useful
   int state; 
 };
 
@@ -39,28 +52,49 @@ minithread_t minithread_fork(proc_t proc, arg_t arg) {
     minithread_t new_thread = (minithread_t)malloc(sizeof(struct minithread));
     minithread_allocate_stack(new_thread->stack_base, new_thread->stack_top);
     new_thread->state = RUNNABLE;
-    return (minithread_t)0;
+    new_thread->thread_id = new_id;
+    new_id = new_id + 1;
+    queue_append(runnables, new_thread);
+    return new_thread;
 }
 
 minithread_t minithread_create(proc_t proc, arg_t arg) {
-    return (minithread_t)0;
+    minithread_t new_thread = (minithread_t)malloc(sizeof(struct minithread));
+    minithread_allocate_stack(new_thread->stack_base, new_thread->stack_top);
+    new_thread->state = WAITING;
+    new_thread->thread_id = new_id;
+    new_id = new_id + 1;
+    queue_append(waitings, new_thread);
+    return new_thread;
 }
 
 minithread_t minithread_self() {
-    return (minithread_t)0;
+    return running_thread;
 }
 
 int minithread_id() {
-    return 0;
+    return running_thread->thread_id;
 }
 
 void minithread_stop() {
+  running_thread->state = WAITING;
+  queue_append(waitings, running_thread);
+  running_thread = NULL;
 }
 
 void minithread_start(minithread_t t) {
+  t->state = RUNNABLE;
+  queue_append(runnables, t);
 }
 
 void minithread_yield() {
+  running_thread->state = RUNNABLE;
+  queue_append(runnables, running_thread);
+  void *thread = NULL;
+  queue_dequeue(runnables, &thread);
+  minithread_switch(running_thread->stack_top, ((minithread_t)thread)->stack_top);
+  running_thread = (minithread_t)thread;
+  running_thread->state = RUNNING;
 }
 
 /*
@@ -78,7 +112,23 @@ void minithread_yield() {
  *
  */
 void minithread_system_initialize(proc_t mainproc, arg_t mainarg) {
-  queue_t queue = queue_new();
+  runnables = queue_new();
+  waitings = queue_new();
+  minithread_t idle = (minithread_t)malloc(sizeof(struct minithread));
+  idle->stack_top = NULL;
+  idle->stack_base = NULL;
+
+  minithread_t main_t = minithread_fork(mainproc, mainarg)
+
+  void *thread = NULL;
+  queue_dequeue(runnables, &thread);
+  
+  running_thread = (minithread_t)thread;
+  running_thread->state = RUNNING;
+
+
+
+  /*queue_t queue = queue_new();
   int x = 4;
   int y = queue_length(queue);
   void *datum = NULL;
@@ -88,7 +138,7 @@ void minithread_system_initialize(proc_t mainproc, arg_t mainarg) {
   printf("new size = %d\n", y);
   queue_dequeue(queue, &datum);
   y = *((int *)datum);
-  printf("value = %d\n", y);
+  printf("value = %d\n", y);*/
 }
 
 
