@@ -16,10 +16,9 @@
  * Semaphores.
  */
 struct semaphore {
-    /* This is temporary so that the compiler does not error on an empty struct.
-     * You should replace this with your own struct members.
-     */
-    int tmp;
+    tas_lock_t lock;
+    int count;
+    queue_t queue;
 };
 
 
@@ -28,7 +27,8 @@ struct semaphore {
  *	Allocate a new semaphore.
  */
 semaphore_t semaphore_create() {
-    return (semaphore_t)0;
+	semaphore_t semaphore = (semaphore_t)malloc(sizeof(struct semaphore));
+    return semaphore;
 }
 
 /*
@@ -36,6 +36,7 @@ semaphore_t semaphore_create() {
  *	Deallocate a semaphore.
  */
 void semaphore_destroy(semaphore_t sem) {
+	free(sem);
 }
 
  
@@ -45,6 +46,7 @@ void semaphore_destroy(semaphore_t sem) {
  *	sem with an initial value cnt.
  */
 void semaphore_initialize(semaphore_t sem, int cnt) {
+	sem->value = cnt;
 }
 
 
@@ -53,6 +55,9 @@ void semaphore_initialize(semaphore_t sem, int cnt) {
  *	P on the sempahore.
  */
 void semaphore_P(semaphore_t sem) {
+	while(test_and_set(&s->lock) == 1);
+	if (--s->count < 0) { enqueue on wait list, s->lock = 0; run something else; }
+	else { s->lock = 0; } 
 }
 
 /*
@@ -60,4 +65,7 @@ void semaphore_P(semaphore_t sem) {
  *	V on the sempahore.
  */
 void semaphore_V(semaphore_t sem) {
+	while(test_and_set(&s->lock) == 1);
+	if (++s->count <= 0) { dequeue from wait list, make runnable; }
+	s->lock = 0; 
 }

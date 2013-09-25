@@ -36,7 +36,7 @@ inline unsigned char PIXEL(const unsigned char* p, int i, int j, int c, int widt
 void InitNodeBuf(Node* nodes, const unsigned char* img, int imgWidth, int imgHeight)
 {
     double maxD = 0;
-    int blurAmt = 5; //Set to 1 for no blur
+    int blurAmt = 1; //Set to 1 for no blur
     double* blurredImg = new double[imgWidth * imgHeight * 3];
     double bk[blurAmt * blurAmt];
     for (int i = 0; i < blurAmt * blurAmt; i++) bk[i] = 1;
