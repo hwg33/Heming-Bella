@@ -125,10 +125,10 @@ void ComputeHarrisFeatures(CFloatImage &image, FeatureSet &features)
     CFloatImage grayImage = ConvertToGray(image);
 
     //Create image to store Harris values
-    CFloatImage harrisImage(image.Shape().width,image.Shape().height,1);
+    CFloatImage harrisImage(image.Shape().width, image.Shape().height, 1);
 
     //Create image to store local maximum harris values as 1, other pixels 0
-    CByteImage harrisMaxImage(image.Shape().width,image.Shape().height,1);
+    CByteImage harrisMaxImage(image.Shape().width, image.Shape().height, 1);
 
     CFloatImage orientationImage(image.Shape().width, image.Shape().height, 1);
 
@@ -166,8 +166,6 @@ printf("TODO: %s:%d\n", __FILE__, __LINE__);
     }
 }
 
-
-
 //TO DO---------------------------------------------------------------------
 // Loop through the image to compute the harris corner values as described in class
 // srcImage:  grayscale of original image
@@ -177,24 +175,32 @@ void computeHarrisValues(CFloatImage &srcImage, CFloatImage &harrisImage, CFloat
     int w = srcImage.Shape().width;
     int h = srcImage.Shape().height;
 
-    // TODO: You may need to compute a few filtered images to start with
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
-
+    CFloatImage xDerivative(w, h, 1);
+    CFloatImage yDerivative(w, h, 1);
+    Convolve(srcImage, xDerivative, ConvolveKernel_SobelX);
+    Convolve(srcImage, yDerivative, ConvolveKernel_SobelY);
 
     for (int y = 0; y < h; y++) {
         for (int x = 0; x < w; x++) {
-
             // TODO:  Compute the harris score for 'srcImage' at this pixel and store in 'harrisImage'.  See the project
             //   page for pointers on how to do this.  You should also store an orientation for each pixel in 
             //   'orientationImage'
-
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
-
+            double a = 0, b = 0, c = 0;
+            for (int i = -2; i < 3; i++) {
+                for (int j = -2; j < 3; j++) {
+                    if (x + i < w && x + i >= 0 && y + j < h && y + j >= 0) {
+                        double ix = xDerivative.Pixel(x + i, y + j, 0);
+                        double iy = yDerivative.Pixel(x + i, y + j, 0);
+                        a += gaussian5x5[i + 2 + (j + 2) * 5] * ix * ix;
+                        b += gaussian5x5[i + 2 + (j + 2) * 5] * ix * iy;
+                        c += gaussian5x5[i + 2 + (j + 2) * 5] * iy * iy;
+                    }
+                }
+            }
+            harrisImage.Pixel(x, y, 0) = (a * c - b * b) / (a + c);
         }
     }
 }
-
-
 
 //TO DO---------------------------------------------------------------------
 //Loop through the image to compute the harris corner values as described in class
@@ -202,8 +208,29 @@ printf("TODO: %s:%d\n", __FILE__, __LINE__);
 // destImage: Assign 1 to local maximum in 3x3 window, 0 otherwise
 void computeLocalMaxima(CFloatImage &srcImage,CByteImage &destImage)
 {
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
+    int w = srcImage.Shape().width;
+    int h = srcImage.Shape().height;
 
+    for (int y = 0; y < h; y++) {
+        for (int x = 0; x < w; x++) {
+            double localMax = 0;
+            double maxX, maxY;
+            for (int i = -1; i < 2; i++) {
+                for (int j = -1; j < 2; j++) {
+                    if (x + i < w && x + i >= 0 && y + j < h && y + j >= 0) {
+                        double pixel = srcImage.Pixel(x + i, y + j, 0);
+                        if (pixel > localMax) {
+                            localMax = pixel;
+                            maxX = i;
+                            maxY = j;
+                        }
+                    }
+                }
+            }
+            if (maxX == 0 && maxY == 0) destImage.Pixel(x, y, 0) = 1;
+            else destImage.Pixel(x, y, 0) = 0;
+        }
+    }
 }
 
 // TODO: Implement parts of this function
