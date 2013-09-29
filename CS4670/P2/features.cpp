@@ -262,7 +262,11 @@ void ComputeSimpleDescriptors(CFloatImage &image, FeatureSet &features)
         int k = 0;
         for (int i = -2; i < 3; i++){
             for(int j = -2; j < 3; j++){
-                f.data[k] = grayImage.Pixel(x+i, y+j, 0);
+                if (x+i >= 0 && x+i < grayImage.Shape().width && y+j >= 0 && y+j < grayImage.Shape().height){
+                    f.data[k] = grayImage.Pixel(x+i, y+j, 0);
+                }else{
+                    f.data[k] = 0;
+                }
                 k++;
             }
         }
