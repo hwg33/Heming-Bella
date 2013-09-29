@@ -151,8 +151,10 @@ void ComputeHarrisFeatures(CFloatImage &image, FeatureSet &features)
     int id = 0;
     for (int y=0; y < harrisMaxImage.Shape().height; y++) {
         for (int x=0; x < harrisMaxImage.Shape().width; x++) {
+            printf("1\n");
             if (harrisMaxImage.Pixel(x, y, 0) == 0)
                 continue;
+            printf("2\n");
             Feature f;
 
             f.id = id;
