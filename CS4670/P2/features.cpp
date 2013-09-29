@@ -218,7 +218,29 @@ void computeHarrisValues(CFloatImage &srcImage, CFloatImage &harrisImage, CFloat
 // destImage: Assign 1 to local maximum in 3x3 window, 0 otherwise
 void computeLocalMaxima(CFloatImage &srcImage,CByteImage &destImage)
 {
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
+    int w = srcImage.Shape().width;
+    int h = srcImage.Shape().height;
+
+    for (int y = 0; y < h; y++) {
+        for (int x = 0; x < w; x++) {
+            double localMax = 0;
+            double maxX, maxY;
+            for (int i = -1; i < 2; i++) {
+                for (int j = -1; j < 2; j++) {
+                    if (x + i < w && x + i >= 0 && y + j < h && y + j >= 0) {
+                        double pixel = srcImage.Pixel(x + i, y + j, 0);
+                        if (pixel > localMax) {
+                            localMax = pixel;
+                            maxX = i;
+                            maxY = j;
+                        }
+                    }
+                }
+            }
+            if (maxX == 0 && maxY == 0) destImage.Pixel(x, y, 0) = 1;
+            else destImage.Pixel(x, y, 0) = 0;
+        }
+    }
 
 }
 
