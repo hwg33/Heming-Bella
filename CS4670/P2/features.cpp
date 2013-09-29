@@ -138,7 +138,7 @@ void ComputeHarrisFeatures(CFloatImage &image, FeatureSet &features)
     computeHarrisValues(grayImage, harrisImage, orientationImage);
 
     // Threshold the harris image and compute local maxima.  You'll need to implement this function.
-    computeLocalMaxima(harrisImage,harrisMaxImage);
+    computeLocalMaxima(harrisImage, harrisMaxImage);
 
     CByteImage tmp(harrisImage.Shape());
     convertToByteImage(harrisImage, tmp);
@@ -151,14 +151,15 @@ void ComputeHarrisFeatures(CFloatImage &image, FeatureSet &features)
     int id = 0;
     for (int y=0; y < harrisMaxImage.Shape().height; y++) {
         for (int x=0; x < harrisMaxImage.Shape().width; x++) {
-
             if (harrisMaxImage.Pixel(x, y, 0) == 0)
                 continue;
-
             Feature f;
 
-            //TODO: Fill in feature with location and orientation data here
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
+            f.id = id;
+            f.type = 2;
+            f.x = x;
+            f.y = y;
+            f.angleRadians = orientationImage.Pixel(x, y, 0);
 
             features.push_back(f);
             id++;
