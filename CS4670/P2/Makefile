@@ -33,4 +33,3 @@ $(PROJ1): $(PROJ1_OBJS) $(IMAGELIB)
 clean:
 	make -C ImageLib clean
 	rm -f *.o *~ $(PROJ1)
- 

@@ -125,10 +125,10 @@ void ComputeHarrisFeatures(CFloatImage &image, FeatureSet &features)
     CFloatImage grayImage = ConvertToGray(image);
 
     //Create image to store Harris values
-    CFloatImage harrisImage(image.Shape().width, image.Shape().height, 1);
+    CFloatImage harrisImage(image.Shape().width,image.Shape().height,1);
 
     //Create image to store local maximum harris values as 1, other pixels 0
-    CByteImage harrisMaxImage(image.Shape().width, image.Shape().height, 1);
+    CByteImage harrisMaxImage(image.Shape().width,image.Shape().height,1);
 
     CFloatImage orientationImage(image.Shape().width, image.Shape().height, 1);
 
@@ -166,6 +166,8 @@ printf("TODO: %s:%d\n", __FILE__, __LINE__);
     }
 }
 
+
+
 //TO DO---------------------------------------------------------------------
 // Loop through the image to compute the harris corner values as described in class
 // srcImage:  grayscale of original image
@@ -175,10 +177,12 @@ void computeHarrisValues(CFloatImage &srcImage, CFloatImage &harrisImage, CFloat
     int w = srcImage.Shape().width;
     int h = srcImage.Shape().height;
 
+    
     CFloatImage xDerivative(w, h, 1);
     CFloatImage yDerivative(w, h, 1);
     Convolve(srcImage, xDerivative, ConvolveKernel_SobelX);
     Convolve(srcImage, yDerivative, ConvolveKernel_SobelY);
+
 
     for (int y = 0; y < h; y++) {
         for (int x = 0; x < w; x++) {
@@ -201,9 +205,12 @@ void computeHarrisValues(CFloatImage &srcImage, CFloatImage &harrisImage, CFloat
             gradX = gradX / mag;
             gradY = gradY / mag;
             orientationImage.Pixel(x, y, 0) = atan2(gradX, gradY);
+
         }
     }
 }
+
+
 
 //TO DO---------------------------------------------------------------------
 //Loop through the image to compute the harris corner values as described in class
@@ -211,29 +218,8 @@ void computeHarrisValues(CFloatImage &srcImage, CFloatImage &harrisImage, CFloat
 // destImage: Assign 1 to local maximum in 3x3 window, 0 otherwise
 void computeLocalMaxima(CFloatImage &srcImage,CByteImage &destImage)
 {
-    int w = srcImage.Shape().width;
-    int h = srcImage.Shape().height;
+printf("TODO: %s:%d\n", __FILE__, __LINE__); 
 
-    for (int y = 0; y < h; y++) {
-        for (int x = 0; x < w; x++) {
-            double localMax = 0;
-            double maxX, maxY;
-            for (int i = -1; i < 2; i++) {
-                for (int j = -1; j < 2; j++) {
-                    if (x + i < w && x + i >= 0 && y + j < h && y + j >= 0) {
-                        double pixel = srcImage.Pixel(x + i, y + j, 0);
-                        if (pixel > localMax) {
-                            localMax = pixel;
-                            maxX = i;
-                            maxY = j;
-                        }
-                    }
-                }
-            }
-            if (maxX == 0 && maxY == 0) destImage.Pixel(x, y, 0) = 1;
-            else destImage.Pixel(x, y, 0) = 0;
-        }
-    }
 }
 
 // TODO: Implement parts of this function
@@ -248,6 +234,7 @@ void ComputeSimpleDescriptors(CFloatImage &image, FeatureSet &features)
 
         int x = f.x;
         int y = f.y;
+
         f.data.resize(5 * 5);
         int k = 0;
         for (int i = -2; i < 3; i++){
@@ -256,6 +243,7 @@ void ComputeSimpleDescriptors(CFloatImage &image, FeatureSet &features)
                 k++;
             }
         }
+
     }
 }
 
@@ -266,7 +254,6 @@ void ComputeMOPSDescriptors(CFloatImage &image, FeatureSet &features)
     // This image represents the window around the feature you need to compute to store as the feature descriptor
     const int windowSize = 8;
     CFloatImage destImage(windowSize, windowSize, 1);
-
     CFloatImage grayImage=ConvertToGray(image);
 
     for (vector<Feature>::iterator i = features.begin(); i != features.end(); i++) {
@@ -287,7 +274,7 @@ void ComputeMOPSDescriptors(CFloatImage &image, FeatureSet &features)
         xform = move * rotate * down_sample;
         //Call the Warp Global function to do the mapping
         WarpGlobal(grayImage, destImage, xform, eWarpInterpLinear);
-
+        
         f.data.resize(windowSize * windowSize);
         int k = 0;
         for(int i = 0; i < windowSize; i++){
@@ -305,10 +292,11 @@ void ComputeMOPSDescriptors(CFloatImage &image, FeatureSet &features)
             sum += (f.data[i] - mean)*(f.data[i] - mean);
         }
         double standard_deviation = sqrt(sum);
-
+        
         for(int i = 0; i<windowSize*windowSize; i++){
             f.data[i] = f.data[i]/standard_deviation - mean;
         }
+
     }
 }
 
@@ -364,21 +352,21 @@ void ratioMatchFeatures(const FeatureSet &f1, const FeatureSet &f2, vector<Featu
 {
     int m = f1.size();
     int n = f2.size();
-
+    
     matches.resize(m);
-
+    
     double d;
     double first;
     int first_id;
     double second;
     int second_id;
-
+    
     for (int i = 0; i<m; i++){
         first = 1e100;
         second = 1e100;
         first_id = 0;
         second_id = 0;
-
+        
         for(int j = 0; j<n; j++){
             d = distanceSSD(f1[i].data, f2[j].data);
             if (d < first){
@@ -391,12 +379,13 @@ void ratioMatchFeatures(const FeatureSet &f1, const FeatureSet &f2, vector<Featu
                 second_id = f2[j].id;
             }
         }
-
+        
         double ratio = first / second;
         matches[i].id1 = f1[i].id;
         matches[i].id2 = first_id;
         matches[i].distance = ratio;
     }
+
 }
 
 
