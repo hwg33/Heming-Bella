@@ -182,9 +182,6 @@ void computeHarrisValues(CFloatImage &srcImage, CFloatImage &harrisImage, CFloat
 
     for (int y = 0; y < h; y++) {
         for (int x = 0; x < w; x++) {
-            // TODO:  Compute the harris score for 'srcImage' at this pixel and store in 'harrisImage'.  See the project
-            //   page for pointers on how to do this.  You should also store an orientation for each pixel in 
-            //   'orientationImage'
             double a = 0, b = 0, c = 0;
             for (int i = -2; i < 3; i++) {
                 for (int j = -2; j < 3; j++) {
@@ -198,6 +195,12 @@ void computeHarrisValues(CFloatImage &srcImage, CFloatImage &harrisImage, CFloat
                 }
             }
             harrisImage.Pixel(x, y, 0) = (a * c - b * b) / (a + c);
+            double gradX = xDerivative.Pixel(x, y, 0);
+            double gradY = yDerivative.Pixel(x, y, 0);
+            double mag = sqrt(gradX * gradX + gradY * gradY);
+            gradX = gradX / mag;
+            gradY = gradY / mag;
+            orientationImage.Pixel(x, y, 0) = atan2(gradX, gradY);
         }
     }
 }
