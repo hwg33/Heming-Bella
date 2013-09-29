@@ -177,12 +177,13 @@ void computeHarrisValues(CFloatImage &srcImage, CFloatImage &harrisImage, CFloat
     int w = srcImage.Shape().width;
     int h = srcImage.Shape().height;
 
-    // TODO: You may need to compute a few filtered images to start with
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
-
-
+    // TODO: You may need to compute a few filtere
     for (int y = 0; y < h; y++) {
         for (int x = 0; x < w; x++) {
+
+                // TODO: You may need to compute a few filtered images to start with
+            printf("TODO: %s:%d\n", __FILE__, __LINE__);
+
 
             // TODO:  Compute the harris score for 'srcImage' at this pixel and store in 'harrisImage'.  See the project
             //   page for pointers on how to do this.  You should also store an orientation for each pixel in 
@@ -218,13 +219,14 @@ void ComputeSimpleDescriptors(CFloatImage &image, FeatureSet &features)
 
         int x = f.x;
         int y = f.y;
-
         f.data.resize(5 * 5);
-
-        //TO DO---------------------------------------------------------------------
-        // The descriptor is a 5x5 window of intensities sampled centered on the feature point.
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
-
+        int k = 0;
+        for (int i = -2; i < 3; i++){
+            for(int j = -2; j < 3; j++){
+                f.data[k] = grayImage.Pixel(x+i, y+j, 0);
+                k++;
+            }
+        }
     }
 }
 
@@ -243,18 +245,36 @@ void ComputeMOPSDescriptors(CFloatImage &image, FeatureSet &features)
         //You'll need to compute the transform from each pixel in the 8x8 image 
         //to sample from the appropriate pixels in the 40x40 rotated window surrounding the feature
         CTransform3x3 xform;
-
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
-
-
+        int x = image.Shape().width/2;
+        int y = image.Shape().height/2;
+        CTransform3x3 move = Translation(x - f.x, y - f.y);
+        CTransform3x3 rotate = Rotation(f.angleRadians);
+        xform = move * rotate;
         //Call the Warp Global function to do the mapping
         WarpGlobal(image, destImage, xform, eWarpInterpLinear);
 
         f.data.resize(windowSize * windowSize);
+        int k = 0;
+        for(int i = -windowSize * 5 / 2; i < windowSize * 5 / 2; i += 5){
+            for(int j = -windowSize * 5 / 2; j < windowSize * 5 / 2; j += 5){
+                f.data[k] = image.Pixel(x+i, y+j,0);
+                k++;
+            }
+        }
+        double sum;
+        for(int i  = 0; i<windowSize*windowSize; i++){
+            sum += f.data[i];
+        }
+        double mean = sum/(windowSize*windowSize);
+        sum = 0.0;
+        for(int i = 0; i<windowSize*windowSize; i++){
+            sum += (f.data[i] - mean)*(f.data[i] - mean);
+        }
+        double standard_deviation = sqrt(sum);
 
-        //TODO: fill in the feature descriptor data for a MOPS descriptor
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
-
+        for(int i = 0; i<windowSize*windowSize; i++){
+            f.data[i] = f.data[i]/standard_deviation - mean;
+        }
     }
 }
 
@@ -308,8 +328,41 @@ void ssdMatchFeatures(const FeatureSet &f1, const FeatureSet &f2, vector<Feature
 // ssdMatchFeatures for reference).
 void ratioMatchFeatures(const FeatureSet &f1, const FeatureSet &f2, vector<FeatureMatch> &matches) 
 {
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
+    int m = f1.size();
+    int n = f2.size();
 
+    matches.resize(m);
+
+    double d;
+    double first;
+    int first_id;
+    double second;
+    int second_id;
+
+    for (int i = 0; i<m; i++){
+        first = 1e100;
+        second = 1e100;
+        first_id = 0;
+        second_id = 0;
+
+        for(int j = 0; j<n; j++){
+            d = distanceSSD(f1[i].data, f2[j].data);
+            if (d < first){
+                second = first;
+                second_id = first_id;
+                first = d;
+                first_id = f2[j].id;
+            } else if( first <= d && d < second){
+                second = d;
+                second_id = f2[j].id;
+            }
+        }
+
+        double ratio = first / second;
+        matches[i].id1 = f1[i].id;
+        matches[i].id2 = first_id;
+        matches[i].distance = ratio;
+    }
 }
 
 
