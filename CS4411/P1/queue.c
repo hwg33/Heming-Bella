@@ -108,5 +108,12 @@ int queue_length(queue_t queue) {
  * Return -1 on error.
  */
 int queue_delete(queue_t queue, void** item) {
-    return 0;
+	node_t curr = queue->head;
+	while (curr->next != NULL) {
+		if (curr->next->data == *item) {
+			curr->next = curr->next->next;
+			return 0;
+		}
+	}
+    return -1;
 }
