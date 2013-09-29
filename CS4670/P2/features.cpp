@@ -261,6 +261,8 @@ void ComputeMOPSDescriptors(CFloatImage &image, FeatureSet &features)
     const int windowSize = 8;
     CFloatImage destImage(windowSize, windowSize, 1);
 
+    CFloatImage grayImage=ConvertToGray(image);
+
     for (vector<Feature>::iterator i = features.begin(); i != features.end(); i++) {
         Feature &f = *i;
 
@@ -268,20 +270,23 @@ void ComputeMOPSDescriptors(CFloatImage &image, FeatureSet &features)
         //You'll need to compute the transform from each pixel in the 8x8 image 
         //to sample from the appropriate pixels in the 40x40 rotated window surrounding the feature
         CTransform3x3 xform;
-        int x = image.Shape().width/2;
-        int y = image.Shape().height/2;
-        CTransform3x3 move = Translation(x - f.x, y - f.y);
-        CTransform3x3 rotate = Rotation(f.angleRadians);
-        xform = move * rotate;
+        CTransform3x3 down_sample;
+        down_sample[0][0] = 5;
+        down_sample[1][1] = 5;
+        double angle = f.angleRadians;
+        int x = 20 * (cos(angle) - sin(angle));
+        int y = 20 * (cos(angle) + sin(angle));
+        CTransform3x3 move = CTransform3x3::Translation(f.x - x, f.y - y);
+        CTransform3x3 rotate = CTransform3x3::Rotation(angle);
+        xform = move * rotate * down_sample;
         //Call the Warp Global function to do the mapping
-        WarpGlobal(image, destImage, xform, eWarpInterpLinear);
+        WarpGlobal(grayImage, destImage, xform, eWarpInterpLinear);
 
         f.data.resize(windowSize * windowSize);
         int k = 0;
-        for(int i = -windowSize * 5 / 2; i < windowSize * 5 / 2; i += 5){
-            for(int j = -windowSize * 5 / 2; j < windowSize * 5 / 2; j += 5){
-                f.data[k] = image.Pixel(x+i, y+j,0);
-                k++;
+        for(int i = 0; i < windowSize; i++){
+            for(int j = 0; j < windowSize; j++){
+                f.data[k] = destImage.Pixel(i,j,0);
             }
         }
         double sum;
