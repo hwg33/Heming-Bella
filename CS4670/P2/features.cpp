@@ -200,7 +200,7 @@ void computeHarrisValues(CFloatImage &srcImage, CFloatImage &harrisImage, CFloat
             double det = a*c - b*b;
             double trc = a+c;
             if (trc == 0) harrisImage.Pixel(x, y, 0) = 0;
-            else { harrisImage.Pixel(x, y, 0) = det / trc; printf("%f, %f, %f, %f\n", a, b, c, det / trc); }
+            else harrisImage.Pixel(x, y, 0) = det / trc;
 /*
             double eig = trc / 2 + sqrt(trc * trc / 4 - det);
             double ang;
@@ -339,42 +339,21 @@ void ComputeMOPSDescriptors(CFloatImage &image, FeatureSet &features)
         scale[2][2] = 1;
         double angle = f.angleRadians;
 
-        CTransform3x3 center = CTransform3x3::Translation(-4, -4);
-        CTransform3x3 move = CTransform3x3::Translation(f.x , f.y );
-        CTransform3x3 rotate = CTransform3x3::Rotation(angle * 180 / PI);
-        xform = move * rotate * scale * center;
+        CTransform3x3 center;
+        center = center.Translation(-4, -4);
+        scale = scale * center;
+        CTransform3x3 rotate;
+        rotate = scale.Rotation(angle * 180 / PI);
+        xform = rotate.Translation(f.x, f.y);
+
         //Call the Warp Global function to do the mapping
         WarpGlobal(blurredImage, destImage, xform, eWarpInterpLinear);
 
-        if (num == 12){
-        CByteImage tmp2(destImage.Shape());
-        convertToByteImage(destImage, tmp2);
-        WriteFile(tmp2,  "12destImage.tga");
-        }
-        if (num == 24){
-        CByteImage tmp2(destImage.Shape());
-        convertToByteImage(destImage, tmp2);
-        WriteFile(tmp2,  "24destImage.tga");
-        }
-        if (num == 48){
-        CByteImage tmp2(destImage.Shape());
-        convertToByteImage(destImage, tmp2);
-        WriteFile(tmp2,  "48destImage.tga");
-        }
-        if (num == 60){
-        CByteImage tmp2(destImage.Shape());
-        convertToByteImage(destImage, tmp2);
-        WriteFile(tmp2,  "60destImage.tga");
-        }
-
         f.data.resize(windowSize * windowSize);
-        int k = 0;
         for(int i = 0; i < windowSize; i++){
             for(int j = 0; j < windowSize; j++){
-                f.data[k] = destImage.Pixel(i,j,0);
+                f.data[i + j*windowSize] = destImage.Pixel(i,j,0);
                 //printf("%f", f.data[k]);
-                k++;
-
             }
         }
         double sum = 0.0;
@@ -442,6 +421,11 @@ void ssdMatchFeatures(const FeatureSet &f1, const FeatureSet &f2, vector<Feature
     }
 }
 
+double abs(double d){
+    if (d < 0) return -d;
+    else return d;
+}
+
 //TODO: Write this function to perform ratio feature matching.  
 // This just uses the ratio of the SSD distance of the two best matches
 // and matches a feature in the first image with the closest feature in the second image.
@@ -462,30 +446,43 @@ void ratioMatchFeatures(const FeatureSet &f1, const FeatureSet &f2, vector<Featu
     int first_id;
     double second;
     int second_id;
+    int first_f;
+    int second_f;
     
     for (int i = 0; i<m; i++){
         first = 1e100;
         second = 1e100;
         first_id = 0;
         second_id = 0;
+        first_f = 0;
+        second_f = 0;
         
         for(int j = 0; j<n; j++){
             d = distanceSSD(f1[i].data, f2[j].data);
             if (d < first){
+                second_f = first_f;
                 second = first;
                 second_id = first_id;
+                first_f = j;
                 first = d;
                 first_id = f2[j].id;
             } else if( first <= d && d < second){
+                second_f = j;
                 second = d;
                 second_id = f2[j].id;
             }
         }
-        
-        double ratio = first / second;
+        double norm_1;
+        for(int k; k< f1[i].data.size(); k++){
+            norm_1 += abs(f1[i].data[k] - f2[first_f].data[k]);
+        }
+        double norm_2;
+        for(int k; k< f1[i].data.size(); k++){
+            norm_2 += abs(f1[i].data[k] - f2[second_f].data[k]);
+        }
         matches[i].id1 = f1[i].id;
         matches[i].id2 = first_id;
-        matches[i].distance = ratio;
+        matches[i].distance = norm_1/norm_2;
     }
 
 }
