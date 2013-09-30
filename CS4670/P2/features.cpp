@@ -177,13 +177,11 @@ void computeHarrisValues(CFloatImage &srcImage, CFloatImage &harrisImage, CFloat
 {
     int w = srcImage.Shape().width;
     int h = srcImage.Shape().height;
-
     
     CFloatImage xDerivative(w, h, 1);
     CFloatImage yDerivative(w, h, 1);
     Convolve(srcImage, xDerivative, ConvolveKernel_SobelX);
     Convolve(srcImage, yDerivative, ConvolveKernel_SobelY);
-
 
     for (int y = 0; y < h; y++) {
         for (int x = 0; x < w; x++) {
@@ -199,7 +197,8 @@ void computeHarrisValues(CFloatImage &srcImage, CFloatImage &harrisImage, CFloat
                     }
                 }
             }
-            harrisImage.Pixel(x, y, 0) = (a * c - b * b) / (a + c);
+            if (a + c == 0) harrisImage.Pixel(x, y, 0) = 0;
+            else harrisImage.Pixel(x, y, 0) = (a * c - b * b) / (a + c);
             /*
             double gradX = xDerivative.Pixel(x, y, 0);
             double gradY = yDerivative.Pixel(x, y, 0);
@@ -208,8 +207,13 @@ void computeHarrisValues(CFloatImage &srcImage, CFloatImage &harrisImage, CFloat
             gradY = gradY / mag;
             orientationImage.Pixel(x, y, 0) = atan2(gradY, gradX);
             */
-            double eigenValue = 0.5 * (a + c + sqrt(4 * b * b + (a - c) * (a- c)));
-            orientationImage.Pixel(x, y, 0) = atan2(b, eigenValue - c);
+            double discriminant = (a + c)*(a + c) - 4*(a*c - b*b);
+            if (discriminant < 0) orientationImage.Pixel(x, y, 0) = 0;
+            else {
+                double eigenValue = 0.5*(a + c + sqrt(discriminant));
+                double eigenVectorX = -b / (a - eigenValue);
+                orientationImage.Pixel(x, y, 0) = atan2(1, eigenVectorX);
+            }
         }
     }
 }
