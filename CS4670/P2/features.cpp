@@ -200,12 +200,16 @@ void computeHarrisValues(CFloatImage &srcImage, CFloatImage &harrisImage, CFloat
                 }
             }
             harrisImage.Pixel(x, y, 0) = (a * c - b * b) / (a + c);
+            /*
             double gradX = xDerivative.Pixel(x, y, 0);
             double gradY = yDerivative.Pixel(x, y, 0);
             double mag = sqrt(gradX * gradX + gradY * gradY);
             gradX = gradX / mag;
             gradY = gradY / mag;
             orientationImage.Pixel(x, y, 0) = atan2(gradY, gradX);
+            */
+            double eigenValue = 0.5 * (a + c + sqrt(4 * b * b + (a - c) * (a- c)));
+            orientationImage.Pixel(x, y, 0) = atan2(b, eigenValue - c);
         }
     }
 }
