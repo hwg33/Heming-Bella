@@ -200,32 +200,30 @@ void computeHarrisValues(CFloatImage &srcImage, CFloatImage &harrisImage, CFloat
             double det = a*c - b*b;
             double trc = a+c;
             if (trc == 0) harrisImage.Pixel(x, y, 0) = 0;
-            else harrisImage.Pixel(x, y, 0) = det / trc;
-
+            else { harrisImage.Pixel(x, y, 0) = det / trc; printf("%f, %f, %f, %f\n", a, b, c, det / trc); }
+/*
             double eig = trc / 2 + sqrt(trc * trc / 4 - det);
             double ang;
 
-            if (b != 0) ang = atan2(eig - a, b);
+            if (b != 0) ang = atan2(b, eig - c);
             else ang = atan2(0, 1);
             orientationImage.Pixel(x, y, 0) = ang;
+*/
 
-            /*
             double gradX = xDerivative.Pixel(x, y, 0);
             double gradY = yDerivative.Pixel(x, y, 0);
-            double mag = sqrt(gradX * gradX + gradY * gradY);
-            gradX = gradX / mag;
-            gradY = gradY / mag;
-            orientationImage.Pixel(x, y, 0) = atan2(gradY, gradX);
-
+            //double mag = sqrt(gradX * gradX + gradY * gradY);
+            //gradX = gradX / mag;
+            //gradY = gradY / mag;
+            orientationImage.Pixel(x, y, 0) = -atan2(gradY, gradX);
+            /*
             double discriminant = (a + c)*(a + c) - 4*(a*c - b*b);
             if (discriminant < 0) orientationImage.Pixel(x, y, 0) = 0;
             else {
                 double eigenValue = 0.5*(a + c + sqrt(discriminant));
                 double eigenVectorX = -b / (a - eigenValue);
                 orientationImage.Pixel(x, y, 0) = atan2(1, eigenVectorX);
-            }
-            */
-
+            }*/
         }
     }
 }
@@ -243,8 +241,8 @@ void computeLocalMaxima(CFloatImage &srcImage,CByteImage &destImage)
 
     for (int y = 0; y < h; y++) {
         for (int x = 0; x < w; x++) {
-            double localMax = 0;
-            double maxX, maxY;
+            double localMax = std::numeric_limits<double>::min();
+            double maxX = 0, maxY = 0;
             for (int i = -2; i < 3; i++) {
                 for (int j = -2; j < 3; j++) {
                     if (x + i < w && x + i >= 0 && y + j < h && y + j >= 0) {
@@ -257,7 +255,7 @@ void computeLocalMaxima(CFloatImage &srcImage,CByteImage &destImage)
                     }
                 }
             }
-            if (maxX == 0 && maxY == 0 && localMax > 0.013) destImage.Pixel(x, y, 0) = 1;
+            if (maxX == 0 && maxY == 0 && localMax > 0.0172) destImage.Pixel(x, y, 0) = 1;
             else destImage.Pixel(x, y, 0) = 0;
         }
     }
@@ -279,13 +277,10 @@ void ComputeSimpleDescriptors(CFloatImage &image, FeatureSet &features)
 
         f.data.resize(5 * 5);
         int k = 0;
-        for (int i = -2; i < 3; i++){
-            for(int j = -2; j < 3; j++){
-                if (x+i >= 0 && x+i < grayImage.Shape().width && y+j >= 0 && y+j < grayImage.Shape().height){
-                    f.data[k] = grayImage.Pixel(x+i, y+j, 0);
-                }
-                else f.data[k] = 0;
-                k++;
+        for (int j = -2; j < 3; j++) {
+            for (int i = -2; i < 3; i++) {
+                if (x+i >= 0 && x+i < grayImage.Shape().width && y+j >= 0 && y+j < grayImage.Shape().height)
+                    f.data[(j+2)*5 + i+2] = grayImage.Pixel(x+i, y+j, 0);
             }
         }
 
@@ -299,7 +294,7 @@ void ComputeMOPSDescriptors(CFloatImage &image, FeatureSet &features)
     // This image represents the window around the feature you need to compute to store as the feature descriptor
     const int windowSize = 8;
     CFloatImage destImage(windowSize, windowSize, 1);
-    CFloatImage grayImage=ConvertToGray(image);
+    CFloatImage grayImage = ConvertToGray(image);
 
     CByteImage tmp(grayImage.Shape());
     convertToByteImage(grayImage, tmp);
