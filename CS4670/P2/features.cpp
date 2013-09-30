@@ -197,8 +197,18 @@ void computeHarrisValues(CFloatImage &srcImage, CFloatImage &harrisImage, CFloat
                     }
                 }
             }
-            if (a + c == 0) harrisImage.Pixel(x, y, 0) = 0;
-            else harrisImage.Pixel(x, y, 0) = (a * c - b * b) / (a + c);
+            double det = a*c - b*b;
+            double trc = a+c;
+            if (trc == 0) harrisImage.Pixel(x, y, 0) = 0;
+            else harrisImage.Pixel(x, y, 0) = det / trc;
+
+            double eig = trc / 2 + sqrt(trc * trc / 4 - det);
+            double ang;
+
+            if (b != 0) ang = atan2(eig - a, b);
+            else ang = atan2(0, 1);
+            orientationImage.Pixel(x, y, 0) = ang;
+
             /*
             double gradX = xDerivative.Pixel(x, y, 0);
             double gradY = yDerivative.Pixel(x, y, 0);
@@ -206,7 +216,7 @@ void computeHarrisValues(CFloatImage &srcImage, CFloatImage &harrisImage, CFloat
             gradX = gradX / mag;
             gradY = gradY / mag;
             orientationImage.Pixel(x, y, 0) = atan2(gradY, gradX);
-            */
+
             double discriminant = (a + c)*(a + c) - 4*(a*c - b*b);
             if (discriminant < 0) orientationImage.Pixel(x, y, 0) = 0;
             else {
@@ -214,6 +224,8 @@ void computeHarrisValues(CFloatImage &srcImage, CFloatImage &harrisImage, CFloat
                 double eigenVectorX = -b / (a - eigenValue);
                 orientationImage.Pixel(x, y, 0) = atan2(1, eigenVectorX);
             }
+            */
+
         }
     }
 }
