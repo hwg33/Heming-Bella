@@ -225,8 +225,8 @@ void computeLocalMaxima(CFloatImage &srcImage,CByteImage &destImage)
         for (int x = 0; x < w; x++) {
             double localMax = 0;
             double maxX, maxY;
-            for (int i = -1; i < 2; i++) {
-                for (int j = -1; j < 2; j++) {
+            for (int i = -2; i < 3; i++) {
+                for (int j = -2; j < 3; j++) {
                     if (x + i < w && x + i >= 0 && y + j < h && y + j >= 0) {
                         double pixel = srcImage.Pixel(x + i, y + j, 0);
                         if (pixel > localMax) {
@@ -237,7 +237,7 @@ void computeLocalMaxima(CFloatImage &srcImage,CByteImage &destImage)
                     }
                 }
             }
-            if (maxX == 0 && maxY == 0 && localMax > 0.1) destImage.Pixel(x, y, 0) = 1;
+            if (maxX == 0 && maxY == 0 && localMax > 0.013) destImage.Pixel(x, y, 0) = 1;
             else destImage.Pixel(x, y, 0) = 0;
         }
     }
