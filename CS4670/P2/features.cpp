@@ -125,10 +125,10 @@ void ComputeHarrisFeatures(CFloatImage &image, FeatureSet &features)
     CFloatImage grayImage = ConvertToGray(image);
 
     //Create image to store Harris values
-    CFloatImage harrisImage(image.Shape().width,image.Shape().height,1);
+    CFloatImage harrisImage(image.Shape().width, image.Shape().height, 1);
 
     //Create image to store local maximum harris values as 1, other pixels 0
-    CByteImage harrisMaxImage(image.Shape().width,image.Shape().height,1);
+    CByteImage harrisMaxImage(image.Shape().width, image.Shape().height, 1);
 
     CFloatImage orientationImage(image.Shape().width, image.Shape().height, 1);
 
@@ -151,10 +151,8 @@ void ComputeHarrisFeatures(CFloatImage &image, FeatureSet &features)
     int id = 0;
     for (int y=0; y < harrisMaxImage.Shape().height; y++) {
         for (int x=0; x < harrisMaxImage.Shape().width; x++) {
-            printf("1\n");
             if (harrisMaxImage.Pixel(x, y, 0) == 0)
                 continue;
-            printf("2\n");
             Feature f;
 
             f.id = id;
@@ -207,8 +205,7 @@ void computeHarrisValues(CFloatImage &srcImage, CFloatImage &harrisImage, CFloat
             double mag = sqrt(gradX * gradX + gradY * gradY);
             gradX = gradX / mag;
             gradY = gradY / mag;
-            orientationImage.Pixel(x, y, 0) = atan2(gradX, gradY);
-
+            orientationImage.Pixel(x, y, 0) = atan2(gradY, gradX);
         }
     }
 }
@@ -240,7 +237,7 @@ void computeLocalMaxima(CFloatImage &srcImage,CByteImage &destImage)
                     }
                 }
             }
-            if (maxX == 0 && maxY == 0) destImage.Pixel(x, y, 0) = 1;
+            if (maxX == 0 && maxY == 0 && localMax > 0.1) destImage.Pixel(x, y, 0) = 1;
             else destImage.Pixel(x, y, 0) = 0;
         }
     }
@@ -266,9 +263,8 @@ void ComputeSimpleDescriptors(CFloatImage &image, FeatureSet &features)
             for(int j = -2; j < 3; j++){
                 if (x+i >= 0 && x+i < grayImage.Shape().width && y+j >= 0 && y+j < grayImage.Shape().height){
                     f.data[k] = grayImage.Pixel(x+i, y+j, 0);
-                }else{
-                    f.data[k] = 0;
                 }
+                else f.data[k] = 0;
                 k++;
             }
         }
