@@ -183,24 +183,32 @@ void computeHarrisValues(CFloatImage &srcImage, CFloatImage &harrisImage, CFloat
     Convolve(srcImage, xDerivative, ConvolveKernel_SobelX);
     Convolve(srcImage, yDerivative, ConvolveKernel_SobelY);
 
+	int numWindowSizes = 1;
+
     for (int y = 0; y < h; y++) {
         for (int x = 0; x < w; x++) {
-            double a = 0.0, b = 0.0, c = 0.0;
-            for (int i = -2; i < 3; i++) {
-                for (int j = -2; j < 3; j++) {
-                    if (x + i < w && x + i >= 0 && y + j < h && y + j >= 0) {
-                        double ix = xDerivative.Pixel(x + i, y + j, 0);
-                        double iy = yDerivative.Pixel(x + i, y + j, 0);
-                        a += gaussian5x5[i + 2 + (j + 2) * 5] * ix * ix;
-                        b += gaussian5x5[i + 2 + (j + 2) * 5] * ix * iy;
-                        c += gaussian5x5[i + 2 + (j + 2) * 5] * iy * iy;
-                    }
-                }
-            }
-            double det = a*c - b*b;
-            double trc = a+c;
-            if (trc == 0) harrisImage.Pixel(x, y, 0) = 0;
-            else harrisImage.Pixel(x, y, 0) = det / trc;
+			double maxHarrisValue = std::numeric_limits<double>::min();
+			for (int windowSize = 2; windowSize < numWindowSizes + 2; windowSize++) {
+				double a = 0.0, b = 0.0, c = 0.0;
+				for (int i = -windowSize; i <= windowSize; i++) {
+					for (int j = -windowSize; j <= windowSize; j++) {
+						if (x + i < w && x + i >= 0 && y + j < h && y + j >= 0) {
+							double ix = xDerivative.Pixel(x + i, y + j, 0);
+							double iy = yDerivative.Pixel(x + i, y + j, 0);
+							a += gaussian5x5[i + 2 + (j + 2) * 5] * ix * ix;
+							b += gaussian5x5[i + 2 + (j + 2) * 5] * ix * iy;
+							c += gaussian5x5[i + 2 + (j + 2) * 5] * iy * iy;
+						}
+					}
+				}
+				double det = a*c - b*b;
+				double trc = a+c;
+				double harrisValue;
+				if (trc == 0) harrisValue = 0;
+				else harrisValue = det / trc;
+				if (harrisValue > maxHarrisValue) maxHarrisValue = harrisValue;
+			}
+            harrisImage.Pixel(x, y, 0) = maxHarrisValue;
 /*
             double eig = trc / 2 + sqrt(trc * trc / 4 - det);
             double ang;
@@ -402,12 +410,12 @@ void ssdMatchFeatures(const FeatureSet &f1, const FeatureSet &f2, vector<Feature
         matches[i].distance = dBest;
     }
 }
-
+/*
 double abs(double d){
     if (d < 0) return -d;
     else return d;
 }
-
+*/
 //TODO: Write this function to perform ratio feature matching.  
 // This just uses the ratio of the SSD distance of the two best matches
 // and matches a feature in the first image with the closest feature in the second image.
