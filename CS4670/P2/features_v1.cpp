@@ -297,62 +297,107 @@ void ComputeMOPSDescriptors(CFloatImage &image, FeatureSet &features)
     CFloatImage destImage(windowSize, windowSize, 1);
     CFloatImage grayImage = ConvertToGray(image);
 
+    CByteImage tmp(grayImage.Shape());
+    convertToByteImage(grayImage, tmp);
+    WriteFile(tmp, "grayImage.tga");
+
     CFloatImage blurredImage(grayImage.Shape().width, grayImage.Shape().height, 1);
 
     CFloatImage kernel(5, 5, 1);
 
+
+
     kernel.origin[0] = 2;
     kernel.origin[1] = 2;
 
-    for (int i = 0; i< 5; i++) {
-        for(int j = 0; j<5; j++) {
+    for (int i = 0; i< 5; i++){
+        for(int j = 0; j<5; j++){
             kernel.Pixel(i,j,0) = gaussian5x5[i + j*5];
         }
     }
     Convolve(grayImage, blurredImage, kernel);
-
+    CByteImage tmp2(blurredImage.Shape());
+    convertToByteImage(blurredImage, tmp2);
+    WriteFile(tmp2, "blurredImage.tga");
+    /*
+    for(int i = 0; i < blurredImage.Shape().width; i++){
+        for(int j = 0; j < blurredImage.Shape().height; j++){
+            printf("%f", blurredImage.Pixel(i,j,0));
+        }
+    }
+    */
+    int num = 0;
     for (vector<Feature>::iterator i = features.begin(); i != features.end(); i++) {
         Feature &f = *i;
 
+        //TODO: Compute the inverse transform as described by the feature location/orientation.
+        //You'll need to compute the transform from each pixel in the 8x8 image 
+        //to sample from the appropriate pixels in the 40x40 rotated window surrounding the feature
         CTransform3x3 xform;
         CTransform3x3 scale;
         scale[0][0] = 5;
         scale[1][1] = 5;
+        scale[2][2] = 1;
         double angle = f.angleRadians;
 
         CTransform3x3 center = CTransform3x3::Translation(-4, -4);
-        CTransform3x3 move = CTransform3x3::Translation(f.x , f.y);
+        CTransform3x3 move = CTransform3x3::Translation(f.x , f.y );
         CTransform3x3 rotate = CTransform3x3::Rotation(angle * 180 / PI);
         xform = move * rotate * scale * center;
         //Call the Warp Global function to do the mapping
         WarpGlobal(blurredImage, destImage, xform, eWarpInterpLinear);
 
+        if (num == 12){
+        CByteImage tmp2(destImage.Shape());
+        convertToByteImage(destImage, tmp2);
+        WriteFile(tmp2,  "12destImage.tga");
+        }
+        if (num == 24){
+        CByteImage tmp2(destImage.Shape());
+        convertToByteImage(destImage, tmp2);
+        WriteFile(tmp2,  "24destImage.tga");
+        }
+        if (num == 48){
+        CByteImage tmp2(destImage.Shape());
+        convertToByteImage(destImage, tmp2);
+        WriteFile(tmp2,  "48destImage.tga");
+        }
+        if (num == 60){
+        CByteImage tmp2(destImage.Shape());
+        convertToByteImage(destImage, tmp2);
+        WriteFile(tmp2,  "60destImage.tga");
+        }
+
         f.data.resize(windowSize * windowSize);
         int k = 0;
-        for (int i = 0; i < windowSize; i++) {
-            for (int j = 0; j < windowSize; j++) {
+        for(int i = 0; i < windowSize; i++){
+            for(int j = 0; j < windowSize; j++){
                 f.data[k] = destImage.Pixel(i,j,0);
+                //printf("%f", f.data[k]);
                 k++;
+
             }
         }
         double sum = 0.0;
-        for(int i = 0; i < windowSize*windowSize; i++) {
+        for(int i  = 0; i<windowSize*windowSize; i++){
             sum += f.data[i];
         }
-
-        double mean = sum / (windowSize*windowSize);
-
+        double mean = sum/(windowSize*windowSize);
+        //printf("mean: %f\n", mean);
         sum = 0.0;
-        for(int i = 0; i < windowSize*windowSize; i++) {
+        for(int i = 0; i<windowSize*windowSize; i++){
             sum += (f.data[i] - mean)*(f.data[i] - mean);
         }
-
-        double standard_deviation = sqrt(sum / (windowSize * windowSize));;
+        double standard_deviation = sqrt(sum);
+        //printf("std: %f\n", standard_deviation);
         
-        for(int i = 0; i < windowSize*windowSize; i++){
-            if (standard_deviation != 0) f.data[i] = (f.data[i] - mean) / standard_deviation;
-            else f.data[i] = (f.data[i] - mean) / 0.0001;
+        for(int i = 0; i<windowSize*windowSize; i++){
+            if(standard_deviation != 0) f.data[i] = (f.data[i] - mean )/standard_deviation;
+            else f.data[i] = (f.data[i] - mean )/0.0001;
+
+            //printf("%f\n",f.data[i]);
         }
+        num++;
     }
 }
 
@@ -380,13 +425,16 @@ void ssdMatchFeatures(const FeatureSet &f1, const FeatureSet &f2, vector<Feature
     for (int i=0; i<m; i++) {
         dBest = 1e100;
         idBest = 0;
+
         for (int j=0; j<n; j++) {
             d = distanceSSD(f1[i].data, f2[j].data);
+
             if (d < dBest) {
                 dBest = d;
                 idBest = f2[j].id;
             }
         }
+
         matches[i].id1 = f1[i].id;
         matches[i].id2 = idBest;
         matches[i].distance = dBest;
@@ -427,8 +475,7 @@ void ratioMatchFeatures(const FeatureSet &f1, const FeatureSet &f2, vector<Featu
                 second_id = first_id;
                 first = d;
                 first_id = f2[j].id;
-            }
-            else if (first <= d && d < second){
+            } else if( first <= d && d < second){
                 second = d;
                 second_id = f2[j].id;
             }
