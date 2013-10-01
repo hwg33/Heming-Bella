@@ -320,14 +320,24 @@ void ComputeMOPSDescriptors(CFloatImage &image, FeatureSet &features)
         scale[1][1] = 5;
         double angle = f.angleRadians;
 
+/*
         CTransform3x3 center = CTransform3x3::Translation(-4, -4);
         CTransform3x3 move = CTransform3x3::Translation(f.x , f.y);
         CTransform3x3 rotate = CTransform3x3::Rotation(angle * 180 / PI);
         xform = move * rotate * scale * center;
+*/
+        CTransform3x3 center;
+        center = center.Translation(-4, -4);
+        scale = scale * center;
+        CTransform3x3 rotate;
+        rotate = scale.Rotation(angle * 180 / PI);
+        xform = rotate.Translation(f.x, f.y);
+
         //Call the Warp Global function to do the mapping
         WarpGlobal(blurredImage, destImage, xform, eWarpInterpLinear);
 
         f.data.resize(windowSize * windowSize);
+
         int k = 0;
         for (int i = 0; i < windowSize; i++) {
             for (int j = 0; j < windowSize; j++) {
@@ -393,6 +403,11 @@ void ssdMatchFeatures(const FeatureSet &f1, const FeatureSet &f2, vector<Feature
     }
 }
 
+double abs(double d){
+    if (d < 0) return -d;
+    else return d;
+}
+
 //TODO: Write this function to perform ratio feature matching.  
 // This just uses the ratio of the SSD distance of the two best matches
 // and matches a feature in the first image with the closest feature in the second image.
@@ -413,6 +428,8 @@ void ratioMatchFeatures(const FeatureSet &f1, const FeatureSet &f2, vector<Featu
     int first_id;
     double second;
     int second_id;
+    int first_f;
+    int second_f;
     
     for (int i = 0; i<m; i++){
         first = 1e100;
@@ -422,22 +439,20 @@ void ratioMatchFeatures(const FeatureSet &f1, const FeatureSet &f2, vector<Featu
         
         for(int j = 0; j<n; j++){
             d = distanceSSD(f1[i].data, f2[j].data);
-            if (d < first){
+            if (d < first) {
                 second = first;
                 second_id = first_id;
                 first = d;
                 first_id = f2[j].id;
             }
-            else if (first <= d && d < second){
+            else if (first <= d && d < second) {
                 second = d;
                 second_id = f2[j].id;
             }
         }
-        
-        double ratio = first / second;
         matches[i].id1 = f1[i].id;
         matches[i].id2 = first_id;
-        matches[i].distance = ratio;
+        matches[i].distance = first / second;
     }
 
 }
