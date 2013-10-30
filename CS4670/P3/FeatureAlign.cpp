@@ -38,14 +38,14 @@ CTransform3x3 ComputeHomography(const FeatureSet &f1, const FeatureSet &f2,
         // BEGIN TODO
         // fill in the matrix A in this loop.
         // To access an element of A, use parentheses, e.g. A(0,0)
-
+        
         A(2i, 0) = a.x;
         A(2i, 1) = a.y;
         A(2i, 2) = 1;
         A(2i, 6) = - b.x * a.x;
         A(2i, 7) = - b.x * a.y;
         A(2i, 8) = - b.x;
-
+        
         A(2i+1, 3) = a.x;
         A(2i+1, 4) = a.y;
         A(2i+1, 5) = 1;
@@ -65,7 +65,7 @@ CTransform3x3 ComputeHomography(const FeatureSet &f1, const FeatureSet &f2,
     // BEGIN TODO
     // fill the homography H with the appropriate elements of the SVD
     // To extract, for instance, the V matrix, use svd.matrixV()
-
+    
     for(int i = 0; i<3; i++){
         for(int j = 0; j<3; j++){
             k = 3*i + j;
@@ -114,12 +114,11 @@ int alignPair(const FeatureSet &f1, const FeatureSet &f2,
     // Your homography handling code should call ComputeHomography.
     // This function should also call countInliers and, at the end,
     // leastSquaresFit.
-
     CTransform3x3 temp;
     int max_inliers_c = 0;
     vector<int> best_inliers;
     CTransform3x3 best;
-
+    
     for (int i = 0; i < nRANSAC; i++){
         int s = matches.size();
         switch (m) {
@@ -134,7 +133,7 @@ int alignPair(const FeatureSet &f1, const FeatureSet &f2,
                 temp = CTransform3x3::Translation((float) tx, (float) ty);
                 break;
             }
-
+                
             case eHomography: {
                 //8 DOF, so 4 matches.
                 int a = rand() % s;
@@ -150,7 +149,7 @@ int alignPair(const FeatureSet &f1, const FeatureSet &f2,
                 break;
             }
         }
-
+        
         vector<int> inliers;
         int inliers_c = countInliers(f1,f2,matches,m, temp, RANSACthresh, inliers);
         if (inliers_c > max_inliers_c){
@@ -158,10 +157,14 @@ int alignPair(const FeatureSet &f1, const FeatureSet &f2,
             best = temp;
             best_inliers = inliers;
         }
-
+        
     }
     leastSquaresFit(f1, f2, matches, m, best_inliers, best);
     M = best;
+    return 0;
+
+    // END TODO
+
     return 0;
 }
 
@@ -170,9 +173,9 @@ int alignPair(const FeatureSet &f1, const FeatureSet &f2,
  *	INPUT:
  *		f1, f2: source feature sets
  *		matches: correspondences between f1 and f2
- *		m: motion model
  *               Each match in 'matches' contains two feature ids of 
  *               matching features, id1 (in f1) and id2 (in f2).
+ *		m: motion model
  *		M: transformation matrix
  *		RANSACthresh: RANSAC distance threshold
  *		inliers: inlier feature IDs
@@ -187,29 +190,30 @@ int alignPair(const FeatureSet &f1, const FeatureSet &f2,
  *
  */
 int countInliers(const FeatureSet &f1, const FeatureSet &f2,
-                 const vector<FeatureMatch> &matches, MotionModel m, 
+                 const vector<FeatureMatch> &matches, MotionModel m,
                  CTransform3x3 M, double RANSACthresh, vector<int> &inliers)
 {
     inliers.clear();
 
     for (unsigned int i = 0; i < matches.size(); i++) {
         // BEGIN TODO
-        // determine if the ith matched feature f1[id1-1], when transformed by M,
+        // determine if the ith matched feature f1[id1], when transformed by M,
         // is within RANSACthresh of its match in f2
         //
         // if so, append i to inliers
         const FeatureMatch &match = matches[i];
         const Feature &a = f1[match.id1];
         const Feature &b = f2[match.id2];
-
+        
         CVector3 p;
         p[0] = a.x;
         p[1] = a.y;
         p[2] = 1;
         p = M * p;
-
+        
         double distance = sqrt((p[0] - b.x)*(p[0] - b.x) + (p[1] - b.y)*(p[1] - b.y));
         if (distance <= RANSACthresh) inliers.push_back(i);
+
         // END TODO
     }
 
@@ -254,6 +258,7 @@ int leastSquaresFit(const FeatureSet &f1, const FeatureSet &f2,
                 const Feature &b = f2[match.id2];
                 u += (b.x - a.x);
                 v += (b.y - a.y);
+
                 // END TODO
             }
 
@@ -267,7 +272,6 @@ int leastSquaresFit(const FeatureSet &f1, const FeatureSet &f2,
 
         case eHomography: {
 			M = CTransform3x3();
-            vector<FeatureMatch> inlier_matches;
 
             // BEGIN TODO
 		    // Compute a homography M using all inliers.
@@ -277,6 +281,7 @@ int leastSquaresFit(const FeatureSet &f1, const FeatureSet &f2,
                 inlier_matches.push_back(match);
             }
             M = ComputeHomography(f1, f2, inlier_matches);
+
             // END TODO
         
             break;

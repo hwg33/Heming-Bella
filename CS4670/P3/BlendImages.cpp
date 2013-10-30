@@ -85,7 +85,6 @@ static void AccumulateBlend(CByteImage& img, CFloatImage& acc, CTransform3x3 M, 
             }
         }
     }
-
     // END TODO
 }
 

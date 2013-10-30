@@ -38,7 +38,7 @@
  *
  */
 CFloatImage WarpSphericalField(CShape srcSh, CShape dstSh, float f,
-    float k1, float k2, const CTransform3x3 &r)
+	float k1, float k2, const CTransform3x3 &r)
 {
 	// Set up the pixel coordinate image
 	dstSh.nBands = 2;
