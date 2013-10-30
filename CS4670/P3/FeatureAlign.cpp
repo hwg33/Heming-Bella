@@ -160,7 +160,6 @@ int alignPair(const FeatureSet &f1, const FeatureSet &f2,
         }
 
     }
-    // END TODO
     leastSquaresFit(f1, f2, matches, m, best_inliers, best);
     M = best;
     return 0;
