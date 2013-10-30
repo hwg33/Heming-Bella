@@ -38,7 +38,7 @@
  *
  */
 CFloatImage WarpSphericalField(CShape srcSh, CShape dstSh, float f,
-	float k1, float k2, const CTransform3x3 &r)
+    float k1, float k2, const CTransform3x3 &r)
 {
 	// Set up the pixel coordinate image
 	dstSh.nBands = 2;
@@ -76,7 +76,16 @@ CFloatImage WarpSphericalField(CShape srcSh, CShape dstSh, float f,
 			// r, and project the point to the z=1 plane at
 			// (xt/zt,yt/zt,1), then distort with radial distortion
 			// coefficients k1 and k2
-						// END TODO
+            p[0] = sin(xf) * cos(yf);
+            p[1] = sin(yf);
+            p[2] = cos(xf) * cos(yf);
+            p = r * p;
+            xt = p[0] / p[2];
+            yt = p[1] / p[2];
+            float r2 = xt * xt + yt * yt;
+            xt = xt * (1 + k1 * r2 + k2 * r2 * r2);
+            yt = yt * (1 + k1 * r2 + k2 * r2 * r2);
+            // END TODO
 
 			// Convert back to regular pixel coordinates and store
 			float xn = 0.5f*srcSh.width  + xt*f;

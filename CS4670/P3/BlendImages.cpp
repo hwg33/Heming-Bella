@@ -68,7 +68,23 @@ static void AccumulateBlend(CByteImage& img, CFloatImage& acc, CTransform3x3 M, 
 {
     // BEGIN TODO
     // Fill in this routine
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
+    int w = img.Shape().width;
+    int h = img.Shape().height;
+    for (int x = 0; x < w; x++) {
+        for (int y = 0; y < h; y++) {
+            if (x < blendWidth || x > w - blendWidth - 1) {
+                CVector3 p;
+                p[0] = x;
+                p[1] = y;
+                p[2] = 1;
+                p = M * p;
+                acc.Pixel(p[0], p[1], 0) += img.Pixel(x, y, 0) * img.Pixel(x, y, img.alphaChannel);
+                acc.Pixel(p[0], p[1], 1) += img.Pixel(x, y, 1) * img.Pixel(x, y, img.alphaChannel);
+                acc.Pixel(p[0], p[1], 2) += img.Pixel(x, y, 2) * img.Pixel(x, y, img.alphaChannel);
+                acc.Pixel(p[0], p[1], acc.alphaChannel) += img.Pixel(x, y, img.alphaChannel);
+            }
+        }
+    }
 
     // END TODO
 }
@@ -88,8 +104,17 @@ static void NormalizeBlend(CFloatImage& acc, CByteImage& img)
 {
     // BEGIN TODO
     // fill in this routine..
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
-
+    int w = acc.Shape().width;
+    int h = acc.Shape().height;
+    for (int x = 0; x < w; x++) {
+        for (int y = 0; y < h; y++) {
+            if (acc.Pixel(x, y, acc.alphaChannel) != 0) {
+                img.Pixel(x, y, 0) = acc.Pixel(x, y, 0) / acc.Pixel(x, y, acc.alphaChannel);
+                img.Pixel(x, y, 1) = acc.Pixel(x, y, 1) / acc.Pixel(x, y, acc.alphaChannel);
+                img.Pixel(x, y, 2) = acc.Pixel(x, y, 2) / acc.Pixel(x, y, acc.alphaChannel);
+            }
+        }
+    }
     // END TODO
 }
 
@@ -133,8 +158,12 @@ CByteImage BlendImages(CImagePositionV& ipv, float blendWidth)
 
         // BEGIN TODO
         // add some code here to update min_x, ..., max_y
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
-
+        float x = T[0][2];
+        float y = T[1][2];
+        if (x < min_x) min_x = x;
+        if (x > max_x) max_x = x;
+        if (y < min_y) min_y = y;
+        if (y > max_y) max_y = y;
         // END TODO
     }
 
@@ -207,7 +236,10 @@ printf("TODO: %s:%d\n", __FILE__, __LINE__);
     // fill in appropriate entries in A to trim the left edge and
     // to take out the vertical drift if this is a 360 panorama
     // (i.e. is360 is true)
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
+    if (is360) {
+        if (x_final != 0) A[1][0] = (y_init - y_final) / x_final;
+    }
+    A[0][2] = width / 2;
 
     // END TODO
 

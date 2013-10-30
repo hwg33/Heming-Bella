@@ -135,7 +135,6 @@ int countInliers(const FeatureSet &f1, const FeatureSet &f2,
         // is within RANSACthresh of its match in f2
         //
         // if so, append i to inliers
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
 
         // END TODO
     }
