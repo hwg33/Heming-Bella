@@ -39,19 +39,19 @@ CTransform3x3 ComputeHomography(const FeatureSet &f1, const FeatureSet &f2,
         // fill in the matrix A in this loop.
         // To access an element of A, use parentheses, e.g. A(0,0)
         
-        A(2i, 0) = a.x;
-        A(2i, 1) = a.y;
-        A(2i, 2) = 1;
-        A(2i, 6) = - b.x * a.x;
-        A(2i, 7) = - b.x * a.y;
-        A(2i, 8) = - b.x;
+        A(2*i, 0) = a.x;
+        A(2*i, 1) = a.y;
+        A(2*i, 2) = 1;
+        A(2*i, 6) = - b.x * a.x;
+        A(2*i, 7) = - b.x * a.y;
+        A(2*i, 8) = - b.x;
         
-        A(2i+1, 3) = a.x;
-        A(2i+1, 4) = a.y;
-        A(2i+1, 5) = 1;
-        A(2i+1, 6) = -b.y * a.x;
-        A(2i+1, 7) = -b.y * a.y;
-        A(2i+1, 8) = -b.y;
+        A(2*i+1, 3) = a.x;
+        A(2*i+1, 4) = a.y;
+        A(2*i+1, 5) = 1;
+        A(2*i+1, 6) = -b.y * a.x;
+        A(2*i+1, 7) = -b.y * a.y;
+        A(2*i+1, 8) = -b.y;
 
         // END TODO
     }
@@ -68,8 +68,8 @@ CTransform3x3 ComputeHomography(const FeatureSet &f1, const FeatureSet &f2,
     
     for(int i = 0; i<3; i++){
         for(int j = 0; j<3; j++){
-            k = 3*i + j;
-            H[i][j] = Vt(Vt.rows - 1, k);
+            int k = 3*i + j;
+            H[i][j] = Vt(Vt.rows() - 1, k);
         }
     }
 
@@ -140,7 +140,7 @@ int alignPair(const FeatureSet &f1, const FeatureSet &f2,
                 int b = rand() % s;
                 int c = rand() % s;
                 int d = rand() % s;
-                vector<FeatureMatch> rand_matches = new vector<FeatureMatch>();
+                vector<FeatureMatch> rand_matches;
                 rand_matches.push_back(matches[a]);
                 rand_matches.push_back(matches[b]);
                 rand_matches.push_back(matches[c]);
@@ -276,6 +276,7 @@ int leastSquaresFit(const FeatureSet &f1, const FeatureSet &f2,
             // BEGIN TODO
 		    // Compute a homography M using all inliers.
 		    // This should call ComputeHomography.
+            vector<FeatureMatch> inlier_matches;
             for (int i=0; i < (int) inliers.size(); i++) {
                 FeatureMatch match = matches[inliers[i]];
                 inlier_matches.push_back(match);
