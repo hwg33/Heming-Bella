@@ -1,6 +1,6 @@
 # Executables
-FEATURES=../Features.exe
-PANORAMA=../Panorama.exe
+FEATURES=../Features
+PANORAMA=../Panorama
 
 # Parameters
 FOCAL=595
