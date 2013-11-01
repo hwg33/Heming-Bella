@@ -72,33 +72,26 @@ static void AccumulateBlend(CByteImage& img, CFloatImage& acc, CTransform3x3 M, 
     int h = img.Shape().height;
     for (int x = 0; x < w; x++) {
         for (int y = 0; y < h; y++) {
-            //if (x < blendWidth || x > w - blendWidth - 1) {
-                CVector3 p;
-                p[0] = x;
-                p[1] = y;
-                p[2] = 1;
-                p = M * p;
-                int m_x = static_cast<int>(p[0]);
-                int m_y = static_cast<int>(p[1]);
+            CVector3 p;
+            p[0] = x;
+            p[1] = y;
+            p[2] = 1;
+            p = M * p;
+            int m_x = static_cast<int>(p[0]);
+            int m_y = static_cast<int>(p[1]);
 
-                float alpha;
-                if (x < blendWidth) alpha = (float)x / blendWidth;
-                else if (x > w - 1 - blendWidth) alpha = (float)(w - 1 - x) / blendWidth;
-                else alpha = 1.0;
-                img.Pixel(x, y, img.alphaChannel) = iround(255.0 * alpha);
+            float alpha;
+            if (x < blendWidth) alpha = static_cast<float>(x) / blendWidth;
+            else if (x > w - 1 - blendWidth) alpha = static_cast<float>(w - 1 - x) / blendWidth;
+            else alpha = 1.0;
+            img.Pixel(x, y, img.alphaChannel) = iround(255.0 * alpha);
 
-                //printf("%d\n", img.Pixel(x, y, img.alphaChannel));
+            if (img.Pixel(x, y, 0) != 0 || img.Pixel(x, y, 1) != 0 || img.Pixel(x, y, 2) != 0) {
                 acc.Pixel(m_x, m_y, 0) += img.Pixel(x, y, 0) * img.Pixel(x, y, img.alphaChannel);
                 acc.Pixel(m_x, m_y, 1) += img.Pixel(x, y, 1) * img.Pixel(x, y, img.alphaChannel);
                 acc.Pixel(m_x, m_y, 2) += img.Pixel(x, y, 2) * img.Pixel(x, y, img.alphaChannel);
                 acc.Pixel(m_x, m_y, acc.alphaChannel) += img.Pixel(x, y, img.alphaChannel);
-                /*
-                printf("%f %f %f\n", M[0][0], M[0][1], M[0][2]);
-                printf("%f %f %f\n", M[1][0], M[1][1], M[1][2]);
-                printf("%f %f %f\n", M[2][0], M[2][1], M[2][2]);
-                printf("Acc x=%d, y=%d, w=%d, h=%d, p[0]=%f, p[1]=%f, accw=%d, acch=%d\n", x, y, w, h, p[0], p[1], acc.Shape().width, acc.Shape().height);
-                */
-            //}
+            }
         }
     }
     // END TODO
@@ -124,7 +117,6 @@ static void NormalizeBlend(CFloatImage& acc, CByteImage& img)
     for (int x = 0; x < w; x++) {
         for (int y = 0; y < h; y++) {
             if (acc.Pixel(x, y, acc.alphaChannel) != 0) {
-                //printf("%d, %d, %d, %d\n", x, y, img.Shape().width, img.Shape().height);
                 img.Pixel(x, y, 0) = iround(acc.Pixel(x, y, 0) / acc.Pixel(x, y, acc.alphaChannel));
                 img.Pixel(x, y, 1) = iround(acc.Pixel(x, y, 1) / acc.Pixel(x, y, acc.alphaChannel));
                 img.Pixel(x, y, 2) = iround(acc.Pixel(x, y, 2) / acc.Pixel(x, y, acc.alphaChannel));
