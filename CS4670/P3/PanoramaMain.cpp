@@ -274,7 +274,12 @@ int BlendPairs(int argc, const char *argv[])
 		// The coordinate system of the ImageLib images has y reflected -- so let's fix that!
 
 		// M[1][2] = -M[1][2];
-
+        /*
+        printf("| %f %f %f\n", M[0][0], M[0][1], M[0][2]);
+        printf("| %f %f %f\n", M[1][0], M[1][1], M[1][2]);
+        printf("| %f %f %f\n", M[2][0], M[2][1], M[2][2]);
+        printf("| -----------------------------------\n");
+        */
 		ip.imgName = std::string(infile1);
 		CByteImage imgTmp;
 		ReadFile(imgTmp, infile1);
@@ -299,7 +304,15 @@ int BlendPairs(int argc, const char *argv[])
 
 	ipList.push_back(ip);
 	fclose(stream);
-
+    /*
+    for (int i = 0; i < ipList.size(); i++) {
+        CTransform3x3 &M = ipList[i].position;
+        printf("| %f %f %f\n", M[0][0], M[0][1], M[0][2]);
+        printf("| %f %f %f\n", M[1][0], M[1][1], M[1][2]);
+        printf("| %f %f %f\n", M[2][0], M[2][1], M[2][2]);
+        printf("| -----------------------------------\n");
+    }
+    */
 	CByteImage resultTmp = BlendImages(ipList, blendWidth);
 
 	// Flip again

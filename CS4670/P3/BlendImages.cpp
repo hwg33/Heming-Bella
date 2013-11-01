@@ -72,17 +72,33 @@ static void AccumulateBlend(CByteImage& img, CFloatImage& acc, CTransform3x3 M, 
     int h = img.Shape().height;
     for (int x = 0; x < w; x++) {
         for (int y = 0; y < h; y++) {
-            if (x < blendWidth || x > w - blendWidth - 1) {
+            //if (x < blendWidth || x > w - blendWidth - 1) {
                 CVector3 p;
                 p[0] = x;
                 p[1] = y;
                 p[2] = 1;
                 p = M * p;
-                acc.Pixel(p[0], p[1], 0) += img.Pixel(x, y, 0) * img.Pixel(x, y, img.alphaChannel);
-                acc.Pixel(p[0], p[1], 1) += img.Pixel(x, y, 1) * img.Pixel(x, y, img.alphaChannel);
-                acc.Pixel(p[0], p[1], 2) += img.Pixel(x, y, 2) * img.Pixel(x, y, img.alphaChannel);
-                acc.Pixel(p[0], p[1], acc.alphaChannel) += img.Pixel(x, y, img.alphaChannel);
-            }
+                int m_x = static_cast<int>(p[0]);
+                int m_y = static_cast<int>(p[1]);
+
+                float alpha;
+                if (x < blendWidth) alpha = (float)x / blendWidth;
+                else if (x > w - 1 - blendWidth) alpha = (float)(w - 1 - x) / blendWidth;
+                else alpha = 1.0;
+                img.Pixel(x, y, img.alphaChannel) = iround(255.0 * alpha);
+
+                //printf("%d\n", img.Pixel(x, y, img.alphaChannel));
+                acc.Pixel(m_x, m_y, 0) += img.Pixel(x, y, 0) * img.Pixel(x, y, img.alphaChannel);
+                acc.Pixel(m_x, m_y, 1) += img.Pixel(x, y, 1) * img.Pixel(x, y, img.alphaChannel);
+                acc.Pixel(m_x, m_y, 2) += img.Pixel(x, y, 2) * img.Pixel(x, y, img.alphaChannel);
+                acc.Pixel(m_x, m_y, acc.alphaChannel) += img.Pixel(x, y, img.alphaChannel);
+                /*
+                printf("%f %f %f\n", M[0][0], M[0][1], M[0][2]);
+                printf("%f %f %f\n", M[1][0], M[1][1], M[1][2]);
+                printf("%f %f %f\n", M[2][0], M[2][1], M[2][2]);
+                printf("Acc x=%d, y=%d, w=%d, h=%d, p[0]=%f, p[1]=%f, accw=%d, acch=%d\n", x, y, w, h, p[0], p[1], acc.Shape().width, acc.Shape().height);
+                */
+            //}
         }
     }
     // END TODO
@@ -108,10 +124,12 @@ static void NormalizeBlend(CFloatImage& acc, CByteImage& img)
     for (int x = 0; x < w; x++) {
         for (int y = 0; y < h; y++) {
             if (acc.Pixel(x, y, acc.alphaChannel) != 0) {
-                img.Pixel(x, y, 0) = acc.Pixel(x, y, 0) / acc.Pixel(x, y, acc.alphaChannel);
-                img.Pixel(x, y, 1) = acc.Pixel(x, y, 1) / acc.Pixel(x, y, acc.alphaChannel);
-                img.Pixel(x, y, 2) = acc.Pixel(x, y, 2) / acc.Pixel(x, y, acc.alphaChannel);
+                //printf("%d, %d, %d, %d\n", x, y, img.Shape().width, img.Shape().height);
+                img.Pixel(x, y, 0) = iround(acc.Pixel(x, y, 0) / acc.Pixel(x, y, acc.alphaChannel));
+                img.Pixel(x, y, 1) = iround(acc.Pixel(x, y, 1) / acc.Pixel(x, y, acc.alphaChannel));
+                img.Pixel(x, y, 2) = iround(acc.Pixel(x, y, 2) / acc.Pixel(x, y, acc.alphaChannel));
             }
+            img.Pixel(x, y, img.alphaChannel) = 255;
         }
     }
     // END TODO
@@ -144,9 +162,16 @@ CByteImage BlendImages(CImagePositionV& ipv, float blendWidth)
     bool is360 = false;
 
     // Hack to detect if this is a 360 panorama
-    if (ipv[0].imgName == ipv[n-1].imgName)
-        is360 = true;
-
+    if (ipv[0].imgName == ipv[n-1].imgName) is360 = true;
+/*
+    for (int i = 0; i < n; i++) {
+        CTransform3x3 &M = ipv[i].position;
+        printf("%f %f %f\n", M[0][0], M[0][1], M[0][2]);
+        printf("%f %f %f\n", M[1][0], M[1][1], M[1][2]);
+        printf("%f %f %f\n", M[2][0], M[2][1], M[2][2]);
+        printf("-----------------------------------\n");
+    }
+*/
     // Compute the bounding box for the mosaic
     float min_x = FLT_MAX, min_y = FLT_MAX;
     float max_x = 0, max_y = 0;
@@ -157,16 +182,24 @@ CByteImage BlendImages(CImagePositionV& ipv, float blendWidth)
 
         // BEGIN TODO
         // add some code here to update min_x, ..., max_y
-        float x = T[0][2];
-        float y = T[1][2];
-        if (x < min_x) min_x = x;
-        if (x > max_x) max_x = x;
-        if (y < min_y) min_y = y;
-        if (y > max_y) max_y = y;
+        CVector3 topLeft, bottomRight;
+        topLeft[0] = 0;
+        topLeft[1] = 0;
+        topLeft[2] = 1;
+        bottomRight[0] = width - 1;
+        bottomRight[1] = height - 1;
+        bottomRight[2] = 1;
+        topLeft = T * topLeft;
+        bottomRight = T * bottomRight;
+        min_x = MIN(topLeft[0], min_x);
+        min_y = MIN(topLeft[1], min_y);
+        max_x = MAX(bottomRight[0], max_x);
+        max_y = MAX(bottomRight[1], max_y);
         // END TODO
     }
 
     // Create a floating point accumulation image
+    //printf("-%d-, -%d-\n", (int)(ceil(max_x) - floor(min_x)), (int)(ceil(max_y) - floor(min_y)));
     CShape mShape((int)(ceil(max_x) - floor(min_x)),
         (int)(ceil(max_y) - floor(min_y)), nBands + 1);
     CFloatImage accumulator(mShape);
@@ -179,7 +212,21 @@ CByteImage BlendImages(CImagePositionV& ipv, float blendWidth)
     for (i = 0; i < n; i++) {
         // Compute the sub-image involved
         CTransform3x3 &M = ipv[i].position;
+        //printf("(%f, %f)\n", min_x, min_y);
+        //printf("(%f, %f)\n", max_x, max_y);
+        /*
+        printf("%f %f %f\n", M[0][0], M[0][1], M[0][2]);
+        printf("%f %f %f\n", M[1][0], M[1][1], M[1][2]);
+        printf("%f %f %f\n", M[2][0], M[2][1], M[2][2]);
+        printf("-----------------------\n");
+        */
         CTransform3x3 M_t = CTransform3x3::Translation(-min_x, -min_y) * M;
+        /*
+        printf("/ %f %f %f\n", M_t[0][0], M_t[0][1], M_t[0][2]);
+        printf("/ %f %f %f\n", M_t[1][0], M_t[1][1], M_t[1][2]);
+        printf("/ %f %f %f\n", M_t[2][0], M_t[2][1], M_t[2][2]);
+        printf("-----------------------\n");
+        */
         CByteImage& img = ipv[i].img;
 
         // Perform the accumulation
@@ -235,8 +282,8 @@ CByteImage BlendImages(CImagePositionV& ipv, float blendWidth)
     // fill in appropriate entries in A to trim the left edge and
     // to take out the vertical drift if this is a 360 panorama
     // (i.e. is360 is true)
-    if (is360 && x_final != 0) A[1][0] = (y_init - y_final) / x_final;
-    A[0][2] = width / 2;
+    if (is360) A[1][0] = (y_final - y_init) / (x_final - x_init);
+    A[0][2] = width;
 
     // END TODO
 
