@@ -65,14 +65,29 @@ CTransform3x3 ComputeHomography(const FeatureSet &f1, const FeatureSet &f2,
     // BEGIN TODO
     // fill the homography H with the appropriate elements of the SVD
     // To extract, for instance, the V matrix, use svd.matrixV()
-    
-    for(int i = 0; i<3; i++){
-        for(int j = 0; j<3; j++){
-            int k = 3*i + j;
-            H[i][j] = Vt(Vt.rows() - 1, k);
+
+    double min = std::numeric_limits<double>::max();
+    int min_row = 0;
+    for (int i = 0; i < sv.rows(); i++){
+        if(sv[i] < min && sv[i] != 0){
+            min = sv[i];
+            min_row = i;
         }
     }
 
+    if (Vt(min_row, 8) != 0) {
+        for (int i = 0; i < Vt.rows(); i++) {
+            Vt(min_row, i) /= Vt(min_row, 8);
+        }
+    }
+
+    for(int i = 0; i<3; i++){
+        for(int j = 0; j<3; j++){
+            int k = 3*i + j;
+            H[i][j] = Vt(min_row, k);
+        }
+    }
+    printf("In ComputeHomography: %f\n", H[2][2]);
     // END TODO
 
     return H;
@@ -153,19 +168,22 @@ int alignPair(const FeatureSet &f1, const FeatureSet &f2,
         vector<int> inliers;
         int inliers_c = countInliers(f1,f2,matches,m, temp, RANSACthresh, inliers);
         if (inliers_c > max_inliers_c){
+            printf("here!\n");
             max_inliers_c = inliers_c;
             best = temp;
             best_inliers = inliers;
         }
         
     }
+
+    printf("best_inliers_size:%d\n", (int)best_inliers.size());
+
     leastSquaresFit(f1, f2, matches, m, best_inliers, best);
     M = best;
+    printf("%f\n", M[2][2]);
     return 0;
 
     // END TODO
-
-    return 0;
 }
 
 /******************* TO DO *********************
@@ -194,7 +212,7 @@ int countInliers(const FeatureSet &f1, const FeatureSet &f2,
                  CTransform3x3 M, double RANSACthresh, vector<int> &inliers)
 {
     inliers.clear();
-
+    printf("thresh:%f\n", RANSACthresh);
     for (unsigned int i = 0; i < matches.size(); i++) {
         // BEGIN TODO
         // determine if the ith matched feature f1[id1], when transformed by M,
@@ -211,7 +229,8 @@ int countInliers(const FeatureSet &f1, const FeatureSet &f2,
         p[2] = 1;
         p = M * p;
         
-        double distance = sqrt((p[0] - b.x)*(p[0] - b.x) + (p[1] - b.y)*(p[1] - b.y));
+        double distance = sqrt((p[0]/p[2] - b.x)*(p[0]/p[2] - b.x) + (p[1]/p[2] - b.y)*(p[1]/p[2] - b.y));
+        printf("dist:%f\n", distance);
         if (distance <= RANSACthresh) inliers.push_back(i);
 
         // END TODO
@@ -271,17 +290,21 @@ int leastSquaresFit(const FeatureSet &f1, const FeatureSet &f2,
         } 
 
         case eHomography: {
-			M = CTransform3x3();
-
+            printf("lsf!\n");
             // BEGIN TODO
 		    // Compute a homography M using all inliers.
 		    // This should call ComputeHomography.
             vector<FeatureMatch> inlier_matches;
+            printf("inliers_size:%d\n", (int)inliers.size());
             for (int i=0; i < (int) inliers.size(); i++) {
                 FeatureMatch match = matches[inliers[i]];
+                printf("match%d: 1:%d, 2:%d\n", inliers[i], match.id1, match.id2);
                 inlier_matches.push_back(match);
             }
+            printf("before computeH!\n");
             M = ComputeHomography(f1, f2, inlier_matches);
+            printf("%f\n", M[2][2]);
+            printf("after computeH!\n");
 
             // END TODO
         

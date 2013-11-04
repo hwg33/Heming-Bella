@@ -184,6 +184,8 @@ int AlignPair(int argc, const char *argv[])
 
     // Perform the alignment.
 	if (strcmp(argv[1], "alignPairHomography") == 0) {
+        printf ("0\n");
+        printf ("n: %d\n",nRANSAC);
 		alignPair(f1, f2, matches, eHomography, nRANSAC, RANSACthresh, M);
 	} else {
 		alignPair(f1, f2, matches, eTranslate, nRANSAC, RANSACthresh, M);
@@ -274,12 +276,12 @@ int BlendPairs(int argc, const char *argv[])
 		// The coordinate system of the ImageLib images has y reflected -- so let's fix that!
 
 		// M[1][2] = -M[1][2];
-        /*
+
         printf("| %f %f %f\n", M[0][0], M[0][1], M[0][2]);
         printf("| %f %f %f\n", M[1][0], M[1][1], M[1][2]);
         printf("| %f %f %f\n", M[2][0], M[2][1], M[2][2]);
         printf("| -----------------------------------\n");
-        */
+
 		ip.imgName = std::string(infile1);
 		CByteImage imgTmp;
 		ReadFile(imgTmp, infile1);

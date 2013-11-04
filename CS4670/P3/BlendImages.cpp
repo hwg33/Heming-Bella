@@ -223,7 +223,7 @@ CByteImage BlendImages(CImagePositionV& ipv, float blendWidth)
 
         // Perform the accumulation
         AccumulateBlend(img, accumulator, M_t, blendWidth);
-
+        printf("Done accumulating");
         if (i == 0) {
             CVector3 p;
             p[0] = 0.5 * width;
