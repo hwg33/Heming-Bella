@@ -68,6 +68,7 @@ static void AccumulateBlend(CByteImage& img, CFloatImage& acc, CTransform3x3 M, 
 {
     // BEGIN TODO
     // Fill in this routine
+    /*
     int w = img.Shape().width;
     int h = img.Shape().height;
     for (int x = 0; x < w; x++) {
@@ -77,8 +78,8 @@ static void AccumulateBlend(CByteImage& img, CFloatImage& acc, CTransform3x3 M, 
             p[1] = y;
             p[2] = 1;
             p = M * p;
-            int m_x = static_cast<int>(p[0]);
-            int m_y = static_cast<int>(p[1]);
+            int m_x = iround(p[0] / p[2]);
+            int m_y = iround(p[1] / p[2]);
 
             float alpha;
             if (x < blendWidth) alpha = static_cast<float>(x) / blendWidth;
@@ -91,6 +92,36 @@ static void AccumulateBlend(CByteImage& img, CFloatImage& acc, CTransform3x3 M, 
                 acc.Pixel(m_x, m_y, 1) += img.Pixel(x, y, 1) * img.Pixel(x, y, img.alphaChannel);
                 acc.Pixel(m_x, m_y, 2) += img.Pixel(x, y, 2) * img.Pixel(x, y, img.alphaChannel);
                 acc.Pixel(m_x, m_y, acc.alphaChannel) += img.Pixel(x, y, img.alphaChannel);
+            }
+        }
+    }
+    */
+    int w = acc.Shape().width;
+    int h = acc.Shape().height;
+    int imgW = img.Shape().width;
+    int imgH = img.Shape().height;
+    for (int x = 0; x < w; x++) {
+        for (int y = 0; y < h; y++) {
+            CVector3 p;
+            p[0] = x;
+            p[1] = y;
+            p[2] = 1;
+            p = M.Inverse() * p;
+            int m_x = iround(p[0] / p[2]);
+            int m_y = iround(p[1] / p[2]);
+            if (m_x >= 0 && m_x < imgW && m_y >= 0 && m_y < imgH) {
+                float alpha;
+                if (m_x < blendWidth) alpha = static_cast<float>(m_x) / blendWidth;
+                else if (m_x > imgW - 1 - blendWidth) alpha = static_cast<float>(imgW - 1 - m_x) / blendWidth;
+                else alpha = 1.0;
+                img.Pixel(m_x, m_y, img.alphaChannel) = iround(255.0 * alpha);
+
+                if (img.Pixel(m_x, m_y, 0) != 0 || img.Pixel(m_x, m_y, 1) != 0 || img.Pixel(m_x, m_y, 2) != 0) {
+                    acc.Pixel(x, y, 0) += img.Pixel(m_x, m_y, 0) * img.Pixel(m_x, m_y, img.alphaChannel);
+                    acc.Pixel(x, y, 1) += img.Pixel(m_x, m_y, 1) * img.Pixel(m_x, m_y, img.alphaChannel);
+                    acc.Pixel(x, y, 2) += img.Pixel(m_x, m_y, 2) * img.Pixel(m_x, m_y, img.alphaChannel);
+                    acc.Pixel(x, y, acc.alphaChannel) += img.Pixel(m_x, m_y, img.alphaChannel);
+                }
             }
         }
     }
@@ -140,6 +171,7 @@ static void NormalizeBlend(CFloatImage& acc, CByteImage& img)
 */
 CByteImage BlendImages(CImagePositionV& ipv, float blendWidth)
 {
+    printf("BlendImages\n");
     // Assume all the images are of the same shape (for now)
     CByteImage& img0 = ipv[0].img;
     CShape sh        = img0.Shape();
@@ -155,7 +187,7 @@ CByteImage BlendImages(CImagePositionV& ipv, float blendWidth)
 
     // Hack to detect if this is a 360 panorama
     if (ipv[0].imgName == ipv[n-1].imgName) is360 = true;
-/*
+
     for (int i = 0; i < n; i++) {
         CTransform3x3 &M = ipv[i].position;
         printf("%f %f %f\n", M[0][0], M[0][1], M[0][2]);
@@ -163,7 +195,8 @@ CByteImage BlendImages(CImagePositionV& ipv, float blendWidth)
         printf("%f %f %f\n", M[2][0], M[2][1], M[2][2]);
         printf("-----------------------------------\n");
     }
-*/
+
+    printf("Starting to compute bounding box\n");
     // Compute the bounding box for the mosaic
     float min_x = FLT_MAX, min_y = FLT_MAX;
     float max_x = 0, max_y = 0;
@@ -189,7 +222,7 @@ CByteImage BlendImages(CImagePositionV& ipv, float blendWidth)
         max_y = MAX(bottomRight[1], max_y);
         // END TODO
     }
-
+    printf("Computed bounding box\n");
     // Create a floating point accumulation image
     //printf("-%d-, -%d-\n", (int)(ceil(max_x) - floor(min_x)), (int)(ceil(max_y) - floor(min_y)));
     CShape mShape((int)(ceil(max_x) - floor(min_x)),
@@ -220,10 +253,10 @@ CByteImage BlendImages(CImagePositionV& ipv, float blendWidth)
         printf("-----------------------\n");
         */
         CByteImage& img = ipv[i].img;
-
+        printf("Starting accumulating\n");
         // Perform the accumulation
         AccumulateBlend(img, accumulator, M_t, blendWidth);
-        printf("Done accumulating");
+        printf("Done accumulating\n");
         if (i == 0) {
             CVector3 p;
             p[0] = 0.5 * width;

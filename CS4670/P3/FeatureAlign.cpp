@@ -42,9 +42,9 @@ CTransform3x3 ComputeHomography(const FeatureSet &f1, const FeatureSet &f2,
         A(2*i, 0) = a.x;
         A(2*i, 1) = a.y;
         A(2*i, 2) = 1;
-        A(2*i, 6) = - b.x * a.x;
-        A(2*i, 7) = - b.x * a.y;
-        A(2*i, 8) = - b.x;
+        A(2*i, 6) = -b.x * a.x;
+        A(2*i, 7) = -b.x * a.y;
+        A(2*i, 8) = -b.x;
         
         A(2*i+1, 3) = a.x;
         A(2*i+1, 4) = a.y;
@@ -65,9 +65,8 @@ CTransform3x3 ComputeHomography(const FeatureSet &f1, const FeatureSet &f2,
     // BEGIN TODO
     // fill the homography H with the appropriate elements of the SVD
     // To extract, for instance, the V matrix, use svd.matrixV()
-
-    double min = std::numeric_limits<double>::max();
     int min_row = 0;
+    double min = sv[0];
     for (int i = 0; i < sv.rows(); i++){
         if(sv[i] < min && sv[i] != 0){
             min = sv[i];
@@ -75,16 +74,10 @@ CTransform3x3 ComputeHomography(const FeatureSet &f1, const FeatureSet &f2,
         }
     }
 
-    if (Vt(min_row, 8) != 0) {
-        for (int i = 0; i < Vt.rows(); i++) {
-            Vt(min_row, i) /= Vt(min_row, 8);
-        }
-    }
-
     for(int i = 0; i<3; i++){
         for(int j = 0; j<3; j++){
             int k = 3*i + j;
-            H[i][j] = Vt(min_row, k);
+            H[i][j] = Vt(min_row, k) / Vt(min_row, 8);
         }
     }
     printf("In ComputeHomography: %f\n", H[2][2]);
@@ -230,7 +223,6 @@ int countInliers(const FeatureSet &f1, const FeatureSet &f2,
         p = M * p;
         
         double distance = sqrt((p[0]/p[2] - b.x)*(p[0]/p[2] - b.x) + (p[1]/p[2] - b.y)*(p[1]/p[2] - b.y));
-        printf("dist:%f\n", distance);
         if (distance <= RANSACthresh) inliers.push_back(i);
 
         // END TODO
@@ -298,13 +290,10 @@ int leastSquaresFit(const FeatureSet &f1, const FeatureSet &f2,
             printf("inliers_size:%d\n", (int)inliers.size());
             for (int i=0; i < (int) inliers.size(); i++) {
                 FeatureMatch match = matches[inliers[i]];
-                printf("match%d: 1:%d, 2:%d\n", inliers[i], match.id1, match.id2);
                 inlier_matches.push_back(match);
             }
-            printf("before computeH!\n");
             M = ComputeHomography(f1, f2, inlier_matches);
             printf("%f\n", M[2][2]);
-            printf("after computeH!\n");
 
             // END TODO
         

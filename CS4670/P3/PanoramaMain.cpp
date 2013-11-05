@@ -306,7 +306,7 @@ int BlendPairs(int argc, const char *argv[])
 
 	ipList.push_back(ip);
 	fclose(stream);
-    /*
+
     for (int i = 0; i < ipList.size(); i++) {
         CTransform3x3 &M = ipList[i].position;
         printf("| %f %f %f\n", M[0][0], M[0][1], M[0][2]);
@@ -314,9 +314,9 @@ int BlendPairs(int argc, const char *argv[])
         printf("| %f %f %f\n", M[2][0], M[2][1], M[2][2]);
         printf("| -----------------------------------\n");
     }
-    */
+    printf("iplist.size() = %d\n", ipList.size());
 	CByteImage resultTmp = BlendImages(ipList, blendWidth);
-
+    printf("Done Blending\n");
 	// Flip again
 	CByteImage result(resultTmp.Shape());
 	FlipImage(resultTmp, result);
