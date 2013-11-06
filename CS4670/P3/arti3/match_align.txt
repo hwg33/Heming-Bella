@@ -1,0 +1,26 @@
+rm -f pairlist.txt
+echo "Matching image 1 to 2"
+../Features matchFeatures 1.warp.f 2.warp.f 0.7 match_1_2.txt 2
+echo "Matching image 2 to 3"
+../Features matchFeatures 2.warp.f 3.warp.f 0.7 match_2_3.txt 2
+echo "Matching image 3 to 4"
+../Features matchFeatures 3.warp.f 4.warp.f 0.7 match_3_4.txt 2
+echo "Matching image 4 to 5"
+../Features matchFeatures 4.warp.f 5.warp.f 0.7 match_4_5.txt 2
+echo "Matching image 5 to 6"
+../Features matchFeatures 5.warp.f 6.warp.f 0.7 match_5_6.txt 2
+echo "Aligning image 1 to 2"
+../Panorama alignPair 1.warp.f 2.warp.f match_1_2.txt 1000 4.0 | tail -1 > align_1_2.txt
+echo `basename 1.warp.f .f`.tga `basename 2.warp.f .f`.tga `cat align_1_2.txt` >> pairlist.txt
+echo "Aligning image 2 to 3"
+../Panorama alignPair 2.warp.f 3.warp.f match_2_3.txt 1000 4.0 | tail -1 > align_2_3.txt
+echo `basename 2.warp.f .f`.tga `basename 3.warp.f .f`.tga `cat align_2_3.txt` >> pairlist.txt
+echo "Aligning image 3 to 4"
+../Panorama alignPair 3.warp.f 4.warp.f match_3_4.txt 1000 4.0 | tail -1 > align_3_4.txt
+echo `basename 3.warp.f .f`.tga `basename 4.warp.f .f`.tga `cat align_3_4.txt` >> pairlist.txt
+echo "Aligning image 4 to 5"
+../Panorama alignPair 4.warp.f 5.warp.f match_4_5.txt 1000 4.0 | tail -1 > align_4_5.txt
+echo `basename 4.warp.f .f`.tga `basename 5.warp.f .f`.tga `cat align_4_5.txt` >> pairlist.txt
+echo "Aligning image 5 to 6"
+../Panorama alignPair 5.warp.f 6.warp.f match_5_6.txt 1000 4.0 | tail -1 > align_5_6.txt
+echo `basename 5.warp.f .f`.tga `basename 6.warp.f .f`.tga `cat align_5_6.txt` >> pairlist.txt
