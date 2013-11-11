@@ -1,3 +1,4 @@
+panorama.f
 trees_000.f
 trees_001.f
 trees_002.f

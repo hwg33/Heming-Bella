@@ -80,7 +80,6 @@ CTransform3x3 ComputeHomography(const FeatureSet &f1, const FeatureSet &f2,
             H[i][j] = Vt(min_row, k) / Vt(min_row, 8);
         }
     }
-    printf("In ComputeHomography: %f\n", H[2][2]);
     // END TODO
 
     return H;
@@ -205,7 +204,6 @@ int countInliers(const FeatureSet &f1, const FeatureSet &f2,
                  CTransform3x3 M, double RANSACthresh, vector<int> &inliers)
 {
     inliers.clear();
-    printf("thresh:%f\n", RANSACthresh);
     for (unsigned int i = 0; i < matches.size(); i++) {
         // BEGIN TODO
         // determine if the ith matched feature f1[id1], when transformed by M,

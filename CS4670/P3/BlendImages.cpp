@@ -187,7 +187,10 @@ CByteImage BlendImages(CImagePositionV& ipv, float blendWidth)
 
     // Hack to detect if this is a 360 panorama
     if (ipv[0].imgName == ipv[n-1].imgName) is360 = true;
-
+    
+    if (is360) printf("Is 360.\n");
+    else printf("Not 360.\n");
+    
     for (int i = 0; i < n; i++) {
         CTransform3x3 &M = ipv[i].position;
         printf("%f %f %f\n", M[0][0], M[0][1], M[0][2]);
