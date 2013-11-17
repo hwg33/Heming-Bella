@@ -58,7 +58,33 @@ SVMPoint BestFitIntersect(const std::list<SVMLine> &lines, int imgWidth, int img
     //
     /******** BEGIN TODO ********/
 
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
+    for (iter = lines.begin(); iter != lines.end(); iter++) {
+        SVMLine l = iter;
+        SVMPoint p1 = l.pnt1;
+        SVMPoint p2 = l.pnt2;
+        
+        double a = p1.v * p2.w - p1.w * p2.v;
+        double b = p1.w * p2.u - p1.u * p2.w;
+        double c = p1.u * p2.v - p1.v * p2.u;
+        
+        A[0][0] += a*a;
+        A[0][1] += a*b;
+        A[0][2] += a*c;
+        A[1][0] += b*a;
+        A[1][1] += b*b;
+        A[1][2] += b*c;
+        A[2][0] += c*a;
+        A[2][1] += c*b;
+        A[2][2] += c*c;
+        
+    }
+    double eval, h[3];
+    MinEig(A, eval, h);
+    
+    bestfit.u = h[0];
+    bestfit.v = h[1];
+    bestfit.w = h[2];
+
 
     /******** END TODO ********/
 	
@@ -78,7 +104,41 @@ void ConvertToPlaneCoordinate(const vector<SVMPoint>& points, vector<Vec3d>& bas
     int numPoints = points.size();
 
     /******** BEGIN TODO ********/
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
+    Vec3d p = basisPts[0];
+    Vec3d q = basisPts[1];
+    Vec3d r = basisPts[2];
+    
+    Vec3d e_x = (p-r).normalize();
+    Vec3d s = prod((q-r), e_x)*e_x;
+    Vec3d t = (q-r) - s;
+    Vec3d e_y = t.normalize();
+    
+    vector<Vec3d> plainPts;
+    double max_u = std::numeric_limits<double>::min();
+    double min_u = std::numeric_limits<double>::max();
+    double max_v = std::numeric_limits<double>::min();
+    double min_v = std::numeric_limits<double>::max();
+    for (i = 0; i < numPoints; i++){
+        Vec3d a = basisPts[i];
+        
+        double u = prod((a-r), e_x);
+        double v = prod((a-r), e_y);
+        
+        if (u > max_u) max_u = u;
+        if (u < min_u) min_u = u;
+        if (v > max_v) max_v = v;
+        if (v < min_v) min_v = v;
+        plainPts.push_back(Vec3d(u, v, 1));
+    }
+    
+    uScale = max_u - min_u;
+    vScale = max_v - min_v;
+    
+    for(i = 0; i<numPoints; i++){
+        double u = plainPts[i][0];
+        double v = plainPts[i][1];
+        basisPts[i] = Vec3d((u - min_u)/uScale, (v - min_v)/vScale);
+    }
 
     /******** END TODO ********/
 }
@@ -127,7 +187,27 @@ void ComputeHomography(CTransform3x3 &H, CTransform3x3 &Hinv, const vector<SVMPo
 
     /******** BEGIN TODO ********/
     /* Fill in the A matrix for the call to MinEig */
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
+    for (int i = 0; i < numPoints; i++) {
+        Vec3d a = basisPts[i];
+        SVMPoint b = points[i];
+        
+        A(2*i, 0) = a[0];
+        A(2*i, 1) = a[1];
+        A(2*i, 2) = 1;
+        A(2*i, 6) = -b.u * a[0];
+        A(2*i, 7) = -b.u * a[1];
+        A(2*i, 8) = -b.u;
+        
+        A(2*i+1, 3) = a[0];
+        A(2*i+1, 4) = a[1];
+        A(2*i+1, 5) = 1;
+        A(2*i+1, 6) = -b.v * a[0];
+        A(2*i+1, 7) = -b.v * a[1];
+        A(2*i+1, 8) = -b.v;
+        
+        // END TODO
+    }
+
 
 
     double eval, h[9];
