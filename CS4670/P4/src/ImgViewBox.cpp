@@ -14,12 +14,12 @@
 //     Given the 2D positions of two corners of a rectangular face parallel to the XZ plane, compute
 //     the 2D positions of the other two corners
 
-void getLineParam(double u0, double v0, double u1, double v1, double m, double b){
+void getLineParam(double u0, double v0, double u1, double v1, double &m, double &b){
     m = (v1 - v0)/(u1 - u0);
     b = v0 - m * u0;
 }
 
-void getIntersection(double m1, double m2, double b1, double b2, double x, double y){
+void getIntersection(double m1, double m2, double b1, double b2, double &x, double &y){
     x = (b2 - b1)/(m1 - m2);
     y = x * m1 + b1;
 }
@@ -36,21 +36,24 @@ void ImgView::solveForOppositeCorners(double u0, double v0, double u2, double v2
     // Remember that this face is on a plane perpendicular to the plane x=0
     // Store the results in variables 'u1, v1' and 'u3, v3'
 
-    double vx_u = xVanish.u;
-    double vx_v = xVanish.v;
+    Vec3d x = Vec3d(xVanish.u, xVanish.v, xVanish.w);
+    Vec3d z = Vec3d(zVanish.u, zVanish.v, zVanish.w);
 
-    double vz_u = zVanish.u;
-    double vz_v = zVanish.v;
+    Vec3d p0 = Vec3d(u0, v0, 1);
+    Vec3d p2 = Vec3d(u2, v2, 1);
 
-    double m0x, b0x, m2x, b2x, m0z, b0z, m2z, b2z;
+    Vec3d x0 = cross(x, p0);
+    Vec3d z0 = cross(z, p0);
+    Vec3d x2 = cross(x, p2);
+    Vec3d z2 = cross(z, p2);
 
-    getLineParam(u0, v0, vx_u, vx_v, m0x, b0x);
-    getLineParam(u0, v0, vz_u, vz_v, m0z, b0z);
-    getLineParam(u1, v1, vx_u, vx_v, m2x, b2x);
-    getLineParam(u1, v1, vz_u, vz_v, m2z, b2z);
+    Vec3d p3 = cross(z0, x2);
+    Vec3d p1 = cross(z2, x0);
 
-    getIntersection(m0x, m2z, b0x, b2z, u1, v1);
-    getIntersection(m0z, m2x, b0z, b2x, u3, v3);
+    u1 = p1[0]/p1[2];
+    v1 = p1[1]/p1[2];
+    u3 = p3[0]/p3[2];
+    v3 = p3[0]/p3[2];
 
     /********* END TODO ********/
 }
@@ -88,8 +91,24 @@ void ImgView::solveForOppositeFace(SVMSweep *sweep, double imgX, double imgY,
     // Store the results in variables p4, p5, p6, and p7.
 	Vec3d p4, p5, p6, p7;
 
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
+    Vec3d x = Vec3d(xVanish.u, xVanish.v, xVanish.w);
+    Vec3d y = Vec3d(yVanish.u, yVanish.v, yVanish.w);
+    Vec3d z = Vec3d(zVanish.u, zVanish.v, zVanish.w);
 
+    Vec3d mx = cross(pMouse, x);
+    Vec3d y1 = cross(y, p1);
+    Vec3d y0 = cross(y, p0);
+    Vec3d y2 = cross(y, p2);
+    Vec3d y3 = cross(y, p3);
+
+    p4 = cross(y0, mx);
+    p5 = cross(y1, mx);
+
+    Vec3d z4 = cross(z, p4);
+    Vec3d z5 = cross(z, p5);
+
+    p6 = cross(z5, y2);
+    p7 = cross(z4, y3);
 
     /******** END TODO ********/
 
