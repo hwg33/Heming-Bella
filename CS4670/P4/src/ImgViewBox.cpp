@@ -13,6 +13,17 @@
 // TODO 6: solveForOppositeCorners()
 //     Given the 2D positions of two corners of a rectangular face parallel to the XZ plane, compute
 //     the 2D positions of the other two corners
+
+void getLineParam(double u0, double v0, double u1, double v1, double m, double b){
+    m = (v1 - v0)/(u1 - u0);
+    b = v0 - m * u0;
+}
+
+void getIntersection(double m1, double m2, double b1, double b2, double x, double y){
+    x = (b2 - b1)/(m1 - m2);
+    y = x * m1 + b1;
+}
+
 void ImgView::solveForOppositeCorners(double u0, double v0, double u2, double v2,
                                       double &u1, double &v1, double &u3, double &v3)
 {
@@ -25,7 +36,21 @@ void ImgView::solveForOppositeCorners(double u0, double v0, double u2, double v2
     // Remember that this face is on a plane perpendicular to the plane x=0
     // Store the results in variables 'u1, v1' and 'u3, v3'
 
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
+    double vx_u = xVanish.u;
+    double vx_v = xVanish.v;
+
+    double vz_u = zVanish.u;
+    double vz_v = zVanish.v;
+
+    double m0x, b0x, m2x, b2x, m0z, b0z, m2z, b2z;
+
+    getLineParam(u0, v0, vx_u, vx_v, m0x, b0x);
+    getLineParam(u0, v0, vz_u, vz_v, m0z, b0z);
+    getLineParam(u1, v1, vx_u, vx_v, m2x, b2x);
+    getLineParam(u1, v1, vz_u, vz_v, m2z, b2z);
+
+    getIntersection(m0x, m2z, b0x, b2z, u1, v1);
+    getIntersection(m0z, m2x, b0z, b2x, u3, v3);
 
     /********* END TODO ********/
 }
