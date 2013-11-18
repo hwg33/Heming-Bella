@@ -129,10 +129,47 @@ void ImgView::find3DPositionsBox(SVMPoint *points[8])
     // points[1] through points[7].  You can and should use the sameXY and sameZ routines that 
 	// you need to implement.  For that to work, you will need to push and pop points from
 	// pntSelStack.  There are multiple ways to implement this function.
+    pntSelStack.push_back(points[0]);
 
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
+    //get 1
+    pntSelStack.push_back(points[1]);
+    sameZPlane();
+    pntSelStack.pop_back();
 
+    //get 4
+    pntSelStack.push_back(points[4]);
+    sameZPlane();
+    pntSelStack.pop_back();
 
+    //get 5
+    pntSelStack.push_back(points[5]);
+    sameZPlane();
+    pntSelStack.pop_back();
+
+    //get 3
+    pntSelStack.push_back(points[3]);
+    sameXY();
+    pntSelStack.pop_back();
+
+    //get 2
+    pntSelStack.pop_back();
+    pntSelStack.push_back(points[1]);
+    pntSelStack.push_back(points[2]);
+    sameXY();
+
+    //get 7
+    pntSelStack.pop_back();
+    pntSelStack.pop_back();
+    pntSelStack.push_back(points[4]);
+    pntSelStack.push_back(points[7]);
+    sameXY();
+
+    //get 6
+    pntSelStack.pop_back();
+    pntSelStack.pop_back();
+    pntSelStack.push_back(points[5]);
+    pntSelStack.push_back(points[6]);
+    sameXY();
 	/********* END TODO ********/
 }
 
