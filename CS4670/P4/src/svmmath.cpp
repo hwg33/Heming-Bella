@@ -62,7 +62,7 @@ SVMPoint BestFitIntersect(const std::list<SVMLine> &lines, int imgWidth, int img
         SVMLine l = *iter;
         SVMPoint p1 = *l.pnt1;
         SVMPoint p2 = *l.pnt2;
-        
+
         double a = p1.v * p2.w - p1.w * p2.v;
         double b = p1.w * p2.u - p1.u * p2.w;
         double c = p1.u * p2.v - p1.v * p2.u;
@@ -81,9 +81,9 @@ SVMPoint BestFitIntersect(const std::list<SVMLine> &lines, int imgWidth, int img
     double eval, h[3];
     MinEig(A, eval, h);
     
-    bestfit.u = h[0];
-    bestfit.v = h[1];
-    bestfit.w = h[2];
+    bestfit.u = h[0]/h[2];
+    bestfit.v = h[1]/h[2];
+    bestfit.w = 1;
 
 
     /******** END TODO ********/

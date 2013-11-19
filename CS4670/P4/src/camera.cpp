@@ -36,7 +36,6 @@ void ImgView::computeCameraParameters()
     double z_cam = 0.0;
     double x_cam = 0.0, y_cam = 0.0;
 
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
 
 
     /******** END TODO Part 1 ********/
