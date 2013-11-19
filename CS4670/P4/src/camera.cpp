@@ -48,10 +48,10 @@ void ImgView::computeCameraParameters()
     r.u = refPointOffPlane->u;
     r.v = refPointOffPlane->v;
     r.w = refPointOffPlane->w;
-    b->X = refPointOffPlane->X;
-    b->Y = refPointOffPlane->Y;
-    b->Z = refPointOffPlane->Z;
-    b->W = refPointOffPlane->W;
+    r.X = refPointOffPlane->X;
+    r.Y = refPointOffPlane->Y;
+    r.Z = refPointOffPlane->Z;
+    r.W = refPointOffPlane->W;
 
     SVMPoint horizon = crossProduct(crossProduct(zVanish, r), crossProduct(xVanish, yVanish));
 
@@ -69,8 +69,8 @@ void ImgView::computeCameraParameters()
 
     sameXY();
 
-    horizon = *pntSelStack.pop_back();
-    r = *pntSelStack.push_back();
+    pntSelStack.pop_back();
+    pntSelStack.pop_back();
 
     SVMPoint* c0;
     c0->u = zVanish.u;
@@ -82,8 +82,8 @@ void ImgView::computeCameraParameters()
 
     sameZPlane();
 
-    c0 = pntSelStack.pop_back();
-    b = pntSelStack.pop_back();
+    pntSelStack.pop_back();
+    pntSelStack.pop_back();
 
     x_cam = c0->X;
     y_cam = c0->Y;
