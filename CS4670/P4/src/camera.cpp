@@ -11,6 +11,14 @@
 
 #include "svmCMath.h"
 
+SVMPoint crossProduct(SVMPoint p1, SVMPoint p2) {
+    SVMPoint ret;
+    ret.u = p1.v * p2.w - p1.w * p2.v;
+    ret.v = p1.w * p2.u - p1.u * p2.w;
+    ret.w = p1.u * p2.v - p1.v * p2.u;
+    return ret;
+}
+
 //
 // TODO 9: computeCameraParameters()
 // Compute the camera position
@@ -36,7 +44,50 @@ void ImgView::computeCameraParameters()
     double z_cam = 0.0;
     double x_cam = 0.0, y_cam = 0.0;
 
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
+    SVMPoint r;
+    r.u = refPointOffPlane->u;
+    r.v = refPointOffPlane->v;
+    r.w = refPointOffPlane->w;
+    b->X = refPointOffPlane->X;
+    b->Y = refPointOffPlane->Y;
+    b->Z = refPointOffPlane->Z;
+    b->W = refPointOffPlane->W;
+
+    SVMPoint horizon = crossProduct(crossProduct(zVanish, r), crossProduct(xVanish, yVanish));
+
+    SVMPoint* b;
+    b->u = refPointOffPlane->u;
+    b->v = refPointOffPlane->v;
+    b->w = refPointOffPlane->w;
+    b->X = refPointOffPlane->X;
+    b->Y = refPointOffPlane->Y;
+    b->Z = 0;
+    b->W = refPointOffPlane->W;
+
+    pntSelStack.push_back(&r);
+    pntSelStack.push_back(&horizon);
+
+    sameXY();
+
+    horizon = *pntSelStack.pop_back();
+    r = *pntSelStack.push_back();
+
+    SVMPoint* c0;
+    c0->u = zVanish.u;
+    c0->v = zVanish.v;
+    c0->w = zVanish.w;
+
+    pntSelStack.push_back(b);
+    pntSelStack.push_back(c0);
+
+    sameZPlane();
+
+    c0 = pntSelStack.pop_back();
+    b = pntSelStack.pop_back();
+
+    x_cam = c0->X;
+    y_cam = c0->Y;
+    z_cam = horizon.Z;
 
 
     /******** END TODO Part 1 ********/
