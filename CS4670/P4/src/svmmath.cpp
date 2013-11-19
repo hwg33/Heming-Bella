@@ -59,31 +59,31 @@ SVMPoint BestFitIntersect(const std::list<SVMLine> &lines, int imgWidth, int img
     /******** BEGIN TODO ********/
 
     for (iter = lines.begin(); iter != lines.end(); iter++) {
-        SVMLine l = iter;
-        SVMPoint p1 = l.pnt1;
-        SVMPoint p2 = l.pnt2;
-        
+        SVMLine l = *iter;
+        SVMPoint p1 = *l.pnt1;
+        SVMPoint p2 = *l.pnt2;
+
         double a = p1.v * p2.w - p1.w * p2.v;
         double b = p1.w * p2.u - p1.u * p2.w;
         double c = p1.u * p2.v - p1.v * p2.u;
         
-        A[0][0] += a*a;
-        A[0][1] += a*b;
-        A[0][2] += a*c;
-        A[1][0] += b*a;
-        A[1][1] += b*b;
-        A[1][2] += b*c;
-        A[2][0] += c*a;
-        A[2][1] += c*b;
-        A[2][2] += c*c;
+        A(0, 0) += a*a;
+        A(0, 1) += a*b;
+        A(0, 2) += a*c;
+        A(1, 0) += b*a;
+        A(1, 1) += b*b;
+        A(1, 2) += b*c;
+        A(2, 0) += c*a;
+        A(2, 1) += c*b;
+        A(2, 2) += c*c;
         
     }
     double eval, h[3];
     MinEig(A, eval, h);
     
-    bestfit.u = h[0];
-    bestfit.v = h[1];
-    bestfit.w = h[2];
+    bestfit.u = h[0]/h[2];
+    bestfit.v = h[1]/h[2];
+    bestfit.w = 1;
 
 
     /******** END TODO ********/
@@ -99,6 +99,11 @@ SVMPoint BestFitIntersect(const std::list<SVMLine> &lines, int imgWidth, int img
 //		http://www.cs.cornell.edu/courses/cs4670/2012fa/projects/p4/homography.pdf.
 //      The final divisors you apply to the u and v coordinates should be saved uScale and vScale
 //
+
+double dot_product(Vec3d a, Vec3d b){
+    return a[0]*b[0] + a[1]*b[1] + a[2]*b[2];
+}
+
 void ConvertToPlaneCoordinate(const vector<SVMPoint>& points, vector<Vec3d>& basisPts, double &uScale, double &vScale)
 {
     int numPoints = points.size();
@@ -108,21 +113,23 @@ void ConvertToPlaneCoordinate(const vector<SVMPoint>& points, vector<Vec3d>& bas
     Vec3d q = basisPts[1];
     Vec3d r = basisPts[2];
     
-    Vec3d e_x = (p-r).normalize();
-    Vec3d s = prod((q-r), e_x)*e_x;
-    Vec3d t = (q-r) - s;
-    Vec3d e_y = t.normalize();
+    Vec3d e_x = p - r;
+    e_x.normalize();
+
+    Vec3d s = dot_product((q-r), e_x) *e_x;
+    Vec3d e_y = (q-r) - s;
+    e_y.normalize();
     
     vector<Vec3d> plainPts;
     double max_u = std::numeric_limits<double>::min();
     double min_u = std::numeric_limits<double>::max();
     double max_v = std::numeric_limits<double>::min();
     double min_v = std::numeric_limits<double>::max();
-    for (i = 0; i < numPoints; i++){
+    for (int i = 0; i < numPoints; i++){
         Vec3d a = basisPts[i];
         
-        double u = prod((a-r), e_x);
-        double v = prod((a-r), e_y);
+        double u = dot_product((a-r), e_x);
+        double v = dot_product((a-r), e_y);
         
         if (u > max_u) max_u = u;
         if (u < min_u) min_u = u;
@@ -134,10 +141,10 @@ void ConvertToPlaneCoordinate(const vector<SVMPoint>& points, vector<Vec3d>& bas
     uScale = max_u - min_u;
     vScale = max_v - min_v;
     
-    for(i = 0; i<numPoints; i++){
+    for(int i = 0; i<numPoints; i++){
         double u = plainPts[i][0];
         double v = plainPts[i][1];
-        basisPts[i] = Vec3d((u - min_u)/uScale, (v - min_v)/vScale);
+        basisPts[i] = Vec3d((u - min_u)/uScale, (v - min_v)/vScale, 1);
     }
 
     /******** END TODO ********/
