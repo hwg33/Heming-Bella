@@ -156,7 +156,7 @@ void ImgView::sameZPlane()
 
 	/******** BEGIN TODO ********/
     if (knownPoint.Z == 0) {
-        transformInv(HInv, &newPoint);
+        transformInv(Hinv, &newPoint);
     }
     else {
         SVMPoint v = cross(cross(knownPoint, newPoint), cross(xVanish, yVanish));
@@ -169,7 +169,7 @@ void ImgView::sameZPlane()
 
         SVMPoint b0 = cross(cross(b1, v), cross(zVanish, newPoint));
 
-        transform(HInv, &b0);
+        transform(Hinv, &b0);
 
         b0.Z = knownPoint.Z;
     }
