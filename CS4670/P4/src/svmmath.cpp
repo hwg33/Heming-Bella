@@ -115,31 +115,45 @@ double dot_product(Vec3d a, Vec3d b){
 
 void ConvertToPlaneCoordinate(const vector<SVMPoint>& points, vector<Vec3d>& basisPts, double &uScale, double &vScale)
 {
+    printf("Helloooo!\n");
+    printf("points[0].X = %f\n", points[0].X);
+    printf("points[1].Y = %f\n", points[1].Y);
+    printf("points[2].Z = %f\n", points[2].Z);
+    printf("points.size() = %d\n", points.size());
     int numPoints = (int) points.size();
-    printf("333333");
+    printf("A\n");
 
     /******** BEGIN TODO ********/
     SVMPoint p = points[0];
+    printf("B\n");
     SVMPoint q = points[1];
+    printf("C\n");
     SVMPoint r = points[2];
 
-    printf("p:(%f, %f, %f) ", p.X, p.Y, p.Z);
-    printf("q:(%f, %f, %f) ", q.X, q.Y, q.Z);
-    printf("r:(%f, %f, %f) ", r.X, r.Y, r.Z);
+    printf("p:(%f, %f, %f)\n", p.X, p.Y, p.Z);
+    printf("q:(%f, %f, %f)\n", q.X, q.Y, q.Z);
+    printf("r:(%f, %f, %f)\n", r.X, r.Y, r.Z);
 
     Vec3d vp = Vec3d(p.X, p.Y, p.Z);
+    printf("D\n");
     Vec3d vq = Vec3d(q.X, q.Y, q.Z);
+    printf("E\n");
     Vec3d vr = Vec3d(r.X, r.Y, r.Z);
+    printf("F\n");
     
     Vec3d e_x = Vec3d(p.X - r.X, p.Y - r.Y, p.Z - r.Z);
+    printf("G\n");
     e_x.normalize();
+    printf("H\n");
 
     double dot = (q.X - r.X) * e_x[0] + (q.Y - r.Y) * e_x[1] + (q.Z - r.Z) * e_x[2];
-
+    printf("I\n");
     Vec3d s = Vec3d(e_x[0] * dot, e_x[1] * dot, e_x[2] * dot);
-
+    printf("J\n");
     Vec3d e_y = (vq - vr) - s;
+    printf("K\n");
     e_y.normalize();
+    printf("L\n");
     
     vector<Vec3d> plainPts;
     double max_u = std::numeric_limits<double>::min();
@@ -160,15 +174,18 @@ void ConvertToPlaneCoordinate(const vector<SVMPoint>& points, vector<Vec3d>& bas
 
         plainPts.push_back(Vec3d(u, v, 1));
     }
-    
+    printf("M\n");
     uScale = max_u - min_u;
     vScale = max_v - min_v;
     
     for(int i = 0; i<numPoints; i++){
         double u = plainPts[i][0];
         double v = plainPts[i][1];
-        basisPts[i] = Vec3d((u - min_u)/uScale, (v - min_v)/vScale, 1);
+        printf("N\n");
+        basisPts.push_back(Vec3d((u - min_u)/uScale, (v - min_v)/vScale, 1));
+        printf("O\n");
     }
+    printf("Z\n");
 
     /******** END TODO ********/
 }

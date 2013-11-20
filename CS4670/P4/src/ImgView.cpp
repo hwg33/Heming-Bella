@@ -780,6 +780,7 @@ static void matrix_to_axis_angle(double *R, double *axis, double *angle) {
 
 void ImgView::SaveVRML(const char *filename)
 {
+    printf("HELLLLLLLOOOO\n");
 	FILE *fp = fopen(filename,"w");
 
 	fprintf(fp,"#VRML V2.0 utf8\n\n");
