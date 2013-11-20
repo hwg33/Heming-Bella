@@ -52,11 +52,29 @@ void ImgView::computeCameraParameters()
     r.Y = refPointOffPlane->Y;
     r.Z = refPointOffPlane->Z;
     r.W = refPointOffPlane->W;
-
+    printf("xVanish.u = %f\n", xVanish.u);
+    printf("xVanish.v = %f\n", xVanish.v);
+    printf("xVanish.w = %f\n", xVanish.w);
+    printf("yVanish.u = %f\n", yVanish.u);
+    printf("yVanish.v = %f\n", yVanish.v);
+    printf("yVanish.w = %f\n", yVanish.w);
     SVMPoint horizon = crossProduct(xVanish, yVanish);
+    printf("horizon.u = %f\n", horizon.u);
+    printf("horizon.v = %f\n", horizon.v);
+    printf("horizon.w = %f\n", horizon.w);
     SVMPoint refLine = crossProduct(zVanish, r);
+    printf("refLine.u = %f\n", refLine.u);
+    printf("refLine.v = %f\n", refLine.v);
+    printf("refLine.w = %f\n", refLine.w);
     SVMPoint intersect = crossProduct(horizon, refLine);
-
+    if (intersect.w != 0) {
+        intersect.u = intersect.u / intersect.w;
+        intersect.v = intersect.v / intersect.w;
+        intersect.w = 1;
+    }
+    printf("intersect.u = %f\n", intersect.u);
+    printf("intersect.v = %f\n", intersect.v);
+    printf("intersect.w = %f\n", intersect.w);
     pntSelStack.push_back(&r);
     pntSelStack.push_back(&intersect);
 
@@ -81,7 +99,7 @@ void ImgView::computeCameraParameters()
 
     pntSelStack.push_back(&b);
     pntSelStack.push_back(&c0);
-
+    printf("ABOUT TO CALL SAMEZPLANE()\n");
     sameZPlane();
 
     pntSelStack.pop_back();
