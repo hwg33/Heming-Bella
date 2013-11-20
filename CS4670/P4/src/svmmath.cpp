@@ -115,6 +115,7 @@ double dot_product(Vec3d a, Vec3d b){
 
 void ConvertToPlaneCoordinate(const vector<SVMPoint>& points, vector<Vec3d>& basisPts, double &uScale, double &vScale)
 {
+    printf("starting convert to plane coordinate");
     int numPoints = points.size();
 
     /******** BEGIN TODO ********/
@@ -223,8 +224,6 @@ void ComputeHomography(CTransform3x3 &H, CTransform3x3 &Hinv, const vector<SVMPo
         
         // END TODO
     }
-
-
 
     double eval, h[9];
     MinEig(A, eval, h);
