@@ -53,41 +53,43 @@ void ImgView::computeCameraParameters()
     r.Z = refPointOffPlane->Z;
     r.W = refPointOffPlane->W;
 
-    SVMPoint horizon = crossProduct(crossProduct(zVanish, r), crossProduct(xVanish, yVanish));
-
-    SVMPoint* b;
-    b->u = refPointOffPlane->u;
-    b->v = refPointOffPlane->v;
-    b->w = refPointOffPlane->w;
-    b->X = refPointOffPlane->X;
-    b->Y = refPointOffPlane->Y;
-    b->Z = 0;
-    b->W = refPointOffPlane->W;
+    SVMPoint horizon = crossProduct(xVanish, yVanish);
+    SVMPoint refLine = crossProduct(zVanish, r);
+    SVMPoint intersect = crossProduct(horizon, refLine);
 
     pntSelStack.push_back(&r);
-    pntSelStack.push_back(&horizon);
+    pntSelStack.push_back(&intersect);
 
     sameXY();
 
     pntSelStack.pop_back();
     pntSelStack.pop_back();
 
-    SVMPoint* c0;
-    c0->u = zVanish.u;
-    c0->v = zVanish.v;
-    c0->w = zVanish.w;
+    SVMPoint b;
+    b.u = refPointOffPlane->u;
+    b.v = refPointOffPlane->v;
+    b.w = refPointOffPlane->w;
+    b.X = refPointOffPlane->X;
+    b.Y = refPointOffPlane->Y;
+    b.Z = 0;
+    b.W = refPointOffPlane->W;
 
-    pntSelStack.push_back(b);
-    pntSelStack.push_back(c0);
+    SVMPoint c0;
+    c0.u = zVanish.u;
+    c0.v = zVanish.v;
+    c0.w = zVanish.w;
+
+    pntSelStack.push_back(&b);
+    pntSelStack.push_back(&c0);
 
     sameZPlane();
 
     pntSelStack.pop_back();
     pntSelStack.pop_back();
 
-    x_cam = c0->X;
-    y_cam = c0->Y;
-    z_cam = horizon.Z;
+    x_cam = c0.X;
+    y_cam = c0.Y;
+    z_cam = intersect.Z;
 
 
     /******** END TODO Part 1 ********/
