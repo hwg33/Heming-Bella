@@ -117,7 +117,7 @@ void ImgView::sameXY()
     SVMPoint b;
     b.X = refPointOffPlane->X;
     b.Y = refPointOffPlane->Y;
-    b.Z = 0;
+    b.Z = 1;
     transform(H, &b);
 
     SVMPoint r;
@@ -134,7 +134,7 @@ void ImgView::sameXY()
         SVMPoint b0;
         b0.X = knownPoint.X;
         b0.Y = knownPoint.Y;
-        b0.Z = 0;
+        b0.Z = 1;
         transform(H, &b0);
         printf("b0.u = %f\n", b0.u);
         printf("b0.v = %f\n", b0.v);
