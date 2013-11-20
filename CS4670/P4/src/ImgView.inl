@@ -245,7 +245,7 @@ void ImgView::sameZPlane()
         SVMPoint b1;
         b1.X = knownPoint.X;
         b1.Y = knownPoint.Y;
-        b1.Z = 0;
+        b1.Z = 1;
         transform(H, &b1);
 
         SVMPoint b0 = cross(cross(b1, v), cross(zVanish, newPoint));
@@ -254,12 +254,11 @@ void ImgView::sameZPlane()
             b0.v = b0.v / b0.w;
             b0.w = 1;
         }
-        transform(H, &b0);
+        transformInv(Hinv, &b0);
 
-        b0.Z = knownPoint.Z;
         newPoint.X = b0.X;
         newPoint.Y = b0.Y;
-        newPoint.Z = b0.Z;
+        newPoint.Z = knownPoint.Z;
     }
     printf("newPoint.u = %f\n", newPoint.u);
     printf("newPoint.v = %f\n", newPoint.v);
