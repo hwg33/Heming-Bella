@@ -115,19 +115,30 @@ double dot_product(Vec3d a, Vec3d b){
 
 void ConvertToPlaneCoordinate(const vector<SVMPoint>& points, vector<Vec3d>& basisPts, double &uScale, double &vScale)
 {
-    printf("starting convert to plane coordinate");
-    int numPoints = points.size();
+    int numPoints = (int) points.size();
+    printf("333333");
 
     /******** BEGIN TODO ********/
-    Vec3d p = basisPts[0];
-    Vec3d q = basisPts[1];
-    Vec3d r = basisPts[2];
+    SVMPoint p = points[0];
+    SVMPoint q = points[1];
+    SVMPoint r = points[2];
+
+    printf("p:(%f, %f, %f) ", p.X, p.Y, p.Z);
+    printf("q:(%f, %f, %f) ", q.X, q.Y, q.Z);
+    printf("r:(%f, %f, %f) ", r.X, r.Y, r.Z);
+
+    Vec3d vp = Vec3d(p.X, p.Y, p.Z);
+    Vec3d vq = Vec3d(q.X, q.Y, q.Z);
+    Vec3d vr = Vec3d(r.X, r.Y, r.Z);
     
-    Vec3d e_x = p - r;
+    Vec3d e_x = Vec3d(p.X - r.X, p.Y - r.Y, p.Z - r.Z);
     e_x.normalize();
 
-    Vec3d s = dot_product((q-r), e_x) *e_x;
-    Vec3d e_y = (q-r) - s;
+    double dot = (q.X - r.X) * e_x[0] + (q.Y - r.Y) * e_x[1] + (q.Z - r.Z) * e_x[2];
+
+    Vec3d s = Vec3d(e_x[0] * dot, e_x[1] * dot, e_x[2] * dot);
+
+    Vec3d e_y = (vq - vr) - s;
     e_y.normalize();
     
     vector<Vec3d> plainPts;
@@ -136,15 +147,17 @@ void ConvertToPlaneCoordinate(const vector<SVMPoint>& points, vector<Vec3d>& bas
     double max_v = std::numeric_limits<double>::min();
     double min_v = std::numeric_limits<double>::max();
     for (int i = 0; i < numPoints; i++){
-        Vec3d a = basisPts[i];
+        SVMPoint a = points[i];
+        Vec3d va = Vec3d(a.X, a.Y, a.Z);
         
-        double u = dot_product((a-r), e_x);
-        double v = dot_product((a-r), e_y);
+        double u = dot_product((va - vr), e_x);
+        double v = dot_product((va - vr), e_y);
         
         if (u > max_u) max_u = u;
         if (u < min_u) min_u = u;
         if (v > max_v) max_v = v;
         if (v < min_v) min_v = v;
+
         plainPts.push_back(Vec3d(u, v, 1));
     }
     
