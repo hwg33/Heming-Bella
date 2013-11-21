@@ -165,3 +165,11 @@ Collision {
 }
     ]
 }
+Transform {
+   translation 0.538503 -1.024801 0.164784
+   children [
+       Shape {
+           geometry Sphere { radius 0.1 }
+       }
+   ]
+}

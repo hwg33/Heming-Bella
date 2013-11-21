@@ -780,7 +780,6 @@ static void matrix_to_axis_angle(double *R, double *axis, double *angle) {
 
 void ImgView::SaveVRML(const char *filename)
 {
-    printf("HELLLLLLLOOOO\n");
 	FILE *fp = fopen(filename,"w");
 
 	fprintf(fp,"#VRML V2.0 utf8\n\n");
@@ -979,7 +978,15 @@ void ImgView::SaveVRML(const char *filename)
 
     fprintf(fp, "    ]\n");  // end children
     fprintf(fp, "}\n");      // end collision
-
+    computeCameraParameters();
+    fprintf(fp, "Transform {\n"
+                "   translation %f %f %f\n"
+                "   children [\n"
+                "       Shape {\n"
+                "           geometry Sphere { radius 0.1 }\n"
+                "       }\n"
+                "   ]\n"
+                "}\n", camPos[0], camPos[1], camPos[2]);
 	fclose(fp);
 }
 
