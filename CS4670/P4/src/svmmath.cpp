@@ -115,20 +115,12 @@ double dot_product(Vec3d a, Vec3d b){
 
 void ConvertToPlaneCoordinate(const vector<SVMPoint>& points, vector<Vec3d>& basisPts, double &uScale, double &vScale)
 {
-    printf("Helloooo!\n");
-    printf("points[0].X = %f\n", points[0].X);
-    printf("points[1].Y = %f\n", points[1].Y);
-    printf("points[2].Z = %f\n", points[2].Z);
-    printf("points.size() = %d\n", points.size());
     int numPoints = (int) points.size();
-    printf("A\n");
 
     /******** BEGIN TODO ********/
-    SVMPoint p = points[0];
-    printf("B\n");
-    SVMPoint q = points[1];
-    printf("C\n");
-    SVMPoint r = points[2];
+    SVMPoint r = points[0];
+    SVMPoint p = points[1];
+    SVMPoint q = points[2];
 
     printf("p:(%f, %f, %f)\n", p.X, p.Y, p.Z);
     printf("q:(%f, %f, %f)\n", q.X, q.Y, q.Z);
