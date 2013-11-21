@@ -46,8 +46,8 @@ void transformInv(CTransform3x3 HInv, SVMPoint *p) {
     if (p->Z != 0) {
         p->X = p->X / p->Z;
         p->Y = p->Y / p->Z;
-        p->Z = 0;
     }
+    p->Z = 1;
 }
 
 //
@@ -238,6 +238,7 @@ void ImgView::sameZPlane()
     printf("newPoint.Z = %f\n", newPoint.Z);
     if (knownPoint.Z == 0) {
         transformInv(Hinv, &newPoint);
+        newPoint.Z = knownPoint.Z;
     }
     else {
         SVMPoint v = cross(cross(knownPoint, newPoint), cross(xVanish, yVanish));
@@ -252,8 +253,8 @@ void ImgView::sameZPlane()
         if (b0.w != 0) {
             b0.u = b0.u / b0.w;
             b0.v = b0.v / b0.w;
-            b0.w = 1;
         }
+        b0.w = 1;
         transformInv(Hinv, &b0);
 
         newPoint.X = b0.X;
