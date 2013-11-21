@@ -236,7 +236,6 @@ int ImgView::handle2D(int c)
 				}
                 else if (editMode==EDIT_YZRECT||editMode==EDIT_XZRECT||editMode==EDIT_XYRECT)
                 {
-                    printf("HERE");
                     printf("Creating a rectangle...\n");
 
                     if (referenceHeight == 0.0) {

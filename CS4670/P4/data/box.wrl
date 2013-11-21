@@ -6,80 +6,16 @@ Collision {
  Shape {
 	 appearance Appearance {
 		 texture ImageTexture {
-			 url "a1.gif"
+			 url "backw.0.gif"
 		 }
 	 }
 	 geometry IndexedFaceSet {
 		 coord Coordinate {
 			 point [
-				 0.000000 0.000000 1.000000,
-				 -0.007348 1.048616 0.996675,
-				 0.000000 1.000000 0.000000,
 				 0.000000 0.000000 0.000000,
-			 ]
-		 }
-		 coordIndex [
-			 0, 1, 2, 3, -1,
-		 ]
-		 texCoord TextureCoordinate {
-			 point [
-				 -0.000000 0.000000,
-				 1.000000 0.000000,
-				 0.956605 0.996879,
-				 0.003024 1.000000,
-			 ]
-		 }
-		 texCoordIndex [
-			 0, 1, 2, 3, -1,
-		 ]
-		 solid FALSE
-	 }
-}
- Shape {
-	 appearance Appearance {
-		 texture ImageTexture {
-			 url "a2.gif"
-		 }
-	 }
-	 geometry IndexedFaceSet {
-		 coord Coordinate {
-			 point [
-				 0.000000 0.000000 1.000000,
-				 1.000000 0.000000 0.996675,
-				 1.000343 1.006450 0.996675,
-				 -0.007348 1.048616 0.996675,
-			 ]
-		 }
-		 coordIndex [
-			 0, 1, 2, 3, -1,
-		 ]
-		 texCoord TextureCoordinate {
-			 point [
-				 0.007281 0.000000,
-				 0.999660 0.000000,
-				 1.000000 0.959789,
-				 0.000000 1.000000,
-			 ]
-		 }
-		 texCoordIndex [
-			 0, 1, 2, 3, -1,
-		 ]
-		 solid FALSE
-	 }
-}
- Shape {
-	 appearance Appearance {
-		 texture ImageTexture {
-			 url "a3.gif"
-		 }
-	 }
-	 geometry IndexedFaceSet {
-		 coord Coordinate {
-			 point [
-				 1.000000 0.000000 0.996675,
-				 1.000343 1.006450 0.996675,
-				 1.000000 1.000000 0.000000,
-				 1.000000 0.000000 0.000000,
+				 1.008535 -0.144373 0.000000,
+				 1.008535 -0.144373 1.042190,
+				 0.000000 0.000000 0.995328,
 			 ]
 		 }
 		 coordIndex [
@@ -88,9 +24,9 @@ Collision {
 		 texCoord TextureCoordinate {
 			 point [
 				 -0.000000 -0.000000,
-				 1.000000 0.000000,
-				 0.993591 1.000000,
-				 -0.000000 1.000000,
+				 1.000000 -0.000000,
+				 1.000000 1.000000,
+				 -0.000000 0.955035,
 			 ]
 		 }
 		 texCoordIndex [
@@ -102,16 +38,16 @@ Collision {
  Shape {
 	 appearance Appearance {
 		 texture ImageTexture {
-			 url "a4.gif"
+			 url "backw.2.gif"
 		 }
 	 }
 	 geometry IndexedFaceSet {
 		 coord Coordinate {
 			 point [
+				 0.065743 1.157565 0.000000,
 				 0.000000 0.000000 0.000000,
-				 0.000000 1.000000 0.000000,
-				 1.000000 1.000000 0.000000,
-				 1.000000 0.000000 0.000000,
+				 0.000000 0.000000 0.995328,
+				 0.065743 1.157565 0.871793,
 			 ]
 		 }
 		 coordIndex [
@@ -122,7 +58,7 @@ Collision {
 				 -0.000000 0.000000,
 				 1.000000 -0.000000,
 				 1.000000 1.000000,
-				 -0.000000 1.000000,
+				 -0.000000 0.875886,
 			 ]
 		 }
 		 texCoordIndex [
@@ -134,16 +70,16 @@ Collision {
  Shape {
 	 appearance Appearance {
 		 texture ImageTexture {
-			 url "a5.gif"
+			 url "backw.3.gif"
 		 }
 	 }
 	 geometry IndexedFaceSet {
 		 coord Coordinate {
 			 point [
-				 -0.007348 1.048616 0.996675,
-				 1.000343 1.006450 0.996675,
-				 1.000000 1.000000 0.000000,
-				 0.000000 1.000000 0.000000,
+				 1.008535 -0.144373 0.000000,
+				 1.007223 1.156475 0.000000,
+				 1.007223 1.156475 1.119014,
+				 1.008535 -0.144373 1.042190,
 			 ]
 		 }
 		 coordIndex [
@@ -152,9 +88,73 @@ Collision {
 		 texCoord TextureCoordinate {
 			 point [
 				 -0.000000 -0.000000,
+				 1.000000 -0.000000,
+				 1.000000 1.000000,
+				 -0.000000 0.931347,
+			 ]
+		 }
+		 texCoordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 solid FALSE
+	 }
+}
+ Shape {
+	 appearance Appearance {
+		 texture ImageTexture {
+			 url "backw.4.gif"
+		 }
+	 }
+	 geometry IndexedFaceSet {
+		 coord Coordinate {
+			 point [
+				 0.065743 1.157565 0.000000,
+				 1.007223 1.156475 0.000000,
+				 1.008535 -0.144373 0.000000,
+				 0.000000 0.000000 0.000000,
+			 ]
+		 }
+		 coordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 texCoord TextureCoordinate {
+			 point [
+				 0.063847 0.000000,
+				 0.997207 0.000000,
+				 1.000000 1.000000,
+				 0.000000 0.889913,
+			 ]
+		 }
+		 texCoordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 solid FALSE
+	 }
+}
+ Shape {
+	 appearance Appearance {
+		 texture ImageTexture {
+			 url "backw.5.gif"
+		 }
+	 }
+	 geometry IndexedFaceSet {
+		 coord Coordinate {
+			 point [
+				 0.000000 0.000000 0.995328,
+				 1.008535 -0.144373 1.042190,
+				 1.007223 1.156475 1.119014,
+				 0.065743 1.157565 0.871793,
+			 ]
+		 }
+		 coordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 texCoord TextureCoordinate {
+			 point [
+				 0.092961 0.000000,
 				 1.000000 0.000000,
-				 0.999928 0.999728,
-				 0.009294 1.000000,
+				 0.838217 1.000000,
+				 0.000000 0.887213,
 			 ]
 		 }
 		 texCoordIndex [
