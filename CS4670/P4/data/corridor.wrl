@@ -1,0 +1,167 @@
+#VRML V2.0 utf8
+
+Collision {
+    collide FALSE
+    children [
+ Shape {
+	 appearance Appearance {
+		 texture ImageTexture {
+			 url "corridorrr.0.gif"
+		 }
+	 }
+	 geometry IndexedFaceSet {
+		 coord Coordinate {
+			 point [
+				 0.000000 0.000000 0.000000,
+				 0.982303 0.040275 0.000000,
+				 0.987531 0.000000 1.606598,
+				 0.000000 0.000000 1.606598,
+			 ]
+		 }
+		 coordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 texCoord TextureCoordinate {
+			 point [
+				 0.000000 -0.000000,
+				 0.996378 0.000000,
+				 1.000000 1.000000,
+				 -0.000000 0.999366,
+			 ]
+		 }
+		 texCoordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 solid FALSE
+	 }
+}
+ Shape {
+	 appearance Appearance {
+		 texture ImageTexture {
+			 url "corridorrr.2.gif"
+		 }
+	 }
+	 geometry IndexedFaceSet {
+		 coord Coordinate {
+			 point [
+				 -0.014457 1.433423 0.000000,
+				 0.000000 0.000000 0.000000,
+				 0.000000 0.000000 1.606598,
+				 -0.000000 1.448590 1.606598,
+			 ]
+		 }
+		 coordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 texCoord TextureCoordinate {
+			 point [
+				 0.010369 -0.000000,
+				 1.000000 -0.000000,
+				 1.000000 1.000000,
+				 -0.000000 1.000000,
+			 ]
+		 }
+		 texCoordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 solid FALSE
+	 }
+}
+ Shape {
+	 appearance Appearance {
+		 texture ImageTexture {
+			 url "corridorrr.3.gif"
+		 }
+	 }
+	 geometry IndexedFaceSet {
+		 coord Coordinate {
+			 point [
+				 0.982303 0.040275 0.000000,
+				 0.980936 1.431996 0.000000,
+				 0.995597 1.392083 1.606598,
+				 0.987531 0.000000 1.606598,
+			 ]
+		 }
+		 coordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 texCoord TextureCoordinate {
+			 point [
+				 0.028129 0.000000,
+				 1.000000 0.000000,
+				 0.972118 1.000000,
+				 0.000000 0.999947,
+			 ]
+		 }
+		 texCoordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 solid FALSE
+	 }
+}
+ Shape {
+	 appearance Appearance {
+		 texture ImageTexture {
+			 url "corridorrr.4.gif"
+		 }
+	 }
+	 geometry IndexedFaceSet {
+		 coord Coordinate {
+			 point [
+				 -0.014457 1.433423 0.000000,
+				 0.980936 1.431996 0.000000,
+				 0.982303 0.040275 0.000000,
+				 0.000000 0.000000 0.000000,
+			 ]
+		 }
+		 coordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 texCoord TextureCoordinate {
+			 point [
+				 0.000000 -0.000000,
+				 0.996634 0.000000,
+				 1.000000 0.970920,
+				 0.016532 1.000000,
+			 ]
+		 }
+		 texCoordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 solid FALSE
+	 }
+}
+ Shape {
+	 appearance Appearance {
+		 texture ImageTexture {
+			 url "corridorrr.5.gif"
+		 }
+	 }
+	 geometry IndexedFaceSet {
+		 coord Coordinate {
+			 point [
+				 0.000000 0.000000 1.606598,
+				 0.987531 0.000000 1.606598,
+				 0.995597 1.392083 1.606598,
+				 -0.000000 1.448590 1.606598,
+			 ]
+		 }
+		 coordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 texCoord TextureCoordinate {
+			 point [
+				 0.000000 0.000000,
+				 0.991898 -0.000000,
+				 1.000000 0.960992,
+				 0.000000 1.000000,
+			 ]
+		 }
+		 texCoordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 solid FALSE
+	 }
+}
+    ]
+}

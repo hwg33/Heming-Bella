@@ -1,0 +1,167 @@
+#VRML V2.0 utf8
+
+Collision {
+    collide FALSE
+    children [
+ Shape {
+	 appearance Appearance {
+		 texture ImageTexture {
+			 url "tower.0.gif"
+		 }
+	 }
+	 geometry IndexedFaceSet {
+		 coord Coordinate {
+			 point [
+				 0.000000 0.000000 0.000000,
+				 0.643120 0.106263 0.000000,
+				 0.655415 0.000000 1.633411,
+				 0.000000 0.000000 1.633411,
+			 ]
+		 }
+		 coordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 texCoord TextureCoordinate {
+			 point [
+				 -0.000000 0.000000,
+				 1.000000 -0.000000,
+				 0.992034 1.000000,
+				 0.000000 0.995739,
+			 ]
+		 }
+		 texCoordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 solid FALSE
+	 }
+}
+ Shape {
+	 appearance Appearance {
+		 texture ImageTexture {
+			 url "tower.2.gif"
+		 }
+	 }
+	 geometry IndexedFaceSet {
+		 coord Coordinate {
+			 point [
+				 0.282912 1.548745 0.000000,
+				 0.000000 0.000000 0.000000,
+				 0.000000 0.000000 1.633411,
+				 0.000000 0.772340 1.633411,
+			 ]
+		 }
+		 coordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 texCoord TextureCoordinate {
+			 point [
+				 -0.000000 0.000000,
+				 1.000000 -0.000000,
+				 1.000000 1.000000,
+				 0.517416 1.000000,
+			 ]
+		 }
+		 texCoordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 solid FALSE
+	 }
+}
+ Shape {
+	 appearance Appearance {
+		 texture ImageTexture {
+			 url "tower.3.gif"
+		 }
+	 }
+	 geometry IndexedFaceSet {
+		 coord Coordinate {
+			 point [
+				 0.643120 0.106263 0.000000,
+				 0.642193 1.548188 0.000000,
+				 0.468117 1.878390 1.633411,
+				 0.655415 0.000000 1.633411,
+			 ]
+		 }
+		 coordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 texCoord TextureCoordinate {
+			 point [
+				 0.056572 -0.000000,
+				 0.824162 0.000000,
+				 1.000000 1.000000,
+				 0.000000 0.988009,
+			 ]
+		 }
+		 texCoordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 solid FALSE
+	 }
+}
+ Shape {
+	 appearance Appearance {
+		 texture ImageTexture {
+			 url "tower.4.gif"
+		 }
+	 }
+	 geometry IndexedFaceSet {
+		 coord Coordinate {
+			 point [
+				 0.282912 1.548745 0.000000,
+				 0.642193 1.548188 0.000000,
+				 0.643120 0.106263 0.000000,
+				 0.000000 0.000000 0.000000,
+			 ]
+		 }
+		 coordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 texCoord TextureCoordinate {
+			 point [
+				 0.436286 0.000000,
+				 0.995083 -0.000000,
+				 1.000000 0.930764,
+				 -0.000000 1.000000,
+			 ]
+		 }
+		 texCoordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 solid FALSE
+	 }
+}
+ Shape {
+	 appearance Appearance {
+		 texture ImageTexture {
+			 url "tower.5.gif"
+		 }
+	 }
+	 geometry IndexedFaceSet {
+		 coord Coordinate {
+			 point [
+				 0.000000 0.000000 1.633411,
+				 0.655415 0.000000 1.633411,
+				 0.468117 1.878390 1.633411,
+				 0.000000 0.772340 1.633411,
+			 ]
+		 }
+		 coordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 texCoord TextureCoordinate {
+			 point [
+				 -0.000000 0.000000,
+				 1.000000 0.000000,
+				 0.714229 1.000000,
+				 0.000000 0.411171,
+			 ]
+		 }
+		 texCoordIndex [
+			 0, 1, 2, 3, -1,
+		 ]
+		 solid FALSE
+	 }
+}
+    ]
+}
