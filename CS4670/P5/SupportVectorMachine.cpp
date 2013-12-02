@@ -90,7 +90,20 @@ SupportVectorMachine::train(const std::vector<float> &labels, const FeatureColle
     // entry to -1
     _data = new svm_node[nVecs * (dim + 1)];
 
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
+    for (int i = 0; i < nVecs; i++) {
+        for (int x = 0; x < shape.width; x++) {
+            for (int y = 0; y < shape.height; y++) {
+                for (int z = 0; z < shape.nBands; z++) {
+                    int vecIndex = shape.nBands * (x + y * shape.width) + z;
+                    _data[i * (dim + 1) + vecIndex].index = vecIndex;
+                    _data[i * (dim + 1) + vecIndex].value = fset[i].Pixel(x, y, z);
+                }
+            }
+        }
+        _data[i * (dim + 1) + dim].index = -1;
+        problem.x[i] = &_data[i * (dim + 1)];
+        problem.y[i] = labels[i];
+    }
 
     /******** END TODO ********/
 
@@ -266,7 +279,14 @@ SupportVectorMachine::predictSlidingWindow(const Feature &feat, CFloatImage &res
     // Useful functions:
     // Convolve, BandSelect, this->getWeights(), this->getBiasTerm()
 
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
+    Convolve(feat, response, this->getWeights());
+    double width = response.Shape().width;
+    double height = response.Shape().height;
+    for (int x = 0; x < width; x++) {
+        for (int y = 0; y < height; y++) {
+            response.Pixel(x, y, 0) -= this->getBiasTerm();
+        }
+    }
 
     /******** END TODO ********/
 }

@@ -30,8 +30,27 @@ Detection::relativeOverlap(const Detection &other) const
     // of the two rectangles.
 
     double relOver = 0.0;
+    double relWidth, relHeight;
 
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
+    if ((x + width / 2) > (other.x + other.width / 2)) {
+        relWidth = (other.x + other.width / 2) - (x - width / 2);
+    }
+    else {
+        relWidth = (x + width / 2) - (other.x - other.width / 2);
+    }
+
+    if ((y + height / 2) > (other.y + other.height / 2)) {
+        relHeight = (other.y + other.height / 2) - (y - height / 2);
+    }
+    else {
+        relHeight = (y + height / 2) - (other.y - other.height / 2);
+    }
+
+    if (relWidth > 0 && relHeight > 0) {
+        double areaInter = relWidth * relHeight;
+        double areaUnion = width * height + other.width * other.height - areaInter;
+        if (areaUnion != 0) relOver = areaInter / areaUnion;
+    }
 
     /******** END TODO ********/
     return relOver;

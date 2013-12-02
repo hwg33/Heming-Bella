@@ -72,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(CMAKE_COMMAND) -E cmake_progress_start /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/libsvm-3.14/CMakeFiles/progress.marks
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/libsvm-3.14/all
+	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(CMAKE_COMMAND) -E cmake_progress_start /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/progress.marks
+	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/ImageLib/thirdparty/JPEG/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/libsvm-3.14/clean
+	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/ImageLib/thirdparty/JPEG/clean
 .PHONY : clean
 
 # The main clean target
@@ -88,12 +88,12 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/libsvm-3.14/preinstall
+	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/ImageLib/thirdparty/JPEG/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/libsvm-3.14/preinstall
+	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/ImageLib/thirdparty/JPEG/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
@@ -102,42 +102,66 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-thirdparty/libsvm-3.14/CMakeFiles/svm.dir/rule:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/libsvm-3.14/CMakeFiles/svm.dir/rule
-.PHONY : thirdparty/libsvm-3.14/CMakeFiles/svm.dir/rule
+thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/rule:
+	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/rule
+.PHONY : thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/rule
 
 # Convenience name for target.
-svm: thirdparty/libsvm-3.14/CMakeFiles/svm.dir/rule
-.PHONY : svm
+jpegrw: thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/rule
+.PHONY : jpegrw
 
 # fast build rule for target.
-svm/fast:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/libsvm-3.14/CMakeFiles/svm.dir/build.make thirdparty/libsvm-3.14/CMakeFiles/svm.dir/build
-.PHONY : svm/fast
+jpegrw/fast:
+	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/build.make thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/build
+.PHONY : jpegrw/fast
 
-svm.o: svm.cpp.o
-.PHONY : svm.o
+JPEGReader.o: JPEGReader.cpp.o
+.PHONY : JPEGReader.o
 
 # target to build an object file
-svm.cpp.o:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/libsvm-3.14/CMakeFiles/svm.dir/build.make thirdparty/libsvm-3.14/CMakeFiles/svm.dir/svm.cpp.o
-.PHONY : svm.cpp.o
+JPEGReader.cpp.o:
+	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/build.make thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/JPEGReader.cpp.o
+.PHONY : JPEGReader.cpp.o
 
-svm.i: svm.cpp.i
-.PHONY : svm.i
+JPEGReader.i: JPEGReader.cpp.i
+.PHONY : JPEGReader.i
 
 # target to preprocess a source file
-svm.cpp.i:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/libsvm-3.14/CMakeFiles/svm.dir/build.make thirdparty/libsvm-3.14/CMakeFiles/svm.dir/svm.cpp.i
-.PHONY : svm.cpp.i
+JPEGReader.cpp.i:
+	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/build.make thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/JPEGReader.cpp.i
+.PHONY : JPEGReader.cpp.i
 
-svm.s: svm.cpp.s
-.PHONY : svm.s
+JPEGReader.s: JPEGReader.cpp.s
+.PHONY : JPEGReader.s
 
 # target to generate assembly for a file
-svm.cpp.s:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/libsvm-3.14/CMakeFiles/svm.dir/build.make thirdparty/libsvm-3.14/CMakeFiles/svm.dir/svm.cpp.s
-.PHONY : svm.cpp.s
+JPEGReader.cpp.s:
+	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/build.make thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/JPEGReader.cpp.s
+.PHONY : JPEGReader.cpp.s
+
+JPEGWriter.o: JPEGWriter.cpp.o
+.PHONY : JPEGWriter.o
+
+# target to build an object file
+JPEGWriter.cpp.o:
+	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/build.make thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/JPEGWriter.cpp.o
+.PHONY : JPEGWriter.cpp.o
+
+JPEGWriter.i: JPEGWriter.cpp.i
+.PHONY : JPEGWriter.i
+
+# target to preprocess a source file
+JPEGWriter.cpp.i:
+	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/build.make thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/JPEGWriter.cpp.i
+.PHONY : JPEGWriter.cpp.i
+
+JPEGWriter.s: JPEGWriter.cpp.s
+.PHONY : JPEGWriter.s
+
+# target to generate assembly for a file
+JPEGWriter.cpp.s:
+	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/build.make thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/JPEGWriter.cpp.s
+.PHONY : JPEGWriter.cpp.s
 
 # Help Target
 help:
@@ -146,11 +170,14 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... jpegrw"
 	@echo "... rebuild_cache"
-	@echo "... svm"
-	@echo "... svm.o"
-	@echo "... svm.i"
-	@echo "... svm.s"
+	@echo "... JPEGReader.o"
+	@echo "... JPEGReader.i"
+	@echo "... JPEGReader.s"
+	@echo "... JPEGWriter.o"
+	@echo "... JPEGWriter.i"
+	@echo "... JPEGWriter.s"
 .PHONY : help
 
 

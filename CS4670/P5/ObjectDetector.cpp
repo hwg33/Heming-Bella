@@ -54,8 +54,37 @@ ObjectDetector::operator()( const CFloatImage &svmResp, const Size &roiSize,
     // the scale imScale), and the value of the central pixel in response.
 
     dets.resize(0);
+    int width = svmResp.Shape().width;
+    int height = svmResp.Shape().height;
 
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
+    for (int x = 0; x < width; x++) {
+        for (int y = 0; y < height; y++) {
+            double localMax = std::numeric_limits<double>::min();
+            int maxX = 0;
+            int maxY = 0;
+            for (int i = -_winSizeNMS / 2; i <= _winSizeNMS / 2; i++) {
+                for (int j = -_winSizeNMS / 2; j <= _winSizeNMS / 2; j++) {
+                    if (x + i < width && x + i >= 0 && y + j < height && y + j >= 0) {
+                        double pixel = svmResp.Pixel(x + i, y + j, 0);
+                        if (pixel > localMax) {
+                            localMax = pixel;
+                            maxX = i;
+                            maxY = j;
+                        }
+                    }
+                }
+            }
+            if (maxX == 0 && maxY == 0 && localMax > _respThresh) {
+                Detection det;
+                det.x = x;
+                det.y = y;
+                det.width = roiSize.width / (imScale * featureScaleFactor);
+                det.height = roiSize.height / (imScale * featureScaleFactor);
+                det.response = localMax;
+                dets.push_back(det);
+            }
+        }
+    }
 
     /******** END TODO ********/
 }
@@ -102,7 +131,16 @@ ObjectDetector::operator()( const SBFloatPyramid &svmRespPyr, const Size &roiSiz
         allDets.insert(allDets.end(), levelDets.begin(), levelDets.end());
     }
 
-printf("TODO: %s:%d\n", __FILE__, __LINE__); 
+    std::sort(allDets.begin(), allDets.end(), sortByResponse);
+    for (int i = 0; i < allDets.size(); i++) {
+        bool shouldBeKept = true;
+        for (int j = i - 1; j >= 0; j--) {
+            if (allDets[i].relativeOverlap(allDets[j]) > _overlapThresh) {
+                shouldBeKept = false;
+            }
+        }
+        if (shouldBeKept) dets.push_back(allDets[i]);
+    }
 
     /******** END TODO ********/
 }
