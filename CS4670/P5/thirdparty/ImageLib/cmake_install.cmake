@@ -1,4 +1,4 @@
-# Install script for directory: /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib
+# Install script for directory: /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -29,7 +29,7 @@ ENDIF(NOT CMAKE_INSTALL_COMPONENT)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/cmake_install.cmake")
+  INCLUDE("/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 

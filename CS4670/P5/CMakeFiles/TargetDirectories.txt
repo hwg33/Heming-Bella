@@ -1,5 +1,5 @@
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/CMakeFiles/image.dir
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles/objdet.dir
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles/od.dir
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/libsvm-3.14/CMakeFiles/svm.dir
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/CMakeFiles/image.dir
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir
+/Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles/objdet.dir
+/Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles/od.dir
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/libsvm-3.14/CMakeFiles/svm.dir

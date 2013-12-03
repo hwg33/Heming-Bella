@@ -6,37 +6,37 @@
 
 #IncludeRegexTransform: 
 
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Convolve.cpp
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Convolve.cpp
 Image.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.h
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.h
 Convolve.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Convolve.h
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Convolve.h
 
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Convolve.h
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Convolve.h
 
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/FileIO.cpp
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/FileIO.cpp
 Image.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.h
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.h
 FileIO.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/FileIO.h
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/FileIO.h
 ImageProc.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/ImageProc.h
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/ImageProc.h
 JPEG/JPEGReader.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/JPEG/JPEGReader.h
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/JPEG/JPEGReader.h
 JPEG/JPEGWriter.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/JPEG/JPEGWriter.h
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/JPEG/JPEGWriter.h
 
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/FileIO.h
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/FileIO.h
 
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.cpp
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.cpp
 Image.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.h
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.h
 float.h
 -
 
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.h
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.h
 RefCntMem.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/RefCntMem.h
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/RefCntMem.h
 stdlib.h
 -
 stdio.h
@@ -52,33 +52,33 @@ typeinfo.h
 typeinfo
 -
 Image.inl
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.inl
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.inl
 
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.inl
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.inl
 
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/ImageProc.cpp
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/ImageProc.cpp
 ImageProc.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/ImageProc.h
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/ImageProc.h
 
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/ImageProc.h
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/ImageProc.h
 Image.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.h
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.h
 
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/RefCntMem.cpp
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/RefCntMem.cpp
 RefCntMem.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/RefCntMem.h
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/RefCntMem.h
 iostream
 -
 
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/RefCntMem.h
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/RefCntMem.h
 
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Transform.cpp
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Transform.cpp
 Transform.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Transform.h
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Transform.h
 math.h
 -
 
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Transform.h
+/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Transform.h
 
 /usr/local/include/jconfig.h
 

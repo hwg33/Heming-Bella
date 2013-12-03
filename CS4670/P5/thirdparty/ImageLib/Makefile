@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = "/Applications/CMake 2.8-12.app/Contents/bin/ccmake"
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/hemingge/Desktop/Heming-Bella/CS4670/P5
+CMAKE_SOURCE_DIR = /Users/Bella/Heming-Bella/CS4670/P5
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/hemingge/Desktop/Heming-Bella/CS4670/P5
+CMAKE_BINARY_DIR = /Users/Bella/Heming-Bella/CS4670/P5
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(CMAKE_COMMAND) -E cmake_progress_start /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/CMakeFiles/progress.marks
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/ImageLib/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles 0
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(CMAKE_COMMAND) -E cmake_progress_start /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/CMakeFiles/progress.marks
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/ImageLib/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/ImageLib/clean
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/ImageLib/clean
 .PHONY : clean
 
 # The main clean target
@@ -88,22 +88,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/ImageLib/preinstall
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/ImageLib/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/ImageLib/preinstall
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/ImageLib/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 thirdparty/ImageLib/CMakeFiles/image.dir/rule:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/ImageLib/CMakeFiles/image.dir/rule
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/ImageLib/CMakeFiles/image.dir/rule
 .PHONY : thirdparty/ImageLib/CMakeFiles/image.dir/rule
 
 # Convenience name for target.
@@ -112,7 +112,7 @@ image: thirdparty/ImageLib/CMakeFiles/image.dir/rule
 
 # fast build rule for target.
 image/fast:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/build
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/build
 .PHONY : image/fast
 
 Convolve.o: Convolve.cpp.o
@@ -120,7 +120,7 @@ Convolve.o: Convolve.cpp.o
 
 # target to build an object file
 Convolve.cpp.o:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/Convolve.cpp.o
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/Convolve.cpp.o
 .PHONY : Convolve.cpp.o
 
 Convolve.i: Convolve.cpp.i
@@ -128,7 +128,7 @@ Convolve.i: Convolve.cpp.i
 
 # target to preprocess a source file
 Convolve.cpp.i:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/Convolve.cpp.i
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/Convolve.cpp.i
 .PHONY : Convolve.cpp.i
 
 Convolve.s: Convolve.cpp.s
@@ -136,7 +136,7 @@ Convolve.s: Convolve.cpp.s
 
 # target to generate assembly for a file
 Convolve.cpp.s:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/Convolve.cpp.s
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/Convolve.cpp.s
 .PHONY : Convolve.cpp.s
 
 FileIO.o: FileIO.cpp.o
@@ -144,7 +144,7 @@ FileIO.o: FileIO.cpp.o
 
 # target to build an object file
 FileIO.cpp.o:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/FileIO.cpp.o
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/FileIO.cpp.o
 .PHONY : FileIO.cpp.o
 
 FileIO.i: FileIO.cpp.i
@@ -152,7 +152,7 @@ FileIO.i: FileIO.cpp.i
 
 # target to preprocess a source file
 FileIO.cpp.i:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/FileIO.cpp.i
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/FileIO.cpp.i
 .PHONY : FileIO.cpp.i
 
 FileIO.s: FileIO.cpp.s
@@ -160,7 +160,7 @@ FileIO.s: FileIO.cpp.s
 
 # target to generate assembly for a file
 FileIO.cpp.s:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/FileIO.cpp.s
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/FileIO.cpp.s
 .PHONY : FileIO.cpp.s
 
 Image.o: Image.cpp.o
@@ -168,7 +168,7 @@ Image.o: Image.cpp.o
 
 # target to build an object file
 Image.cpp.o:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/Image.cpp.o
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/Image.cpp.o
 .PHONY : Image.cpp.o
 
 Image.i: Image.cpp.i
@@ -176,7 +176,7 @@ Image.i: Image.cpp.i
 
 # target to preprocess a source file
 Image.cpp.i:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/Image.cpp.i
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/Image.cpp.i
 .PHONY : Image.cpp.i
 
 Image.s: Image.cpp.s
@@ -184,7 +184,7 @@ Image.s: Image.cpp.s
 
 # target to generate assembly for a file
 Image.cpp.s:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/Image.cpp.s
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/Image.cpp.s
 .PHONY : Image.cpp.s
 
 ImageProc.o: ImageProc.cpp.o
@@ -192,7 +192,7 @@ ImageProc.o: ImageProc.cpp.o
 
 # target to build an object file
 ImageProc.cpp.o:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/ImageProc.cpp.o
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/ImageProc.cpp.o
 .PHONY : ImageProc.cpp.o
 
 ImageProc.i: ImageProc.cpp.i
@@ -200,7 +200,7 @@ ImageProc.i: ImageProc.cpp.i
 
 # target to preprocess a source file
 ImageProc.cpp.i:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/ImageProc.cpp.i
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/ImageProc.cpp.i
 .PHONY : ImageProc.cpp.i
 
 ImageProc.s: ImageProc.cpp.s
@@ -208,7 +208,7 @@ ImageProc.s: ImageProc.cpp.s
 
 # target to generate assembly for a file
 ImageProc.cpp.s:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/ImageProc.cpp.s
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/ImageProc.cpp.s
 .PHONY : ImageProc.cpp.s
 
 RefCntMem.o: RefCntMem.cpp.o
@@ -216,7 +216,7 @@ RefCntMem.o: RefCntMem.cpp.o
 
 # target to build an object file
 RefCntMem.cpp.o:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/RefCntMem.cpp.o
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/RefCntMem.cpp.o
 .PHONY : RefCntMem.cpp.o
 
 RefCntMem.i: RefCntMem.cpp.i
@@ -224,7 +224,7 @@ RefCntMem.i: RefCntMem.cpp.i
 
 # target to preprocess a source file
 RefCntMem.cpp.i:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/RefCntMem.cpp.i
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/RefCntMem.cpp.i
 .PHONY : RefCntMem.cpp.i
 
 RefCntMem.s: RefCntMem.cpp.s
@@ -232,7 +232,7 @@ RefCntMem.s: RefCntMem.cpp.s
 
 # target to generate assembly for a file
 RefCntMem.cpp.s:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/RefCntMem.cpp.s
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/RefCntMem.cpp.s
 .PHONY : RefCntMem.cpp.s
 
 Transform.o: Transform.cpp.o
@@ -240,7 +240,7 @@ Transform.o: Transform.cpp.o
 
 # target to build an object file
 Transform.cpp.o:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/Transform.cpp.o
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/Transform.cpp.o
 .PHONY : Transform.cpp.o
 
 Transform.i: Transform.cpp.i
@@ -248,7 +248,7 @@ Transform.i: Transform.cpp.i
 
 # target to preprocess a source file
 Transform.cpp.i:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/Transform.cpp.i
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/Transform.cpp.i
 .PHONY : Transform.cpp.i
 
 Transform.s: Transform.cpp.s
@@ -256,7 +256,7 @@ Transform.s: Transform.cpp.s
 
 # target to generate assembly for a file
 Transform.cpp.s:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/Transform.cpp.s
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/ImageLib/CMakeFiles/image.dir/build.make thirdparty/ImageLib/CMakeFiles/image.dir/Transform.cpp.s
 .PHONY : Transform.cpp.s
 
 # Help Target
@@ -297,6 +297,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

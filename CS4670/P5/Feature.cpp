@@ -296,7 +296,7 @@ TinyImageGradFeatureExtractor::operator()(const CFloatImage &imgRGB_, Feature &f
 
     //convert to grayscale
     CFloatImage imgG;
-    convertRGB2GrayImage(imgRGB, imgG);
+    convertRGB2GrayImage(imgRGB_, imgG);
 
     //resize image
     CFloatImage tinyImg(targetW, targetH, 1);
@@ -307,8 +307,8 @@ TinyImageGradFeatureExtractor::operator()(const CFloatImage &imgRGB_, Feature &f
     CFloatImage imgX(targetW, targetH, 1);
     CFloatImage imgY(targetW, targetH, 1);
     CFloatImage imgMag(targetW, targetH, 1);
-    Convolve(imgX, tinyImg, _kernelDx);
-    Convolve(imgY, tinyImg, _kernelDy);
+    Convolve(tinyImg, imgX, _kernelDx);
+    Convolve(tinyImg, imgY, _kernelDy);
 
     for (int x = 0; x < targetH; x++){
         for(int y = 0; y < targetW; y++){
@@ -434,8 +434,8 @@ HOGFeatureExtractor::operator()(const CFloatImage &img, Feature &feat) const
     int imgW = img.Shape().width;
     int imgH = img.Shape().height;
 
-    int featW = (imgW + (k-1)) / _cellSize;
-    int featH = (imgH + (k-1)) / _cellSize;
+    int featW = (imgW + (_cellSize-1)) / _cellSize;
+    int featH = (imgH + (_cellSize-1)) / _cellSize;
 
     CFloatImage imgHog(featW, featH, _nAngularBins);
 
@@ -444,8 +444,8 @@ HOGFeatureExtractor::operator()(const CFloatImage &img, Feature &feat) const
     CFloatImage imgY(imgW, imgH, 3);
     CFloatImage imgOri(imgW, imgH, 1);
     CFloatImage imgMag(imgW, imgH, 1);
-    Convolve(imgX, img, _kernelDx);
-    Convolve(imgY, img, _kernelDy);
+    Convolve(img, imgX, _kernelDx);
+    Convolve(img, imgY, _kernelDy);
 
     //compute gradient magnitudes
     for (int x = 0; x < imgH; x++){
@@ -461,7 +461,7 @@ HOGFeatureExtractor::operator()(const CFloatImage &img, Feature &feat) const
             }
             imgMag.Pixel(x, y, 0) = max_m;
             if (_unsignedGradients) imgOri.Pixel(x, y, 0) = atan(imgY.Pixel(x, y, max)/imgX.Pixel(x, y, max)) * 180.0 / PI;
-            else imgOri.Pixel(x, y, 0) = atan2(imgY.Pixel(x, y, max)/imgX.Pixel(x, y, max)) * 180.0 / PI;
+            else imgOri.Pixel(x, y, 0) = atan2(imgY.Pixel(x, y, max), imgX.Pixel(x, y, max)) * 180.0 / PI;
         }
     }
 

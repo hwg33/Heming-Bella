@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = "/Applications/CMake 2.8-12.app/Contents/bin/ccmake"
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/hemingge/Desktop/Heming-Bella/CS4670/P5
+CMAKE_SOURCE_DIR = /Users/Bella/Heming-Bella/CS4670/P5
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/hemingge/Desktop/Heming-Bella/CS4670/P5
+CMAKE_BINARY_DIR = /Users/Bella/Heming-Bella/CS4670/P5
 
 # Include any dependencies generated for this target.
 include thirdparty/ImageLib/CMakeFiles/image.dir/depend.make
@@ -54,17 +54,17 @@ include thirdparty/ImageLib/CMakeFiles/image.dir/flags.make
 
 thirdparty/ImageLib/CMakeFiles/image.dir/Convolve.cpp.o: thirdparty/ImageLib/CMakeFiles/image.dir/flags.make
 thirdparty/ImageLib/CMakeFiles/image.dir/Convolve.cpp.o: thirdparty/ImageLib/Convolve.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object thirdparty/ImageLib/CMakeFiles/image.dir/Convolve.cpp.o"
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/image.dir/Convolve.cpp.o -c /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Convolve.cpp
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/image.dir/Convolve.cpp.o -c /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Convolve.cpp
 
 thirdparty/ImageLib/CMakeFiles/image.dir/Convolve.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/image.dir/Convolve.cpp.i"
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Convolve.cpp > CMakeFiles/image.dir/Convolve.cpp.i
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Convolve.cpp > CMakeFiles/image.dir/Convolve.cpp.i
 
 thirdparty/ImageLib/CMakeFiles/image.dir/Convolve.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/image.dir/Convolve.cpp.s"
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Convolve.cpp -o CMakeFiles/image.dir/Convolve.cpp.s
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Convolve.cpp -o CMakeFiles/image.dir/Convolve.cpp.s
 
 thirdparty/ImageLib/CMakeFiles/image.dir/Convolve.cpp.o.requires:
 .PHONY : thirdparty/ImageLib/CMakeFiles/image.dir/Convolve.cpp.o.requires
@@ -77,17 +77,17 @@ thirdparty/ImageLib/CMakeFiles/image.dir/Convolve.cpp.o.provides.build: thirdpar
 
 thirdparty/ImageLib/CMakeFiles/image.dir/FileIO.cpp.o: thirdparty/ImageLib/CMakeFiles/image.dir/flags.make
 thirdparty/ImageLib/CMakeFiles/image.dir/FileIO.cpp.o: thirdparty/ImageLib/FileIO.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object thirdparty/ImageLib/CMakeFiles/image.dir/FileIO.cpp.o"
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/image.dir/FileIO.cpp.o -c /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/FileIO.cpp
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/image.dir/FileIO.cpp.o -c /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/FileIO.cpp
 
 thirdparty/ImageLib/CMakeFiles/image.dir/FileIO.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/image.dir/FileIO.cpp.i"
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/FileIO.cpp > CMakeFiles/image.dir/FileIO.cpp.i
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/FileIO.cpp > CMakeFiles/image.dir/FileIO.cpp.i
 
 thirdparty/ImageLib/CMakeFiles/image.dir/FileIO.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/image.dir/FileIO.cpp.s"
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/FileIO.cpp -o CMakeFiles/image.dir/FileIO.cpp.s
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/FileIO.cpp -o CMakeFiles/image.dir/FileIO.cpp.s
 
 thirdparty/ImageLib/CMakeFiles/image.dir/FileIO.cpp.o.requires:
 .PHONY : thirdparty/ImageLib/CMakeFiles/image.dir/FileIO.cpp.o.requires
@@ -100,17 +100,17 @@ thirdparty/ImageLib/CMakeFiles/image.dir/FileIO.cpp.o.provides.build: thirdparty
 
 thirdparty/ImageLib/CMakeFiles/image.dir/Image.cpp.o: thirdparty/ImageLib/CMakeFiles/image.dir/flags.make
 thirdparty/ImageLib/CMakeFiles/image.dir/Image.cpp.o: thirdparty/ImageLib/Image.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object thirdparty/ImageLib/CMakeFiles/image.dir/Image.cpp.o"
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/image.dir/Image.cpp.o -c /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.cpp
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/image.dir/Image.cpp.o -c /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.cpp
 
 thirdparty/ImageLib/CMakeFiles/image.dir/Image.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/image.dir/Image.cpp.i"
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.cpp > CMakeFiles/image.dir/Image.cpp.i
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.cpp > CMakeFiles/image.dir/Image.cpp.i
 
 thirdparty/ImageLib/CMakeFiles/image.dir/Image.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/image.dir/Image.cpp.s"
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.cpp -o CMakeFiles/image.dir/Image.cpp.s
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Image.cpp -o CMakeFiles/image.dir/Image.cpp.s
 
 thirdparty/ImageLib/CMakeFiles/image.dir/Image.cpp.o.requires:
 .PHONY : thirdparty/ImageLib/CMakeFiles/image.dir/Image.cpp.o.requires
@@ -123,17 +123,17 @@ thirdparty/ImageLib/CMakeFiles/image.dir/Image.cpp.o.provides.build: thirdparty/
 
 thirdparty/ImageLib/CMakeFiles/image.dir/ImageProc.cpp.o: thirdparty/ImageLib/CMakeFiles/image.dir/flags.make
 thirdparty/ImageLib/CMakeFiles/image.dir/ImageProc.cpp.o: thirdparty/ImageLib/ImageProc.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object thirdparty/ImageLib/CMakeFiles/image.dir/ImageProc.cpp.o"
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/image.dir/ImageProc.cpp.o -c /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/ImageProc.cpp
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/image.dir/ImageProc.cpp.o -c /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/ImageProc.cpp
 
 thirdparty/ImageLib/CMakeFiles/image.dir/ImageProc.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/image.dir/ImageProc.cpp.i"
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/ImageProc.cpp > CMakeFiles/image.dir/ImageProc.cpp.i
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/ImageProc.cpp > CMakeFiles/image.dir/ImageProc.cpp.i
 
 thirdparty/ImageLib/CMakeFiles/image.dir/ImageProc.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/image.dir/ImageProc.cpp.s"
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/ImageProc.cpp -o CMakeFiles/image.dir/ImageProc.cpp.s
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/ImageProc.cpp -o CMakeFiles/image.dir/ImageProc.cpp.s
 
 thirdparty/ImageLib/CMakeFiles/image.dir/ImageProc.cpp.o.requires:
 .PHONY : thirdparty/ImageLib/CMakeFiles/image.dir/ImageProc.cpp.o.requires
@@ -146,17 +146,17 @@ thirdparty/ImageLib/CMakeFiles/image.dir/ImageProc.cpp.o.provides.build: thirdpa
 
 thirdparty/ImageLib/CMakeFiles/image.dir/RefCntMem.cpp.o: thirdparty/ImageLib/CMakeFiles/image.dir/flags.make
 thirdparty/ImageLib/CMakeFiles/image.dir/RefCntMem.cpp.o: thirdparty/ImageLib/RefCntMem.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object thirdparty/ImageLib/CMakeFiles/image.dir/RefCntMem.cpp.o"
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/image.dir/RefCntMem.cpp.o -c /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/RefCntMem.cpp
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/image.dir/RefCntMem.cpp.o -c /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/RefCntMem.cpp
 
 thirdparty/ImageLib/CMakeFiles/image.dir/RefCntMem.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/image.dir/RefCntMem.cpp.i"
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/RefCntMem.cpp > CMakeFiles/image.dir/RefCntMem.cpp.i
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/RefCntMem.cpp > CMakeFiles/image.dir/RefCntMem.cpp.i
 
 thirdparty/ImageLib/CMakeFiles/image.dir/RefCntMem.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/image.dir/RefCntMem.cpp.s"
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/RefCntMem.cpp -o CMakeFiles/image.dir/RefCntMem.cpp.s
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/RefCntMem.cpp -o CMakeFiles/image.dir/RefCntMem.cpp.s
 
 thirdparty/ImageLib/CMakeFiles/image.dir/RefCntMem.cpp.o.requires:
 .PHONY : thirdparty/ImageLib/CMakeFiles/image.dir/RefCntMem.cpp.o.requires
@@ -169,17 +169,17 @@ thirdparty/ImageLib/CMakeFiles/image.dir/RefCntMem.cpp.o.provides.build: thirdpa
 
 thirdparty/ImageLib/CMakeFiles/image.dir/Transform.cpp.o: thirdparty/ImageLib/CMakeFiles/image.dir/flags.make
 thirdparty/ImageLib/CMakeFiles/image.dir/Transform.cpp.o: thirdparty/ImageLib/Transform.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object thirdparty/ImageLib/CMakeFiles/image.dir/Transform.cpp.o"
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/image.dir/Transform.cpp.o -c /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Transform.cpp
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/image.dir/Transform.cpp.o -c /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Transform.cpp
 
 thirdparty/ImageLib/CMakeFiles/image.dir/Transform.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/image.dir/Transform.cpp.i"
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Transform.cpp > CMakeFiles/image.dir/Transform.cpp.i
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Transform.cpp > CMakeFiles/image.dir/Transform.cpp.i
 
 thirdparty/ImageLib/CMakeFiles/image.dir/Transform.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/image.dir/Transform.cpp.s"
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Transform.cpp -o CMakeFiles/image.dir/Transform.cpp.s
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/Transform.cpp -o CMakeFiles/image.dir/Transform.cpp.s
 
 thirdparty/ImageLib/CMakeFiles/image.dir/Transform.cpp.o.requires:
 .PHONY : thirdparty/ImageLib/CMakeFiles/image.dir/Transform.cpp.o.requires
@@ -211,8 +211,8 @@ thirdparty/ImageLib/libimage.a: thirdparty/ImageLib/CMakeFiles/image.dir/Transfo
 thirdparty/ImageLib/libimage.a: thirdparty/ImageLib/CMakeFiles/image.dir/build.make
 thirdparty/ImageLib/libimage.a: thirdparty/ImageLib/CMakeFiles/image.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX static library libimage.a"
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && $(CMAKE_COMMAND) -P CMakeFiles/image.dir/cmake_clean_target.cmake
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/image.dir/link.txt --verbose=$(VERBOSE)
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && $(CMAKE_COMMAND) -P CMakeFiles/image.dir/cmake_clean_target.cmake
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/image.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 thirdparty/ImageLib/CMakeFiles/image.dir/build: thirdparty/ImageLib/libimage.a
@@ -227,10 +227,10 @@ thirdparty/ImageLib/CMakeFiles/image.dir/requires: thirdparty/ImageLib/CMakeFile
 .PHONY : thirdparty/ImageLib/CMakeFiles/image.dir/requires
 
 thirdparty/ImageLib/CMakeFiles/image.dir/clean:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib && $(CMAKE_COMMAND) -P CMakeFiles/image.dir/cmake_clean.cmake
+	cd /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib && $(CMAKE_COMMAND) -P CMakeFiles/image.dir/cmake_clean.cmake
 .PHONY : thirdparty/ImageLib/CMakeFiles/image.dir/clean
 
 thirdparty/ImageLib/CMakeFiles/image.dir/depend:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/CMakeFiles/image.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/Bella/Heming-Bella/CS4670/P5 /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib /Users/Bella/Heming-Bella/CS4670/P5 /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/CMakeFiles/image.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : thirdparty/ImageLib/CMakeFiles/image.dir/depend
 
