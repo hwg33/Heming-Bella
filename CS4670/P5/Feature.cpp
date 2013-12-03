@@ -472,12 +472,25 @@ HOGFeatureExtractor::operator()(const CFloatImage &img, Feature &feat) const
                 for(int j = 0; j < _cellSize; j++){
                     int b;
                     if (_unsignedGradients){
-                        b = imgOri(x * _cellSize + i, y * _cellSize + j, 0) / (180.0 / _nAngularBins);
+                        b = imgOri.Pixel(x * _cellSize + i, y * _cellSize + j, 0) / (180.0 / _nAngularBins);
                     }else{
-                        b = imgOri(x * _cellSize + i, y * _cellSize + j, 0) / (360.0 / _nAngularBins);
+                        b = imgOri.Pixel(x * _cellSize + i, y * _cellSize + j, 0) / (360.0 / _nAngularBins);
                     }
-                    imgHog(x, y, b) += imgMag(x * _cellSize + i, y * _cellSize + j, 0);
+                    imgHog.Pixel(x, y, b) += imgMag.Pixel(x * _cellSize + i, y * _cellSize + j, 0);
                 }
+            }
+        }
+    }
+
+    for (int x = 0; x < featH; x++){
+        for(int y = 0; y < featW; y++){
+            double length;
+            for(int b = 0; b < _nAngularBins; b++){
+                length += imgHog.Pixel(x,y,b) * imgHog.Pixel(x,y,b);
+            }
+            length = sqrt(length);
+            for (int b = 0; b < _nAngularBins; b++){
+                imgHog.Pixel(x, y, b) = imgHog.Pixel(x, y, b) / length;
             }
         }
     }
