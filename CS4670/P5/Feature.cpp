@@ -430,7 +430,6 @@ HOGFeatureExtractor::operator()(const CFloatImage &img, Feature &feat) const
     //
     // Useful functions:
     // convertRGB2GrayImage, TypeConvert, WarpGlobal, Convolve
-
     int imgW = img.Shape().width;
     int imgH = img.Shape().height;
 

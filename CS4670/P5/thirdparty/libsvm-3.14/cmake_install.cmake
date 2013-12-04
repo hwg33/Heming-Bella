@@ -1,4 +1,4 @@
-# Install script for directory: /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/libsvm-3.14
+# Install script for directory: /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/libsvm-3.14
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -268,3 +268,81 @@ Linking C executable cmTryCompileExec2134451963
 /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=IceConnectionNumber -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2134451963.dir/CheckFunctionExists.c.o  -o cmTryCompileExec2134451963  -L/usr/X11R6/lib  -lICE -Wl,-rpath,/usr/X11R6/lib 
 
 
+Determining if the function XOpenDisplay exists in the /usr/X11R6/lib/libX11.dylib;/usr/X11R6/lib/libXext.dylib passed with the following output:
+Change Dir: /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec290675753/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec290675753.dir/build.make CMakeFiles/cmTryCompileExec290675753.dir/build
+"/Applications/CMake 2.8-12.app/Contents/bin/cmake" -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec290675753.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=XOpenDisplay   -o CMakeFiles/cmTryCompileExec290675753.dir/CheckFunctionExists.c.o   -c "/Applications/CMake 2.8-12.app/Contents/share/cmake-2.8/Modules/CheckFunctionExists.c"
+Linking C executable cmTryCompileExec290675753
+"/Applications/CMake 2.8-12.app/Contents/bin/cmake" -E cmake_link_script CMakeFiles/cmTryCompileExec290675753.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=XOpenDisplay -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec290675753.dir/CheckFunctionExists.c.o  -o cmTryCompileExec290675753  -L/usr/X11R6/lib  /usr/X11R6/lib/libX11.dylib /usr/X11R6/lib/libXext.dylib -Wl,-rpath,/usr/X11R6/lib 
+
+
+Determining if the function gethostbyname exists passed with the following output:
+Change Dir: /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec2354542616/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2354542616.dir/build.make CMakeFiles/cmTryCompileExec2354542616.dir/build
+"/Applications/CMake 2.8-12.app/Contents/bin/cmake" -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2354542616.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gethostbyname   -o CMakeFiles/cmTryCompileExec2354542616.dir/CheckFunctionExists.c.o   -c "/Applications/CMake 2.8-12.app/Contents/share/cmake-2.8/Modules/CheckFunctionExists.c"
+Linking C executable cmTryCompileExec2354542616
+"/Applications/CMake 2.8-12.app/Contents/bin/cmake" -E cmake_link_script CMakeFiles/cmTryCompileExec2354542616.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gethostbyname -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2354542616.dir/CheckFunctionExists.c.o  -o cmTryCompileExec2354542616  
+
+
+Determining if the function connect exists passed with the following output:
+Change Dir: /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec2762451910/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2762451910.dir/build.make CMakeFiles/cmTryCompileExec2762451910.dir/build
+"/Applications/CMake 2.8-12.app/Contents/bin/cmake" -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2762451910.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=connect   -o CMakeFiles/cmTryCompileExec2762451910.dir/CheckFunctionExists.c.o   -c "/Applications/CMake 2.8-12.app/Contents/share/cmake-2.8/Modules/CheckFunctionExists.c"
+Linking C executable cmTryCompileExec2762451910
+"/Applications/CMake 2.8-12.app/Contents/bin/cmake" -E cmake_link_script CMakeFiles/cmTryCompileExec2762451910.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=connect -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2762451910.dir/CheckFunctionExists.c.o  -o cmTryCompileExec2762451910  
+
+
+Determining if the function remove exists passed with the following output:
+Change Dir: /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec2736914199/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2736914199.dir/build.make CMakeFiles/cmTryCompileExec2736914199.dir/build
+"/Applications/CMake 2.8-12.app/Contents/bin/cmake" -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2736914199.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=remove   -o CMakeFiles/cmTryCompileExec2736914199.dir/CheckFunctionExists.c.o   -c "/Applications/CMake 2.8-12.app/Contents/share/cmake-2.8/Modules/CheckFunctionExists.c"
+Linking C executable cmTryCompileExec2736914199
+"/Applications/CMake 2.8-12.app/Contents/bin/cmake" -E cmake_link_script CMakeFiles/cmTryCompileExec2736914199.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=remove -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2736914199.dir/CheckFunctionExists.c.o  -o cmTryCompileExec2736914199  
+
+
+Determining if the function shmat exists passed with the following output:
+Change Dir: /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec3254336753/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3254336753.dir/build.make CMakeFiles/cmTryCompileExec3254336753.dir/build
+"/Applications/CMake 2.8-12.app/Contents/bin/cmake" -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3254336753.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=shmat   -o CMakeFiles/cmTryCompileExec3254336753.dir/CheckFunctionExists.c.o   -c "/Applications/CMake 2.8-12.app/Contents/share/cmake-2.8/Modules/CheckFunctionExists.c"
+Linking C executable cmTryCompileExec3254336753
+"/Applications/CMake 2.8-12.app/Contents/bin/cmake" -E cmake_link_script CMakeFiles/cmTryCompileExec3254336753.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=shmat -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec3254336753.dir/CheckFunctionExists.c.o  -o cmTryCompileExec3254336753  
+
+
+Determining if the function IceConnectionNumber exists in the ICE passed with the following output:
+Change Dir: /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec3624042499/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3624042499.dir/build.make CMakeFiles/cmTryCompileExec3624042499.dir/build
+"/Applications/CMake 2.8-12.app/Contents/bin/cmake" -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3624042499.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=IceConnectionNumber   -o CMakeFiles/cmTryCompileExec3624042499.dir/CheckFunctionExists.c.o   -c "/Applications/CMake 2.8-12.app/Contents/share/cmake-2.8/Modules/CheckFunctionExists.c"
+Linking C executable cmTryCompileExec3624042499
+"/Applications/CMake 2.8-12.app/Contents/bin/cmake" -E cmake_link_script CMakeFiles/cmTryCompileExec3624042499.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=IceConnectionNumber -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec3624042499.dir/CheckFunctionExists.c.o  -o cmTryCompileExec3624042499  -L/usr/X11R6/lib  -lICE -Wl,-rpath,/usr/X11R6/lib 
+
+

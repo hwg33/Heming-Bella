@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEG.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEG.h
 jpeglib.h
 -
 
-/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEGReader.cpp
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEGReader.cpp
 JPEGReader.h
-/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEGReader.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEGReader.h
 stdexcept
 -
 cassert
@@ -22,7 +22,7 @@ limits
 iostream
 -
 
-/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEGReader.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEGReader.h
 cstdio
 -
 cstdlib
@@ -38,17 +38,17 @@ vector
 string
 -
 JPEG.h
-/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEG.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEG.h
 
-/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEGWriter.cpp
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEGWriter.cpp
 JPEGWriter.h
-/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEGWriter.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEGWriter.h
 stdexcept
 -
 cassert
 -
 
-/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEGWriter.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEGWriter.h
 cstdio
 -
 cstdlib
@@ -68,7 +68,7 @@ limits
 stdexcept
 -
 JPEG.h
-/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEG.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEG.h
 
 /usr/local/include/jconfig.h
 

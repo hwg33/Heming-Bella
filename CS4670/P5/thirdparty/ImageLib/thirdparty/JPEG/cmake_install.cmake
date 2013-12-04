@@ -1,4 +1,4 @@
-# Install script for directory: /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG
+# Install script for directory: /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

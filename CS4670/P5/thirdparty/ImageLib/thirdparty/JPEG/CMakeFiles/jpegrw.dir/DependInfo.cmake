@@ -4,8 +4,8 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEGReader.cpp" "/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/JPEGReader.cpp.o"
-  "/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEGWriter.cpp" "/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/JPEGWriter.cpp.o"
+  "/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEGReader.cpp" "/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/JPEGReader.cpp.o"
+  "/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/JPEGWriter.cpp" "/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/thirdparty/JPEG/CMakeFiles/jpegrw.dir/JPEGWriter.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "Clang")
 
@@ -17,7 +17,6 @@ SET(CMAKE_TARGET_LINKED_INFO_FILES
 SET(CMAKE_C_TARGET_INCLUDE_PATH
   "/usr/local/include"
   "/System/Library/Frameworks/OpenGL.framework"
-  "/Library/Frameworks/Mono.framework/Headers"
   )
 SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
 SET(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

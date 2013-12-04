@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/libsvm-3.14/svm.cpp
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/libsvm-3.14/svm.cpp
 math.h
 -
 stdio.h
@@ -26,7 +26,7 @@ limits.h
 locale.h
 -
 svm.h
-/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/libsvm-3.14/svm.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/libsvm-3.14/svm.h
 
-/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/libsvm-3.14/svm.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/libsvm-3.14/svm.h
 

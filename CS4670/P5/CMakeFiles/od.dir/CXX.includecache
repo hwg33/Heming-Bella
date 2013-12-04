@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/Bella/Heming-Bella/CS4670/P5/Common.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Common.h
 algorithm
 -
 vector
@@ -38,45 +38,45 @@ cmath
 stdint.h
 -
 ImageLib/ImageLib.h
-/Users/Bella/Heming-Bella/CS4670/P5/ImageLib/ImageLib.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ImageLib/ImageLib.h
 libsvm-3.14/svm.h
-/Users/Bella/Heming-Bella/CS4670/P5/libsvm-3.14/svm.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/libsvm-3.14/svm.h
 
-/Users/Bella/Heming-Bella/CS4670/P5/CroppedImageDatabase.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CroppedImageDatabase.h
 Common.h
-/Users/Bella/Heming-Bella/CS4670/P5/Common.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Common.h
 
-/Users/Bella/Heming-Bella/CS4670/P5/Feature.cpp
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Feature.cpp
 Feature.h
-/Users/Bella/Heming-Bella/CS4670/P5/Feature.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Feature.h
 
-/Users/Bella/Heming-Bella/CS4670/P5/Feature.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Feature.h
 Common.h
-/Users/Bella/Heming-Bella/CS4670/P5/Common.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Common.h
 Utils.h
-/Users/Bella/Heming-Bella/CS4670/P5/Utils.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Utils.h
 CroppedImageDatabase.h
-/Users/Bella/Heming-Bella/CS4670/P5/CroppedImageDatabase.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CroppedImageDatabase.h
 SubBandImagePyramid.h
-/Users/Bella/Heming-Bella/CS4670/P5/SubBandImagePyramid.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/SubBandImagePyramid.h
 
-/Users/Bella/Heming-Bella/CS4670/P5/ParametersMap.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ParametersMap.h
 Common.h
-/Users/Bella/Heming-Bella/CS4670/P5/Common.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Common.h
 
-/Users/Bella/Heming-Bella/CS4670/P5/SubBandImagePyramid.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/SubBandImagePyramid.h
 Common.h
-/Users/Bella/Heming-Bella/CS4670/P5/Common.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Common.h
 ParametersMap.h
-/Users/Bella/Heming-Bella/CS4670/P5/ParametersMap.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ParametersMap.h
 SubBandImagePyramid.inl
-/Users/Bella/Heming-Bella/CS4670/P5/SubBandImagePyramid.inl
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/SubBandImagePyramid.inl
 
-/Users/Bella/Heming-Bella/CS4670/P5/SubBandImagePyramid.inl
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/SubBandImagePyramid.inl
 
-/Users/Bella/Heming-Bella/CS4670/P5/Utils.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Utils.h
 Common.h
-/Users/Bella/Heming-Bella/CS4670/P5/Common.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Common.h
 
 thirdparty/ImageLib/Convert.h
 Image.h

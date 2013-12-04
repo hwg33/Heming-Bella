@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = "/Applications/CMake 2.8-12.app/Contents/bin/ccmake"
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/Bella/Heming-Bella/CS4670/P5
+CMAKE_SOURCE_DIR = /Users/hemingge/Desktop/Heming-Bella/CS4670/P5
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/Bella/Heming-Bella/CS4670/P5
+CMAKE_BINARY_DIR = /Users/hemingge/Desktop/Heming-Bella/CS4670/P5
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,9 +72,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
