@@ -1,0 +1,15 @@
+4
+cell_size 6
+feature_type hog
+n_angular_bins 18
+unsigned_gradients 1
+16 27 18
+5.500000 16.368750
+svm_type c_svc
+kernel_type linear
+nr_class 2
+total_sv 0
+rho nan
+label 1 -1
+nr_sv 0 0
+SV

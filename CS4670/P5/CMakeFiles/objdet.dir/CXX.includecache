@@ -42,10 +42,6 @@ ImageLib/ImageLib.h
 libsvm-3.14/svm.h
 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/libsvm-3.14/svm.h
 
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ControlsBox.cpp
-ControlsBox.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ControlsBox.h
-
 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ControlsBox.h
 Common.h
 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Common.h
@@ -134,12 +130,6 @@ FL/Fl_Box.H
 FL/Fl_Help_Dialog.H
 -
 
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/GUIModel.cpp
-GUIModel.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/GUIModel.h
-GUIController.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/GUIController.h
-
 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/GUIModel.h
 Common.h
 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Common.h
@@ -156,22 +146,6 @@ FileIO.h
 Fl/Fl_Shared_Image.H
 -
 
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ImageDatabase.h
-Common.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Common.h
-Detection.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Detection.h
-
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ImageView.cpp
-ImageView.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ImageView.h
-FL/Fl.H
--
-FL/Fl_Image.H
--
-FL/fl_draw.H
--
-
 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ImageView.h
 Common.h
 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Common.h
@@ -179,10 +153,6 @@ FL/Fl_Box.H
 -
 FL/Fl_Double_Window.H
 -
-
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ImageViewGL.cpp
-ImageViewGL.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ImageViewGL.h
 
 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ImageViewGL.h
 Common.h
@@ -212,10 +182,6 @@ SubBandImagePyramid.h
 Common.h
 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Common.h
 
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/PrecisionRecall.h
-Common.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Common.h
-
 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/SubBandImagePyramid.h
 Common.h
 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Common.h
@@ -237,30 +203,6 @@ CroppedImageDatabase.h
 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Utils.h
 Common.h
 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Common.h
-
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/main.cpp
-Common.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Common.h
-Utils.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Utils.h
-Feature.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Feature.h
-SupportVectorMachine.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/SupportVectorMachine.h
-PrecisionRecall.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/PrecisionRecall.h
-ObjectDetector.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ObjectDetector.h
-SubBandImagePyramid.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/SubBandImagePyramid.h
-FileIO.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/FileIO.h
-ImageDatabase.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ImageDatabase.h
-GUIController.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/GUIController.h
-GUIModel.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/GUIModel.h
 
 /usr/include/dirent.h
 _types.h
@@ -740,12 +682,6 @@ Fl_Window.H
 Xutf8.h
 /usr/local/include/FL/Xutf8.h
 
-/usr/local/include/Fl/Fl_Image.H
-Enumerations.H
-/usr/local/include/Fl/Enumerations.H
-stdlib.h
--
-
 /usr/local/include/Fl/Fl_Shared_Image.H
 Fl_Image.H
 /usr/local/include/Fl/Fl_Image.H
@@ -759,8 +695,6 @@ thirdparty/ImageLib/Convert.inl
 thirdparty/ImageLib/Convert.inl
 
 thirdparty/ImageLib/Convolve.h
-
-thirdparty/ImageLib/FileIO.h
 
 thirdparty/ImageLib/Image.h
 RefCntMem.h

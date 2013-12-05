@@ -1,5 +1,5 @@
 #include "Feature.h"
-#define PI 3.14159
+#define PI 3.14159265359
 
 static
 double
@@ -310,8 +310,8 @@ TinyImageGradFeatureExtractor::operator()(const CFloatImage &imgRGB_, Feature &f
     Convolve(tinyImg, imgX, _kernelDx);
     Convolve(tinyImg, imgY, _kernelDy);
 
-    for (int x = 0; x < targetH; x++){
-        for(int y = 0; y < targetW; y++){
+    for (int y = 0; y < targetH; y++){
+        for(int x = 0; x < targetW; x++){
             imgMag.Pixel(x, y, 0) = sqrt(imgX.Pixel(x, y, 0) * imgX.Pixel(x, y, 0) + imgY.Pixel(x, y, 0) * imgY.Pixel(x, y, 0));
         }
     }
@@ -402,6 +402,10 @@ HOGFeatureExtractor::HOGFeatureExtractor(const ParametersMap &params)
     }
 }
 
+double gaussian(int x, int y, int cell_size){
+    return exp(-(x-cell_size/2)*(x-cell_size/2)/(0.5*cell_size*cell_size) - (y-cell_size/2)*(y-cell_size/2)/(0.5*cell_size*cell_size));
+}
+
 void
 HOGFeatureExtractor::operator()(const CFloatImage &img, Feature &feat) const
 {
@@ -430,12 +434,12 @@ HOGFeatureExtractor::operator()(const CFloatImage &img, Feature &feat) const
     //
     // Useful functions:
     // convertRGB2GrayImage, TypeConvert, WarpGlobal, Convolve
+
     int imgW = img.Shape().width;
     int imgH = img.Shape().height;
 
     int featW = (imgW + (_cellSize-1)) / _cellSize;
     int featH = (imgH + (_cellSize-1)) / _cellSize;
-
     CFloatImage imgHog(featW, featH, _nAngularBins);
 
     //compute gradients in x and y directions
@@ -443,12 +447,19 @@ HOGFeatureExtractor::operator()(const CFloatImage &img, Feature &feat) const
     CFloatImage imgY(imgW, imgH, 3);
     CFloatImage imgOri(imgW, imgH, 1);
     CFloatImage imgMag(imgW, imgH, 1);
+
+    imgX.ClearPixels();
+    imgY.ClearPixels();
+    imgOri.ClearPixels();
+    imgMag.ClearPixels();
+    imgHog.ClearPixels();
+
     Convolve(img, imgX, _kernelDx);
     Convolve(img, imgY, _kernelDy);
 
     //compute gradient magnitudes
-    for (int x = 0; x < imgH; x++){
-        for(int y = 0; y < imgW; y++){
+    for (int y = 0; y < imgH; y++){
+        for(int x = 0; x < imgW; x++){
             int max = 0;
             double max_m = 0;
             for (int b = 0; b < 3; b++){
@@ -459,40 +470,85 @@ HOGFeatureExtractor::operator()(const CFloatImage &img, Feature &feat) const
                 }
             }
             imgMag.Pixel(x, y, 0) = max_m;
-            if (_unsignedGradients) imgOri.Pixel(x, y, 0) = atan(imgY.Pixel(x, y, max)/imgX.Pixel(x, y, max)) * 180.0 / PI;
-            else imgOri.Pixel(x, y, 0) = atan2(imgY.Pixel(x, y, max), imgX.Pixel(x, y, max)) * 180.0 / PI;
+            if (imgX.Pixel(x, y, max) == 0) imgOri.Pixel(x, y, 0) = 0;
+            else {
+                if (_unsignedGradients){
+                    double ang = atan2(imgY.Pixel(x, y, max), imgX.Pixel(x, y, max)) * 180.0 / PI;
+                    if (ang < 0){
+                        imgOri.Pixel(x, y, 0) = ang + 180;
+                    }else{
+                        imgOri.Pixel(x, y, 0) = ang;
+                    }
+                }
+                else {
+                    double ang = atan2(imgY.Pixel(x, y, max), imgX.Pixel(x, y, max)) * 180.0 / PI;
+                    if (ang < 0){
+                        imgOri.Pixel(x, y, 0) = ang + 360;
+                    }else{
+                        imgOri.Pixel(x, y, 0) = ang;
+                    }
+                }
+            }
+
+            //printf("y, x:%f, %f", imgY.Pixel(x, y, max), imgX.Pixel(x, y, max));
+            //printf("orientation:%f\n", imgOri.Pixel(x, y, 0));
         }
     }
-
     //compute HoG
-    for (int x = 0; x < featH; x++){
-        for(int y = 0; y < featW; y++){
+    for (int y = 0; y < featH; y++){
+        for(int x = 0; x < featW; x++){
             for (int i = 0; i < _cellSize; i++){
                 for(int j = 0; j < _cellSize; j++){
-                    int b;
-                    if (_unsignedGradients){
-                        b = imgOri.Pixel(x * _cellSize + i, y * _cellSize + j, 0) / (180.0 / _nAngularBins);
-                    }else{
-                        b = imgOri.Pixel(x * _cellSize + i, y * _cellSize + j, 0) / (360.0 / _nAngularBins);
+                    if (x*_cellSize+i >= 0 && x*_cellSize+i < imgW && y*_cellSize + j >= 0 && y * _cellSize + j < imgH){
+                        int b = 0;
+                        if (_unsignedGradients){
+                            //printf("unsori:%f\n", imgOri.Pixel(x * _cellSize + i, y * _cellSize + j, 0) + 90);
+                            b = imgOri.Pixel(x * _cellSize + i, y * _cellSize + j, 0) / (180.0 / _nAngularBins);
+                        }else{
+                            //printf("sori:%f\n", imgOri.Pixel(x * _cellSize + i, y * _cellSize + j, 0) + 180);
+                            b = imgOri.Pixel(x * _cellSize + i, y * _cellSize + j, 0) / (360.0 / _nAngularBins);
+                        }
+                        //printf("b = %d\n", b);
+                        imgHog.Pixel(x, y, b) += imgMag.Pixel(x * _cellSize + i, y * _cellSize + j, 0) * gaussian(i, j, _cellSize);
                     }
-                    imgHog.Pixel(x, y, b) += imgMag.Pixel(x * _cellSize + i, y * _cellSize + j, 0);
                 }
             }
         }
     }
 
-    for (int x = 0; x < featH; x++){
-        for(int y = 0; y < featW; y++){
+    for (int y = 0; y < featH; y++){
+        for(int x = 0; x < featW; x++){
             double length;
             for(int b = 0; b < _nAngularBins; b++){
                 length += imgHog.Pixel(x,y,b) * imgHog.Pixel(x,y,b);
             }
-            length = sqrt(length);
+            length = sqrt(length) + 0.00001;
             for (int b = 0; b < _nAngularBins; b++){
                 imgHog.Pixel(x, y, b) = imgHog.Pixel(x, y, b) / length;
             }
         }
     }
+
+    /*
+    double threshold = 0.1;
+    for (int y = 0; y < featH; y++){
+        for(int x = 0; x < featW; x++){
+            double length;
+            for(int b = 0; b < _nAngularBins; b++){
+                if (imgHog.Pixel(x,y,b) > threshold){
+                    length += threshold * threshold;
+                }else{
+                    length += imgHog.Pixel(x,y,b) * imgHog.Pixel(x,y,b);
+                }
+            }
+            length = sqrt(length) + 0.00001;
+            for (int b = 0; b < _nAngularBins; b++){
+                imgHog.Pixel(x, y, b) = imgHog.Pixel(x, y, b) / length;
+            }
+        }
+    }
+    */
+
 
     feat = imgHog;
     /******** END TODO ********/

@@ -46,10 +46,6 @@ libsvm-3.14/svm.h
 Common.h
 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Common.h
 
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Feature.cpp
-Feature.h
-/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Feature.h
-
 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Feature.h
 Common.h
 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Common.h
@@ -73,6 +69,18 @@ SubBandImagePyramid.inl
 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/SubBandImagePyramid.inl
 
 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/SubBandImagePyramid.inl
+
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/SupportVectorMachine.cpp
+SupportVectorMachine.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/SupportVectorMachine.h
+
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/SupportVectorMachine.h
+Common.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Common.h
+Feature.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Feature.h
+CroppedImageDatabase.h
+/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CroppedImageDatabase.h
 
 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Utils.h
 Common.h
