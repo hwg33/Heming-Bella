@@ -430,6 +430,7 @@ HOGFeatureExtractor::operator()(const CFloatImage &img, Feature &feat) const
     //
     // Useful functions:
     // convertRGB2GrayImage, TypeConvert, WarpGlobal, Convolve
+    printf("0\n");
     int imgW = img.Shape().width;
     int imgH = img.Shape().height;
 
@@ -446,9 +447,11 @@ HOGFeatureExtractor::operator()(const CFloatImage &img, Feature &feat) const
     Convolve(img, imgX, _kernelDx);
     Convolve(img, imgY, _kernelDy);
 
+    printf("1\n");
+
     //compute gradient magnitudes
-    for (int x = 0; x < imgH; x++){
-        for(int y = 0; y < imgW; y++){
+    for (int y = 0; y < imgH; y++){
+        for(int x = 0; x < imgW; x++){
             int max = 0;
             double max_m = 0;
             for (int b = 0; b < 3; b++){
@@ -463,10 +466,11 @@ HOGFeatureExtractor::operator()(const CFloatImage &img, Feature &feat) const
             else imgOri.Pixel(x, y, 0) = atan2(imgY.Pixel(x, y, max), imgX.Pixel(x, y, max)) * 180.0 / PI;
         }
     }
+     printf("2\n");
 
     //compute HoG
-    for (int x = 0; x < featH; x++){
-        for(int y = 0; y < featW; y++){
+    for (int y = 0; y < featH; y++){
+        for(int x = 0; x < featW; x++){
             for (int i = 0; i < _cellSize; i++){
                 for(int j = 0; j < _cellSize; j++){
                     int b;
@@ -480,9 +484,10 @@ HOGFeatureExtractor::operator()(const CFloatImage &img, Feature &feat) const
             }
         }
     }
+     printf("3\n");
 
-    for (int x = 0; x < featH; x++){
-        for(int y = 0; y < featW; y++){
+    for (int y = 0; y < featH; y++){
+        for(int x = 0; x < featW; x++){
             double length;
             for(int b = 0; b < _nAngularBins; b++){
                 length += imgHog.Pixel(x,y,b) * imgHog.Pixel(x,y,b);
@@ -493,7 +498,7 @@ HOGFeatureExtractor::operator()(const CFloatImage &img, Feature &feat) const
             }
         }
     }
-
+     printf("4\n");
     feat = imgHog;
     /******** END TODO ********/
 }

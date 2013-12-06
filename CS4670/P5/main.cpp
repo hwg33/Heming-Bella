@@ -81,11 +81,13 @@ mainSVMTrain(const std::vector<std::string> &args, const std::map<std::string, s
     FeatureExtractor *featExtractor = FeatureExtractor::create(featParams);
 
     PRINT_MSG("Feature type: " << featExtractor->getFeatureType());
-
+    printf("1\n");
     PRINT_MSG("Loading one image to get its size");
+    printf("2\n");
     CByteImage img;
+    printf("3\n");
     ReadFile(img, db.getFilename(0).c_str());
-
+    printf("4\n");
     PRINT_MSG("Extracting features");
     FeatureCollection features;
     (*featExtractor)(db, features);

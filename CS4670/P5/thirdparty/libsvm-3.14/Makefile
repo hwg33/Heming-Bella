@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = "/Applications/CMake 2.8-12.app/Contents/bin/ccmake"
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/hemingge/Desktop/Heming-Bella/CS4670/P5
+CMAKE_SOURCE_DIR = /Users/Bella/Heming-Bella/CS4670/P5
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/hemingge/Desktop/Heming-Bella/CS4670/P5
+CMAKE_BINARY_DIR = /Users/Bella/Heming-Bella/CS4670/P5
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(CMAKE_COMMAND) -E cmake_progress_start /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/libsvm-3.14/CMakeFiles/progress.marks
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/libsvm-3.14/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles 0
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(CMAKE_COMMAND) -E cmake_progress_start /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles /Users/Bella/Heming-Bella/CS4670/P5/thirdparty/libsvm-3.14/CMakeFiles/progress.marks
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/libsvm-3.14/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/libsvm-3.14/clean
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/libsvm-3.14/clean
 .PHONY : clean
 
 # The main clean target
@@ -88,22 +88,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/libsvm-3.14/preinstall
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/libsvm-3.14/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/libsvm-3.14/preinstall
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/libsvm-3.14/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 thirdparty/libsvm-3.14/CMakeFiles/svm.dir/rule:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/libsvm-3.14/CMakeFiles/svm.dir/rule
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/libsvm-3.14/CMakeFiles/svm.dir/rule
 .PHONY : thirdparty/libsvm-3.14/CMakeFiles/svm.dir/rule
 
 # Convenience name for target.
@@ -112,7 +112,7 @@ svm: thirdparty/libsvm-3.14/CMakeFiles/svm.dir/rule
 
 # fast build rule for target.
 svm/fast:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/libsvm-3.14/CMakeFiles/svm.dir/build.make thirdparty/libsvm-3.14/CMakeFiles/svm.dir/build
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/libsvm-3.14/CMakeFiles/svm.dir/build.make thirdparty/libsvm-3.14/CMakeFiles/svm.dir/build
 .PHONY : svm/fast
 
 svm.o: svm.cpp.o
@@ -120,7 +120,7 @@ svm.o: svm.cpp.o
 
 # target to build an object file
 svm.cpp.o:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/libsvm-3.14/CMakeFiles/svm.dir/build.make thirdparty/libsvm-3.14/CMakeFiles/svm.dir/svm.cpp.o
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/libsvm-3.14/CMakeFiles/svm.dir/build.make thirdparty/libsvm-3.14/CMakeFiles/svm.dir/svm.cpp.o
 .PHONY : svm.cpp.o
 
 svm.i: svm.cpp.i
@@ -128,7 +128,7 @@ svm.i: svm.cpp.i
 
 # target to preprocess a source file
 svm.cpp.i:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/libsvm-3.14/CMakeFiles/svm.dir/build.make thirdparty/libsvm-3.14/CMakeFiles/svm.dir/svm.cpp.i
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/libsvm-3.14/CMakeFiles/svm.dir/build.make thirdparty/libsvm-3.14/CMakeFiles/svm.dir/svm.cpp.i
 .PHONY : svm.cpp.i
 
 svm.s: svm.cpp.s
@@ -136,7 +136,7 @@ svm.s: svm.cpp.s
 
 # target to generate assembly for a file
 svm.cpp.s:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/libsvm-3.14/CMakeFiles/svm.dir/build.make thirdparty/libsvm-3.14/CMakeFiles/svm.dir/svm.cpp.s
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(MAKE) -f thirdparty/libsvm-3.14/CMakeFiles/svm.dir/build.make thirdparty/libsvm-3.14/CMakeFiles/svm.dir/svm.cpp.s
 .PHONY : svm.cpp.s
 
 # Help Target
@@ -162,6 +162,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
