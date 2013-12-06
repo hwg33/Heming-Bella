@@ -53,7 +53,7 @@ GUIController::GUIController():
     //Fl::visual(FL_DOUBLE | FL_INDEX);
 
     // Create the main window.
-    _mainWindow = new Fl_Window(1400, 800, "OBDet");
+    _mainWindow = new Fl_Window(1000, 600, "OBDet");
     {
         _mainWindow->user_data((void *) this);
 

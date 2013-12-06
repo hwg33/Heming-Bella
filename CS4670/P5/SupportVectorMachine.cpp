@@ -279,9 +279,23 @@ SupportVectorMachine::predictSlidingWindow(const Feature &feat, CFloatImage &res
     // Useful functions:
     // Convolve, BandSelect, this->getWeights(), this->getBiasTerm()
 
-    Convolve(feat, response, this->getWeights());
     double width = response.Shape().width;
     double height = response.Shape().height;
+    for (int b = 0; b < feat.Shape().nBands; b++) {
+        CFloatImage dst(CShape(width, height, 1));
+        CFloatImage weightDst(CShape(width, height, 1));
+        CFloatImage resp(CShape(width, height, 1));
+        BandSelect(feat, dst, b, 0);
+        BandSelect(this->getWeights(), weightDst, b, 0);
+        weightDst.origin[0] = this->getWeights().origin[0];
+        weightDst.origin[1] = this->getWeights().origin[1];
+        Convolve(dst, resp, weightDst);
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                response.Pixel(x, y, 0) += resp.Pixel(x, y, 0);
+            }
+        }
+    }
     for (int x = 0; x < width; x++) {
         for (int y = 0; y < height; y++) {
             response.Pixel(x, y, 0) -= this->getBiasTerm();
