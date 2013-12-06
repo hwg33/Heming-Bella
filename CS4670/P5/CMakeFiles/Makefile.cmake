@@ -13,8 +13,6 @@ SET(CMAKE_MAKEFILE_DEPENDS
   "/Applications/CMake 2.8-12.app/Contents/share/cmake-2.8/Modules/CMakeGenericSystem.cmake"
   "/Applications/CMake 2.8-12.app/Contents/share/cmake-2.8/Modules/CMakeParseArguments.cmake"
   "/Applications/CMake 2.8-12.app/Contents/share/cmake-2.8/Modules/CMakeSystemSpecificInformation.cmake"
-  "/Applications/CMake 2.8-12.app/Contents/share/cmake-2.8/Modules/CMakeUnixFindMake.cmake"
-  "/Applications/CMake 2.8-12.app/Contents/share/cmake-2.8/Modules/CheckFunctionExists.c"
   "/Applications/CMake 2.8-12.app/Contents/share/cmake-2.8/Modules/CheckFunctionExists.cmake"
   "/Applications/CMake 2.8-12.app/Contents/share/cmake-2.8/Modules/CheckLibraryExists.cmake"
   "/Applications/CMake 2.8-12.app/Contents/share/cmake-2.8/Modules/Compiler/Clang-C.cmake"

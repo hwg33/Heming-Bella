@@ -1,4 +1,4 @@
-# Install script for directory: /Users/hemingge/Desktop/Heming-Bella/CS4670/P5
+# Install script for directory: /Users/Bella/Heming-Bella/CS4670/P5
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -12,7 +12,7 @@ IF(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     STRING(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   ELSE(BUILD_TYPE)
-    SET(CMAKE_INSTALL_CONFIG_NAME "")
+    SET(CMAKE_INSTALL_CONFIG_NAME "Debug")
   ENDIF(BUILD_TYPE)
   MESSAGE(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 ENDIF(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
@@ -29,8 +29,8 @@ ENDIF(NOT CMAKE_INSTALL_COMPONENT)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/ImageLib/cmake_install.cmake")
-  INCLUDE("/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/thirdparty/libsvm-3.14/cmake_install.cmake")
+  INCLUDE("/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/ImageLib/cmake_install.cmake")
+  INCLUDE("/Users/Bella/Heming-Bella/CS4670/P5/thirdparty/libsvm-3.14/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 
@@ -40,7 +40,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/Users/Bella/Heming-Bella/CS4670/P5/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/Users/hemingge/Desktop/Heming-Bella/CS4670/P5/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/Users/Bella/Heming-Bella/CS4670/P5/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

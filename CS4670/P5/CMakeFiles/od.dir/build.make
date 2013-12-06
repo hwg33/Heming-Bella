@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = "/Applications/CMake 2.8-12.app/Contents/bin/ccmake"
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/hemingge/Desktop/Heming-Bella/CS4670/P5
+CMAKE_SOURCE_DIR = /Users/Bella/Heming-Bella/CS4670/P5
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/hemingge/Desktop/Heming-Bella/CS4670/P5
+CMAKE_BINARY_DIR = /Users/Bella/Heming-Bella/CS4670/P5
 
 # Include any dependencies generated for this target.
 include CMakeFiles/od.dir/depend.make
@@ -54,17 +54,17 @@ include CMakeFiles/od.dir/flags.make
 
 CMakeFiles/od.dir/Utils.cpp.o: CMakeFiles/od.dir/flags.make
 CMakeFiles/od.dir/Utils.cpp.o: Utils.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/od.dir/Utils.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/od.dir/Utils.cpp.o -c /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Utils.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/od.dir/Utils.cpp.o -c /Users/Bella/Heming-Bella/CS4670/P5/Utils.cpp
 
 CMakeFiles/od.dir/Utils.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/od.dir/Utils.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Utils.cpp > CMakeFiles/od.dir/Utils.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/Bella/Heming-Bella/CS4670/P5/Utils.cpp > CMakeFiles/od.dir/Utils.cpp.i
 
 CMakeFiles/od.dir/Utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/od.dir/Utils.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Utils.cpp -o CMakeFiles/od.dir/Utils.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/Bella/Heming-Bella/CS4670/P5/Utils.cpp -o CMakeFiles/od.dir/Utils.cpp.s
 
 CMakeFiles/od.dir/Utils.cpp.o.requires:
 .PHONY : CMakeFiles/od.dir/Utils.cpp.o.requires
@@ -77,17 +77,17 @@ CMakeFiles/od.dir/Utils.cpp.o.provides.build: CMakeFiles/od.dir/Utils.cpp.o
 
 CMakeFiles/od.dir/Feature.cpp.o: CMakeFiles/od.dir/flags.make
 CMakeFiles/od.dir/Feature.cpp.o: Feature.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/od.dir/Feature.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/od.dir/Feature.cpp.o -c /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Feature.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/od.dir/Feature.cpp.o -c /Users/Bella/Heming-Bella/CS4670/P5/Feature.cpp
 
 CMakeFiles/od.dir/Feature.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/od.dir/Feature.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Feature.cpp > CMakeFiles/od.dir/Feature.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/Bella/Heming-Bella/CS4670/P5/Feature.cpp > CMakeFiles/od.dir/Feature.cpp.i
 
 CMakeFiles/od.dir/Feature.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/od.dir/Feature.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Feature.cpp -o CMakeFiles/od.dir/Feature.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/Bella/Heming-Bella/CS4670/P5/Feature.cpp -o CMakeFiles/od.dir/Feature.cpp.s
 
 CMakeFiles/od.dir/Feature.cpp.o.requires:
 .PHONY : CMakeFiles/od.dir/Feature.cpp.o.requires
@@ -100,17 +100,17 @@ CMakeFiles/od.dir/Feature.cpp.o.provides.build: CMakeFiles/od.dir/Feature.cpp.o
 
 CMakeFiles/od.dir/SupportVectorMachine.cpp.o: CMakeFiles/od.dir/flags.make
 CMakeFiles/od.dir/SupportVectorMachine.cpp.o: SupportVectorMachine.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/od.dir/SupportVectorMachine.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/od.dir/SupportVectorMachine.cpp.o -c /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/SupportVectorMachine.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/od.dir/SupportVectorMachine.cpp.o -c /Users/Bella/Heming-Bella/CS4670/P5/SupportVectorMachine.cpp
 
 CMakeFiles/od.dir/SupportVectorMachine.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/od.dir/SupportVectorMachine.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/SupportVectorMachine.cpp > CMakeFiles/od.dir/SupportVectorMachine.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/Bella/Heming-Bella/CS4670/P5/SupportVectorMachine.cpp > CMakeFiles/od.dir/SupportVectorMachine.cpp.i
 
 CMakeFiles/od.dir/SupportVectorMachine.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/od.dir/SupportVectorMachine.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/SupportVectorMachine.cpp -o CMakeFiles/od.dir/SupportVectorMachine.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/Bella/Heming-Bella/CS4670/P5/SupportVectorMachine.cpp -o CMakeFiles/od.dir/SupportVectorMachine.cpp.s
 
 CMakeFiles/od.dir/SupportVectorMachine.cpp.o.requires:
 .PHONY : CMakeFiles/od.dir/SupportVectorMachine.cpp.o.requires
@@ -123,17 +123,17 @@ CMakeFiles/od.dir/SupportVectorMachine.cpp.o.provides.build: CMakeFiles/od.dir/S
 
 CMakeFiles/od.dir/CroppedImageDatabase.cpp.o: CMakeFiles/od.dir/flags.make
 CMakeFiles/od.dir/CroppedImageDatabase.cpp.o: CroppedImageDatabase.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/od.dir/CroppedImageDatabase.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/od.dir/CroppedImageDatabase.cpp.o -c /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CroppedImageDatabase.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/od.dir/CroppedImageDatabase.cpp.o -c /Users/Bella/Heming-Bella/CS4670/P5/CroppedImageDatabase.cpp
 
 CMakeFiles/od.dir/CroppedImageDatabase.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/od.dir/CroppedImageDatabase.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CroppedImageDatabase.cpp > CMakeFiles/od.dir/CroppedImageDatabase.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/Bella/Heming-Bella/CS4670/P5/CroppedImageDatabase.cpp > CMakeFiles/od.dir/CroppedImageDatabase.cpp.i
 
 CMakeFiles/od.dir/CroppedImageDatabase.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/od.dir/CroppedImageDatabase.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CroppedImageDatabase.cpp -o CMakeFiles/od.dir/CroppedImageDatabase.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/Bella/Heming-Bella/CS4670/P5/CroppedImageDatabase.cpp -o CMakeFiles/od.dir/CroppedImageDatabase.cpp.s
 
 CMakeFiles/od.dir/CroppedImageDatabase.cpp.o.requires:
 .PHONY : CMakeFiles/od.dir/CroppedImageDatabase.cpp.o.requires
@@ -146,17 +146,17 @@ CMakeFiles/od.dir/CroppedImageDatabase.cpp.o.provides.build: CMakeFiles/od.dir/C
 
 CMakeFiles/od.dir/ImageDatabase.cpp.o: CMakeFiles/od.dir/flags.make
 CMakeFiles/od.dir/ImageDatabase.cpp.o: ImageDatabase.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/od.dir/ImageDatabase.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/od.dir/ImageDatabase.cpp.o -c /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ImageDatabase.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/od.dir/ImageDatabase.cpp.o -c /Users/Bella/Heming-Bella/CS4670/P5/ImageDatabase.cpp
 
 CMakeFiles/od.dir/ImageDatabase.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/od.dir/ImageDatabase.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ImageDatabase.cpp > CMakeFiles/od.dir/ImageDatabase.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/Bella/Heming-Bella/CS4670/P5/ImageDatabase.cpp > CMakeFiles/od.dir/ImageDatabase.cpp.i
 
 CMakeFiles/od.dir/ImageDatabase.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/od.dir/ImageDatabase.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ImageDatabase.cpp -o CMakeFiles/od.dir/ImageDatabase.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/Bella/Heming-Bella/CS4670/P5/ImageDatabase.cpp -o CMakeFiles/od.dir/ImageDatabase.cpp.s
 
 CMakeFiles/od.dir/ImageDatabase.cpp.o.requires:
 .PHONY : CMakeFiles/od.dir/ImageDatabase.cpp.o.requires
@@ -169,17 +169,17 @@ CMakeFiles/od.dir/ImageDatabase.cpp.o.provides.build: CMakeFiles/od.dir/ImageDat
 
 CMakeFiles/od.dir/PrecisionRecall.cpp.o: CMakeFiles/od.dir/flags.make
 CMakeFiles/od.dir/PrecisionRecall.cpp.o: PrecisionRecall.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/od.dir/PrecisionRecall.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/od.dir/PrecisionRecall.cpp.o -c /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/PrecisionRecall.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/od.dir/PrecisionRecall.cpp.o -c /Users/Bella/Heming-Bella/CS4670/P5/PrecisionRecall.cpp
 
 CMakeFiles/od.dir/PrecisionRecall.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/od.dir/PrecisionRecall.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/PrecisionRecall.cpp > CMakeFiles/od.dir/PrecisionRecall.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/Bella/Heming-Bella/CS4670/P5/PrecisionRecall.cpp > CMakeFiles/od.dir/PrecisionRecall.cpp.i
 
 CMakeFiles/od.dir/PrecisionRecall.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/od.dir/PrecisionRecall.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/PrecisionRecall.cpp -o CMakeFiles/od.dir/PrecisionRecall.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/Bella/Heming-Bella/CS4670/P5/PrecisionRecall.cpp -o CMakeFiles/od.dir/PrecisionRecall.cpp.s
 
 CMakeFiles/od.dir/PrecisionRecall.cpp.o.requires:
 .PHONY : CMakeFiles/od.dir/PrecisionRecall.cpp.o.requires
@@ -192,17 +192,17 @@ CMakeFiles/od.dir/PrecisionRecall.cpp.o.provides.build: CMakeFiles/od.dir/Precis
 
 CMakeFiles/od.dir/ObjectDetector.cpp.o: CMakeFiles/od.dir/flags.make
 CMakeFiles/od.dir/ObjectDetector.cpp.o: ObjectDetector.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/od.dir/ObjectDetector.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/od.dir/ObjectDetector.cpp.o -c /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ObjectDetector.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/od.dir/ObjectDetector.cpp.o -c /Users/Bella/Heming-Bella/CS4670/P5/ObjectDetector.cpp
 
 CMakeFiles/od.dir/ObjectDetector.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/od.dir/ObjectDetector.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ObjectDetector.cpp > CMakeFiles/od.dir/ObjectDetector.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/Bella/Heming-Bella/CS4670/P5/ObjectDetector.cpp > CMakeFiles/od.dir/ObjectDetector.cpp.i
 
 CMakeFiles/od.dir/ObjectDetector.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/od.dir/ObjectDetector.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ObjectDetector.cpp -o CMakeFiles/od.dir/ObjectDetector.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/Bella/Heming-Bella/CS4670/P5/ObjectDetector.cpp -o CMakeFiles/od.dir/ObjectDetector.cpp.s
 
 CMakeFiles/od.dir/ObjectDetector.cpp.o.requires:
 .PHONY : CMakeFiles/od.dir/ObjectDetector.cpp.o.requires
@@ -215,17 +215,17 @@ CMakeFiles/od.dir/ObjectDetector.cpp.o.provides.build: CMakeFiles/od.dir/ObjectD
 
 CMakeFiles/od.dir/Detection.cpp.o: CMakeFiles/od.dir/flags.make
 CMakeFiles/od.dir/Detection.cpp.o: Detection.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/od.dir/Detection.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/od.dir/Detection.cpp.o -c /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Detection.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/od.dir/Detection.cpp.o -c /Users/Bella/Heming-Bella/CS4670/P5/Detection.cpp
 
 CMakeFiles/od.dir/Detection.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/od.dir/Detection.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Detection.cpp > CMakeFiles/od.dir/Detection.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/Bella/Heming-Bella/CS4670/P5/Detection.cpp > CMakeFiles/od.dir/Detection.cpp.i
 
 CMakeFiles/od.dir/Detection.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/od.dir/Detection.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/Detection.cpp -o CMakeFiles/od.dir/Detection.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/Bella/Heming-Bella/CS4670/P5/Detection.cpp -o CMakeFiles/od.dir/Detection.cpp.s
 
 CMakeFiles/od.dir/Detection.cpp.o.requires:
 .PHONY : CMakeFiles/od.dir/Detection.cpp.o.requires
@@ -238,17 +238,17 @@ CMakeFiles/od.dir/Detection.cpp.o.provides.build: CMakeFiles/od.dir/Detection.cp
 
 CMakeFiles/od.dir/FileIO.cpp.o: CMakeFiles/od.dir/flags.make
 CMakeFiles/od.dir/FileIO.cpp.o: FileIO.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/od.dir/FileIO.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/od.dir/FileIO.cpp.o -c /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/FileIO.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/od.dir/FileIO.cpp.o -c /Users/Bella/Heming-Bella/CS4670/P5/FileIO.cpp
 
 CMakeFiles/od.dir/FileIO.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/od.dir/FileIO.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/FileIO.cpp > CMakeFiles/od.dir/FileIO.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/Bella/Heming-Bella/CS4670/P5/FileIO.cpp > CMakeFiles/od.dir/FileIO.cpp.i
 
 CMakeFiles/od.dir/FileIO.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/od.dir/FileIO.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/FileIO.cpp -o CMakeFiles/od.dir/FileIO.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/Bella/Heming-Bella/CS4670/P5/FileIO.cpp -o CMakeFiles/od.dir/FileIO.cpp.s
 
 CMakeFiles/od.dir/FileIO.cpp.o.requires:
 .PHONY : CMakeFiles/od.dir/FileIO.cpp.o.requires
@@ -261,17 +261,17 @@ CMakeFiles/od.dir/FileIO.cpp.o.provides.build: CMakeFiles/od.dir/FileIO.cpp.o
 
 CMakeFiles/od.dir/ParametersMap.cpp.o: CMakeFiles/od.dir/flags.make
 CMakeFiles/od.dir/ParametersMap.cpp.o: ParametersMap.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/od.dir/ParametersMap.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/od.dir/ParametersMap.cpp.o -c /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ParametersMap.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/od.dir/ParametersMap.cpp.o -c /Users/Bella/Heming-Bella/CS4670/P5/ParametersMap.cpp
 
 CMakeFiles/od.dir/ParametersMap.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/od.dir/ParametersMap.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ParametersMap.cpp > CMakeFiles/od.dir/ParametersMap.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/Bella/Heming-Bella/CS4670/P5/ParametersMap.cpp > CMakeFiles/od.dir/ParametersMap.cpp.i
 
 CMakeFiles/od.dir/ParametersMap.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/od.dir/ParametersMap.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/ParametersMap.cpp -o CMakeFiles/od.dir/ParametersMap.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/Bella/Heming-Bella/CS4670/P5/ParametersMap.cpp -o CMakeFiles/od.dir/ParametersMap.cpp.s
 
 CMakeFiles/od.dir/ParametersMap.cpp.o.requires:
 .PHONY : CMakeFiles/od.dir/ParametersMap.cpp.o.requires
@@ -335,6 +335,6 @@ CMakeFiles/od.dir/clean:
 .PHONY : CMakeFiles/od.dir/clean
 
 CMakeFiles/od.dir/depend:
-	cd /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5 /Users/hemingge/Desktop/Heming-Bella/CS4670/P5/CMakeFiles/od.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/Bella/Heming-Bella/CS4670/P5 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/Bella/Heming-Bella/CS4670/P5 /Users/Bella/Heming-Bella/CS4670/P5 /Users/Bella/Heming-Bella/CS4670/P5 /Users/Bella/Heming-Bella/CS4670/P5 /Users/Bella/Heming-Bella/CS4670/P5/CMakeFiles/od.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/od.dir/depend
 
