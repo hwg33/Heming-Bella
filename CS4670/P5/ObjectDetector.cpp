@@ -61,8 +61,8 @@ ObjectDetector::operator()( const CFloatImage &svmResp, const Size &roiSize,
     for (int x = 0; x < width; x++) {
         for (int y = 0; y < height; y++) {
             double localMax = std::numeric_limits<double>::min();
-            int maxX = 0;
-            int maxY = 0;
+            int maxX = -1;
+            int maxY = -1;
             for (int i = -_winSizeNMS / 2; i <= _winSizeNMS / 2; i++) {
                 for (int j = -_winSizeNMS / 2; j <= _winSizeNMS / 2; j++) {
                     if (x + i < width && x + i >= 0 && y + j < height && y + j >= 0) {
@@ -77,8 +77,8 @@ ObjectDetector::operator()( const CFloatImage &svmResp, const Size &roiSize,
             }
             if (maxX == 0 && maxY == 0 && localMax > _respThresh) {
                 Detection det;
-                det.x = x;
-                det.y = y;
+                det.x = x / (imScale * featureScaleFactor);
+                det.y = y / (imScale * featureScaleFactor);
                 det.width = roiSize.width / (imScale * featureScaleFactor);
                 det.height = roiSize.height / (imScale * featureScaleFactor);
                 det.response = localMax;
@@ -135,8 +135,8 @@ ObjectDetector::operator()( const SBFloatPyramid &svmRespPyr, const Size &roiSiz
     std::sort(allDets.begin(), allDets.end(), sortByResponse);
     for (int i = 0; i < allDets.size(); i++) {
         bool shouldBeKept = true;
-        for (int j = i - 1; j >= 0; j--) {
-            if (allDets[i].relativeOverlap(allDets[j]) > _overlapThresh) {
+        for (int j = 0; j < dets.size(); j++) {
+            if (allDets[i].relativeOverlap(dets[j]) > _overlapThresh) {
                 shouldBeKept = false;
             }
         }

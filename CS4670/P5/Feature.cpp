@@ -518,7 +518,7 @@ HOGFeatureExtractor::operator()(const CFloatImage &img, Feature &feat) const
 
     for (int y = 0; y < featH; y++){
         for(int x = 0; x < featW; x++){
-            double length;
+            double length = 0;
             for(int b = 0; b < _nAngularBins; b++){
                 length += imgHog.Pixel(x,y,b) * imgHog.Pixel(x,y,b);
             }
@@ -529,12 +529,13 @@ HOGFeatureExtractor::operator()(const CFloatImage &img, Feature &feat) const
         }
     }
 
-    /*
-    double threshold = 0.1;
+/*
+    double threshold = 1;
     for (int y = 0; y < featH; y++){
         for(int x = 0; x < featW; x++){
-            double length;
+            double length = 0;
             for(int b = 0; b < _nAngularBins; b++){
+                printf("%f\n", imgHog.Pixel(x,y,b));
                 if (imgHog.Pixel(x,y,b) > threshold){
                     length += threshold * threshold;
                 }else{
@@ -547,8 +548,8 @@ HOGFeatureExtractor::operator()(const CFloatImage &img, Feature &feat) const
             }
         }
     }
-    */
 
+*/
 
     feat = imgHog;
     /******** END TODO ********/
